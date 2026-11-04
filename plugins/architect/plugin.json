@@ -2,5 +2,16 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "architect",
   "version": "0.1.0",
-  "description": "Software architecture agent and skills: decisions and ADRs, C4 documentation, threat modeling, Clean Architecture, Domain-Driven Design and software design."
+  "description": "Software architecture agent and skills: decisions and ADRs, C4 documentation, threat modeling, Clean Architecture, Domain-Driven Design and software design.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Architect",
+        "shortDescription": "Plan, design and consult on software architecture",
+        "developerName": "Facundo Martinez Vidal",
+        "category": "Coding",
+        "defaultPrompt": "Plan how to structure this change, and leave the implementation to the developer."
+      }
+    }
+  }
 }
