@@ -2,5 +2,16 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "developer",
   "version": "0.1.0",
-  "description": "Software developer agent and skills for any language: implementing and reviewing code, framework practices for ASP.NET Core and Spring Boot, implementing architecture designs, clean code, refactoring, testing, debugging, secure coding, APIs, production readiness, user interfaces, design patterns, algorithms, relational databases and pragmatic practices."
+  "description": "Software developer agent and skills for any language: implementing and reviewing code, framework practices for ASP.NET Core and Spring Boot, implementing architecture designs, clean code, refactoring, testing, debugging, secure coding, APIs, production readiness, user interfaces, design patterns, algorithms, relational databases and pragmatic practices.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Developer",
+        "shortDescription": "Implement planned changes and consult on code, in any language",
+        "developerName": "Facundo Martinez Vidal",
+        "category": "Coding",
+        "defaultPrompt": "Implement this plan and verify the result."
+      }
+    }
+  }
 }

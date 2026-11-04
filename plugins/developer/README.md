@@ -1,6 +1,6 @@
 # developer
 
-A software developer agent and fifteen skills for any programming language, usable from Claude Code and GitHub Copilot CLI. It builds and changes code, and it also works as a consultant: a question gets analysis, and a request to build or change gets the verified change.
+A software developer agent and fifteen skills for any programming language, usable from Claude Code, GitHub Copilot CLI and Codex. It builds and changes code, and it also works as a consultant: a question gets analysis, and a request to build or change gets the verified change.
 
 | Skill | Use it for |
 |---|---|
@@ -24,25 +24,47 @@ A software developer agent and fifteen skills for any programming language, usab
 
 ## Install
 
-From a clone of this repo. Replace the path with a repo reference once it's published.
+You don't need to clone the repo.
 
 **Claude Code**
 
 ```bash
-claude plugin marketplace add ./
-claude plugin install developer@developer-vault
+claude plugin marketplace add facundomartinezvidal/developer-vault
 ```
 
-For a single session: `claude --plugin-dir plugins/developer --agent developer:developer`
+```bash
+claude plugin install developer@developer-vault
+```
 
 **GitHub Copilot CLI**
 
 ```bash
-copilot plugin marketplace add ./
+copilot plugin marketplace add facundomartinezvidal/developer-vault
+```
+
+```bash
 copilot plugin install developer@developer-vault
 ```
 
-For a single session: `copilot --plugin-dir plugins/developer --agent developer:developer`
+**Codex**
+
+```bash
+codex plugin marketplace add facundomartinezvidal/developer-vault
+```
+
+```bash
+codex plugin add developer@developer-vault
+```
+
+In Codex, the plugin provides the skills, and `developer:developer` holds the agent's instructions, so mention that skill to work in this role. Codex plugins can't ship custom agents yet. To also use it as a Codex subagent, install the plugin and add the agent file:
+
+```bash
+mkdir -p ~/.codex/agents && curl -fsSL https://raw.githubusercontent.com/facundomartinezvidal/developer-vault/main/plugins/developer/com.openai.codex/agents/developer.toml -o ~/.codex/agents/developer.toml
+```
+
+To get updates, run `codex plugin marketplace upgrade developer-vault`, or the matching `marketplace update` command in the other tools.
+
+For a single session from a clone: `claude --plugin-dir plugins/developer --agent developer:developer`, or the same flags with `copilot`.
 
 ## Develop
 

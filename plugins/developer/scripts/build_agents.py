@@ -9,7 +9,8 @@ Usage:
 Tools disagree on agent formats, so the one source becomes:
     agents/developer.md                         Claude Code
     com.github.copilot/agents/developer.agent.md  GitHub Copilot CLI
-    skills/developer/SKILL.md                   any tool that reads Agent Skills
+    skills/developer/SKILL.md                   any tool that reads Agent Skills, including Codex plugins
+    com.openai.codex/agents/developer.toml      Codex custom agent, which plugins can't ship yet
 """
 
 import re
@@ -32,6 +33,17 @@ def yaml_string(value):
     return '"' + value.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
+def toml_agent(name, description, body):
+    if "'''" in body:
+        sys.exit(f"src/{name}.md: a triple single quote can't go in a TOML literal string")
+    return (
+        NOTICE.replace("<!-- ", "# ").replace(" -->", "")
+        + f"name = {yaml_string(name)}\n"
+        + f"description = {yaml_string(description)}\n"
+        + f"developer_instructions = '''\n{body}'''\n"
+    )
+
+
 def outputs():
     name, description, body = read_source()
     frontmatter = f"---\nname: {name}\ndescription: {yaml_string(description)}\n---\n\n"
@@ -40,6 +52,7 @@ def outputs():
         "agents/developer.md": markdown,
         "com.github.copilot/agents/developer.agent.md": markdown,
         "skills/developer/SKILL.md": markdown,
+        "com.openai.codex/agents/developer.toml": toml_agent(name, description, body),
     }
 
 

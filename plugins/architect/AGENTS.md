@@ -4,7 +4,7 @@ Estado al **2026-11-03**. Este archivo es para quien continúe el trabajo, perso
 
 ## Qué es
 
-Un agente de arquitectura de software y 6 skills, instalable en **Claude Code** y **GitHub Copilot CLI**. Codex se probó y se sacó por ahora: su formato de plugin no documenta agentes y no hubo forma de probarlo con sesión iniciada.
+Un agente de arquitectura de software y 6 skills, instalable en **Claude Code**, **GitHub Copilot CLI** y **Codex**. **Codex** carga el plugin y sus skills, probado el 2026-11-04 con `codex-cli` 0.166 en un `CODEX_HOME` aislado, tanto local como desde GitHub. Sus plugins no incluyen agentes, así que el rol llega como skill y hay un agente TOML opcional en `com.openai.codex/agents/`.
 
 - **Agente:** `architect`. Planea, diseña y consulta sobre interfaces, packages, módulos, capas o sistemas completos, y no edita código. Produce análisis, diseños, ADRs, diagramas y planes. Si le piden implementar, entrega un plan para el agente `developer`. Esta división la pidió el usuario el 2026-11-04 y reemplaza a la anterior, en la que también implementaba refactors. Identifica y respeta los principios del proyecto y ADRs aceptados; distingue propuestas pendientes. Estas reglas son instrucciones, no bloqueos técnicos.
 - **Skills:** manuales que el agente abre según la tarea. Un `SKILL.md` corto, con material de consulta aparte.
@@ -14,7 +14,7 @@ Un agente de arquitectura de software y 6 skills, instalable en **Claude Code** 
 ```
 plugins/architect/
 ├── src/architect.md          fuente única del agente (editar acá)
-├── agents/, com.github.copilot/agents/, skills/architect/   generados desde src/
+├── agents/, com.github.copilot/agents/, com.openai.codex/agents/, skills/architect/   generados desde src/
 ├── skills/<skill>/
 │   ├── SKILL.md              cuándo usarla y el método (menos de 500 líneas)
 │   ├── references/           material de consulta; se lee solo el archivo que hace falta
@@ -29,7 +29,7 @@ plugins/architect/
 Reglas de mantenimiento:
 
 - **Sin citas:** al sumar notas, revisar si aparecen pasajes textuales de libros y agregarlos a `scripts/quote_rewrites.py`. `quote_rewrites.py` es igual en ambos plugins.
-- **No editar a mano** lo generado: `agents/`, `com.github.copilot/`, `skills/architect/` ni los `references/` de `clean-architecture`, `domain-driven-design`, `software-design` y `architecture-decisions/references/decision-principles.md`. Se cambian en `src/` o en el vault.
+- **No editar a mano** lo generado: `agents/`, `com.github.copilot/`, `com.openai.codex/`, `skills/architect/` ni los `references/` de `clean-architecture`, `domain-driven-design`, `software-design` y `architecture-decisions/references/decision-principles.md`. Se cambian en `src/` o en el vault.
 - Se regeneran con `python3 scripts/build_agents.py` y `python3 scripts/sync_vault.py <ruta al vault developer-knowledge>`. Con `--check` fallan si algo quedó desactualizado.
 - A mano quedan: `architecture-documentation/references/c4-mermaid.md`, `threat-modeling/references/common-threats.md` y los `SKILL.md`.
 - El vault vive fuera de este repo. No se copian los PDFs de los libros y no deben entrar.
@@ -221,5 +221,5 @@ Se usa el procedimiento de subagentes independientes descrito en la reevaluació
 
 - **Citas de libros:** resuelto el 2026-11-04: el repo es público y no publica citas. `sync_vault.py` descarta las citas en bloque y reescribe los pasajes de `scripts/quote_rewrites.py`. El vault privado las conserva. Siguen en el historial de git de antes de ese cambio; reescribirlo es una decisión aparte.
 - **Dos copias de `clean-architecture`:** también existe en `skillswap/.claude/skills/clean-architecture`. La del plugin es la que se mantiene. Falta decidir si skillswap pasa a usar la del plugin.
-- **Codex:** pendiente. Si se retoma, hay que revisar cómo instalar agentes, porque su formato de plugin no lo documenta.
+- **Codex:** falta probar una sesión real con modelo y el agente TOML. Solo se verificó la instalación y la carga de skills. Si Codex permite incluir agentes en plugins, reemplazar el archivo suelto.
 - **Nombre del agente en Copilot:** con `--plugin-dir`, el agente se llama `architect:architect`, no `architect`.

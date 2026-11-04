@@ -4,7 +4,7 @@ Estado al **2026-11-04**. Este archivo es para quien continúe el trabajo, perso
 
 ## Qué es
 
-Un agente de desarrollo y 15 skills para cualquier lenguaje, instalable en **Claude Code** y **GitHub Copilot CLI**, armado igual que `architect`.
+Un agente de desarrollo y 15 skills para cualquier lenguaje, instalable en **Claude Code**, **GitHub Copilot CLI** y **Codex**, armado igual que `architect`. **Codex** carga el plugin y sus skills, probado el 2026-11-04 con `codex-cli` 0.166 en un `CODEX_HOME` aislado, tanto local como desde GitHub. Sus plugins no incluyen agentes, así que el rol llega como skill y hay un agente TOML opcional en `com.openai.codex/agents/`.
 
 - **Agente:** `developer`. Trabaja como consultor y como realizador. Una pregunta o revisión produce análisis sin tocar archivos; un pedido de implementar, arreglar o refactorizar autoriza ese trabajo y su verificación dentro del alcance. Las convenciones del proyecto están por encima de las preferencias de los libros. Estas reglas son instrucciones, no bloqueos técnicos.
 - **Lenguajes:** no está atado a ninguno. Descubre el toolchain del proyecto, escribe código idiomático y consulta la documentación de la versión instalada. `clean-code/references/across-languages.md` traduce los principios entre familias de lenguajes.
@@ -16,7 +16,7 @@ Un agente de desarrollo y 15 skills para cualquier lenguaje, instalable en **Cla
 ```
 plugins/developer/
 ├── src/developer.md          fuente única del agente (editar acá)
-├── agents/, com.github.copilot/agents/, skills/developer/   generados desde src/
+├── agents/, com.github.copilot/agents/, com.openai.codex/agents/, skills/developer/   generados desde src/
 ├── skills/<skill>/
 │   ├── SKILL.md              cuándo usarla y el método (menos de 500 líneas)
 │   ├── references/           generados desde el vault o escritos a mano (lo dice cada archivo)
@@ -31,7 +31,8 @@ plugins/developer/
 
 Reglas de mantenimiento:
 
-- **No editar a mano** `agents/`, `com.github.copilot/`, `skills/developer/` ni los `references/` listados en `vault_manifest.py`. A mano quedan los `SKILL.md` y las referencias que no están en el manifest, que empiezan con "Hand-written".
+- **Versión:** Codex guarda los plugins por versión, así que conviene subirla en `plugin.json` y `.claude-plugin/plugin.json` al publicar cambios.
+- **No editar a mano** `agents/`, `com.github.copilot/`, `com.openai.codex/`, `skills/developer/` ni los `references/` listados en `vault_manifest.py`. A mano quedan los `SKILL.md` y las referencias que no están en el manifest, que empiezan con "Hand-written".
 - Las referencias a mano están escritas con palabras propias. No copiar texto de los libros ni de otras fuentes, también porque el repo puede publicarse.
 - `sync_vault.py` no toca las referencias a mano. Si más adelante una nota del vault cubre el mismo tema, reemplazarla y borrar la copia manual.
 - Regenerar: `python3 scripts/build_agents.py` y `python3 scripts/sync_vault.py <ruta a developer-knowledge>`. Con `--check` fallan si algo quedó desactualizado.
