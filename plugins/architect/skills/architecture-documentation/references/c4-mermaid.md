@@ -73,6 +73,39 @@ Use a `sequenceDiagram`, one flow per diagram, with numbered steps (`autonumber`
 
 Use nested `subgraph`s for deployment nodes (region, cluster, VPC), with container instances inside them and the replica count in the label, e.g. `API x3`.
 
+## Class view
+
+Use `classDiagram` for a focused view of how a few types relate, not for every class in a module. Names below are illustrative.
+
+```mermaid
+---
+title: "Class view: Order aggregate"
+---
+classDiagram
+    class Order {
+        +OrderId id
+        +place()
+        +cancel()
+    }
+    class OrderLine {
+        +Quantity quantity
+    }
+    class Money
+    class Customer
+    class PaymentMethod {
+        <<interface>>
+        +charge(amount)
+    }
+    class CardPayment
+    Order "1" *-- "1..*" OrderLine : owns
+    Order ..> Customer : references by id
+    OrderLine --> Money : price
+    PaymentMethod <|.. CardPayment : implements
+    Order ..> PaymentMethod : uses
+```
+
+`*--` is composition (the part cannot outlive the whole), `-->` an association, `..>` a dependency or reference, `<|..` implementation and `<|--` inheritance. Pick the arrow from the actual lifecycle and code, not from a foreign key. Show only the members that explain the relationship.
+
 ## Legend
 
 Add a small legend in the text next to the diagram, or as a separate `subgraph Key` when colors carry meaning: dark blue is a person, blue is this system or its containers, and grey is external.
