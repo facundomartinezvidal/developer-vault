@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: respect-project-principles
+expected_outcome: |
+  Respect project principles in the requested consultant or creator mode at package scope.

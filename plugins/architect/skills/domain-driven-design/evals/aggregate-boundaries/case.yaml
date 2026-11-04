@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: aggregate-boundaries
+expected_outcome: |
+  Aggregates derived from invariants, with stock separated and eventual consistency tied to the stated business tolerance.

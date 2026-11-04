@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: split-marketplace-monolith
+expected_outcome: |
+  Strategic DDD analysis: contexts per model, a context map with named patterns, core vs generic, and an incremental path not equating contexts with microservices.

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: design-rate-limiter-interface
+expected_outcome: |
+  Compares genuinely different interfaces and recommends one with a contract, including how Redis failure behaves, without a full implementation.

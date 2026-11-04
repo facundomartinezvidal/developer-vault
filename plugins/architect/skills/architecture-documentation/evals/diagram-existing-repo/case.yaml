@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: diagram-existing-repo
+expected_outcome: |
+  An onboarding document with context and container diagrams derived from the repo, flagging mismatches between README and code.
+context:
+  scaffold_script: place-files.sh

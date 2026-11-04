@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: review-pass-through-layers
+expected_outcome: |
+  An honest design review naming pass-through layers, leaked configuration and S3 details, a concrete simpler interface, without inventing abstractions.
+context:
+  scaffold_script: place-files.sh

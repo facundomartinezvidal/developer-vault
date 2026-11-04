@@ -1,0 +1,8 @@
+{
+  "name": "architect",
+  "version": "0.1.0",
+  "description": "Software architecture agent and skills: decisions and ADRs, C4 documentation, threat modeling, Clean Architecture, Domain-Driven Design and software design.",
+  "author": { "name": "Facundo Martinez Vidal" },
+  "repository": "https://github.com/facundomartinezvidal/developer-vault",
+  "keywords": ["architecture", "adr", "c4", "threat-modeling", "ddd", "clean-architecture"]
+}

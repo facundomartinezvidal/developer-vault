@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: choose-async-processing
+expected_outcome: |
+  Compares a simpler jobs option with Kafka and RabbitMQ using the supplied drivers, makes a justified recommendation without assuming an obligatory winner, and writes a proposed ADR.

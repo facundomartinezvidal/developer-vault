@@ -1,0 +1,14 @@
+services:
+  api:
+    image: billing-api:dev
+    environment:
+      DATABASE_URL: postgres://dev@postgres/billing
+      TRANSPORT: redis
+  worker:
+    image: billing-worker:dev
+    environment:
+      TRANSPORT: redis
+  redis:
+    image: redis:7
+  postgres:
+    image: postgres:16

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: small-internal-tool-proportional
+expected_outcome: |
+  A short, proportional list of the few real risks with concrete fixes.

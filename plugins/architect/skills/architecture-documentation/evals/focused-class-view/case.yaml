@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: focused-class-view
+expected_outcome: |
+  A focused class view explains supplied domain relationships without inventing an application topology or persistence mapping.

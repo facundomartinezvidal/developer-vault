@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: executive-audience
+expected_outcome: |
+  One system context diagram in business language with no technology details.
