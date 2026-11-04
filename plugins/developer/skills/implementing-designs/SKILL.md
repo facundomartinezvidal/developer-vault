@@ -14,6 +14,7 @@ Find the sources: ADRs, diagrams, threat models, the architect's answer, and pro
 | Kind | How to treat it |
 |---|---|
 | Accepted decision | Binding. Implement it. |
+| Plan from the architect that the person asks you to implement | Binding for its goal, scope, what to preserve, structure and acceptance checks. Its steps are a suggested order. Its open questions remain open. |
 | Proposed or draft ADR | Not a commitment. Don't implement it unless the person says so. |
 | Superseded or deprecated | Follow the newer record, including what a partial supersession leaves in force. |
 | "Pending" or suggested in an ADR | Options, not requirements. |
