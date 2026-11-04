@@ -11,7 +11,7 @@ A software architecture agent and six skills, usable from Claude Code and GitHub
 | `domain-driven-design` | Shared business language, bounded contexts and consistency rules |
 | `software-design` | Interfaces, information hiding, caller protocols and failure contracts |
 
-`architect` is both an agent and a skill, so it still works in tools without custom agents.
+`architect` plans, designs and consults, and doesn't edit code. The [`developer`](../developer/README.md) agent implements its plans. `architect` is both an agent and a skill, so it still works in tools without custom agents.
 
 ## Install
 

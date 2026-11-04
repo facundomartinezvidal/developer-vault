@@ -4,7 +4,6 @@ Chapters 21 and 34: what the top-level structure should say, and the four ways t
 
 ## Screaming Architecture
 
-> Your architecture should tell readers about the system, not about the frameworks you used in your system.
 
 **Source:** *Clean Architecture*, Chapter 21.
 
@@ -42,7 +41,6 @@ A new developer looking at the right-hand tree learns the use cases first; when 
 
 ## Packaging Strategies: Layer, Feature, Ports & Adapters, Component
 
-> Your best design intentions can be destroyed in a flash if you don't consider the intricacies of the implementation strategy.
 
 **Source:** *Clean Architecture*, Chapter 34 (by Simon Brown).
 
@@ -59,7 +57,7 @@ Four ways to organize the same "view orders" feature:
 
 Brown's real point: **these differences only exist if the compiler enforces them.** Mark every type `public` and packages become folders — all four approaches collapse into the same dependency graph, and the newcomer who injects `OrdersRepository` straight into `OrdersController` (a "relaxed layered architecture") breaks nothing that would stop the build. Code reviews and post-compile rule checkers (ArchUnit-style, NDepend, Structure101) are fallible with long feedback loops; prefer making implementation types package-private so the violation doesn't compile. Other enforcement modes: module systems (Java 9 modules, OSGi — *public* vs. *published*), or separate source trees/build modules per component (domain, web, persistence).
 
-His definition of component differs from Martin's (unit of deployment): "a grouping of related functionality behind a nice clean interface, which resides inside an execution environment" (from his C4 model) — whether it's a separate jar is orthogonal.
+His definition of component differs from Martin's (unit of deployment): related functionality behind a clear interface, running inside one execution environment (from his C4 model) — whether it's a separate jar is orthogonal.
 
 ### Example: package by component in Java
 

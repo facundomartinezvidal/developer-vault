@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: review-coupon-change
+expected_outcome: |
+  Review a change by its effect beyond the diff, finding the real bugs first, and give a clear verdict without posting anything.

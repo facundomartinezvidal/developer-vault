@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: implement-package-refactor
+expected_outcome: |
+  Implement a scoped package refactor while respecting project principles and verifying behavior.

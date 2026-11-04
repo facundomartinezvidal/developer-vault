@@ -15,7 +15,6 @@ Chapter 10: making a model safe and pleasant to change.
 
 ## Supple Design
 
-> A supple design communicates its intent. The design makes it easy to anticipate the effect of running code—and therefore it easy to anticipate the consequences of changing it.
 
 **Source:** *Domain-Driven Design*, Chapters 10 and 13.
 
@@ -62,7 +61,6 @@ Before, refunding a partially used bundle meant copying proration loops into thr
 
 ## Intention-Revealing Interfaces
 
-> Name classes and operations to describe their effect and purpose, without reference to the means by which they do what they promise.
 
 **Source:** *Domain-Driven Design*, Chapter 10 (term from Kent Beck).
 
@@ -107,7 +105,6 @@ sessionStore.rememberFor(sessionId, user, Duration.ofMinutes(5));
 
 ## Side-Effect-Free Functions
 
-> Place as much of the logic of the program as possible into functions, operations that return results with no observable side effects. Strictly segregate commands (methods that result in modifications to observable state) into very simple operations that do not return domain information.
 
 **Source:** *Domain-Driven Design*, Chapter 10.
 
@@ -153,7 +150,6 @@ public class Cart {
 
 ## Assertions
 
-> State post-conditions of operations and invariants of classes and AGGREGATES. If ASSERTIONS cannot be coded directly in your programming language, write automated unit tests for them.
 
 **Source:** *Domain-Driven Design*, Chapter 10.
 
@@ -192,7 +188,6 @@ private void checkInvariants() {
 
 ## Conceptual Contours
 
-> Decompose design elements (operations, interfaces, classes, and AGGREGATES) into cohesive units, taking into consideration your intuition of the important divisions in the domain.
 
 **Source:** *Domain-Driven Design*, Chapter 10.
 
@@ -202,7 +197,7 @@ Granularity can go wrong in either direction:
 - **Too coarse:** monolithic classes and methods force duplication, because nothing can be reused in part.
 - **Too fine:** a swarm of tiny pieces leaves the client to hold the meaning together, and concepts are lost.
 
-The right cut follows the domain's own **conceptual contours**, the places where the domain naturally has seams. You rarely see them up front. Watch the **axes of change and stability** across successive refactorings: if every change keeps touching the same region, or keeps splitting the same class, that shows where the contour runs. Align the model with the consistent aspects of the domain, the ones that make it a coherent area of knowledge in the first place.
+The right cut follows the domain's own **conceptual contours**, the places where the domain naturally has seams. You rarely see them up front. Watch the **axes of change and stability** across successive refactorings: if every change keeps touching the same region, or keeps splitting the same class, that shows where the contour runs. Fit the model to the stable parts of the domain, which are what hold it together as a subject.
 
 The payoff is that later changes fit. Evans's example: after an accrual-schedule refactoring along conceptual lines, an unanticipated new requirement for early payoff slotted in without a rewrite. The design wasn't built for that change, but it matched the domain, and the domain absorbed the change.
 
@@ -229,7 +224,6 @@ Pricing experiments, plan packaging and dunning rules come from three different 
 
 ## Standalone Classes
 
-> Low coupling is fundamental to object design. When you can, go all the way. Eliminate all other concepts from the picture. Then the class will be completely self-contained and can be studied and understood alone.
 
 **Source:** *Domain-Driven Design*, Chapter 10.
 
@@ -267,7 +261,6 @@ public record TaxRule(TaxCategory category, Region region, Percentage rate) {
 
 ## Closure of Operations
 
-> Where it fits, define an operation whose return type is the same as the type of its argument(s).
 
 **Source:** *Domain-Driven Design*, Chapter 10.
 
@@ -301,7 +294,6 @@ None of these lines make the reader learn an extra type to know what comes back.
 
 ## Declarative Design
 
-> Generating a running program from a declaration of model properties is a kind of Holy Grail of MODEL-DRIVEN DESIGN, but it does have its pitfalls in practice.
 
 **Source:** *Domain-Driven Design*, Chapter 10.
 

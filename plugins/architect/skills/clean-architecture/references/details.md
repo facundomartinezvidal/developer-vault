@@ -13,13 +13,12 @@ Chapters 27–32: microservices, the test boundary, embedded systems, and why th
 
 ## Services Are Not an Architecture
 
-> Architectural boundaries do not fall between services. Rather, those boundaries run through the services, dividing them into components.
 
 **Source:** *Clean Architecture*, Chapter 27.
 
 ### What it means in practice
 
-Architecture is defined by boundaries that separate high-level policy from low-level detail and obey the Dependency Rule (`layers-and-dependency-rule.md`). A service is just a function call across a process or network boundary: some are architecturally significant, many are just expensive function calls. Martin attacks the two selling points of (micro)services:
+Architecture comes from boundaries that keep policy apart from detail and follow the Dependency Rule (`layers-and-dependency-rule.md`). A service is just a function call across a process or network boundary: some are architecturally significant, many are just expensive function calls. Martin attacks the two selling points of (micro)services:
 
 - **The decoupling fallacy.** Services don't share variables, but they're still coupled through shared resources and, above all, **shared data**: add a field to a record that flows between services and every service that touches it must change and agree on its meaning. And a service's interface is no more formal than a function signature.
 - **The independent development/deployment fallacy.** Large systems have been built as monoliths and component systems too; and to the extent services are coupled by data or behavior, their development and deployment have to be coordinated anyway.
@@ -43,7 +42,6 @@ Component-based alternative: each service exposes abstract extension points (`De
 
 ## The Test Boundary
 
-> Tests are not outside the system; rather, they are parts of the system that must be well designed if they are to provide the desired benefits of stability and regression.
 
 **Source:** *Clean Architecture*, Chapter 28.
 
@@ -85,7 +83,6 @@ A checkout redesign breaks zero tests in the second style, and the pricing class
 
 ## Clean Embedded Architecture
 
-> Although software does not wear out, it can be destroyed from within by unmanaged dependencies on firmware and hardware.
 
 **Source:** *Clean Architecture*, Chapter 29 (by James Grenning).
 
@@ -131,7 +128,6 @@ Off-target, a `fake_climate_hal.c` drives `Thermostat_Tick` through cold morning
 
 ## The Database Is a Detail
 
-> The data is significant. The database is a detail.
 
 **Source:** *Clean Architecture*, Chapter 30 and Appendix A.
 
@@ -178,7 +174,6 @@ Moving order history to a read-optimized store, adding an index, or caching it i
 
 ## The Web Is a Detail
 
-> The GUI is a detail. The web is a GUI. So the web is a detail.
 
 **Source:** *Clean Architecture*, Chapter 31.
 
@@ -204,7 +199,6 @@ The web SPA does field-by-field validation, autocompletes payees, and shows a co
 
 ## Frameworks Are Details
 
-> Don't marry the framework!
 
 **Source:** *Clean Architecture*, Chapter 32 and Appendix A.
 
@@ -244,7 +238,7 @@ Moving off JPA (or upgrading through a breaking major version) now means rewriti
 ### Related
 
 - Keep Options Open: Policy vs. Details (`drawing-boundaries.md`)
-- Screaming Architecture (`packaging.md`) — "frameworks are tools, not ways of life."
+- Screaming Architecture (`packaging.md`) — frameworks should stay tools.
 - The Dependency Rule (`layers-and-dependency-rule.md`)
 - The Main Component (`layers-and-dependency-rule.md`) — where a DI framework is allowed to live.
 - The Database Is a Detail

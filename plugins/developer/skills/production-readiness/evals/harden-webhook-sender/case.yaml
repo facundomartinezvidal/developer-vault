@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: harden-webhook-sender
+expected_outcome: |
+  Add proportional resilience, recognizing which retries are unsafe, and test the failure paths.

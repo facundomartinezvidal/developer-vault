@@ -15,7 +15,6 @@ What complexity is, how to invest against it, and how to change a system without
 
 ## Software Complexity
 
-> Complexity is anything related to the structure of a software system that makes it hard to understand and modify the system.
 
 **Source:** *A Philosophy of Software Design*, Chapter 2.
 
@@ -62,7 +61,6 @@ static final Duration RATE_CACHE_TTL = Duration.ofMinutes(30);
 
 ## Strategic vs. Tactical Programming
 
-> Working code isn't enough. … The most important thing is the long-term structure of the system.
 
 **Source:** *A Philosophy of Software Design*, Chapter 3 (see also Chapter 16, Modifying Existing Code).
 
@@ -92,13 +90,12 @@ The task is to add a second shipping carrier. Tactical: copy `UpsShippingService
 
 ## ETC — Easier to Change
 
-> Good Design Is Easier to Change Than Bad Design. — Tip 14
 
 **Source:** *The Pragmatic Programmer*, Topic 8.
 
 ### What it means in practice
 
-Hunt & Thomas reduce every design principle to one value: a thing is well designed if it adapts to the people who use it, and for code that means it **changes easily**. Every other principle is a special case. Decoupling makes things ETC because a change stays local. SRP does it because a requirement change touches one module. Good naming does it because readable code is easier to change.
+Hunt & Thomas reduce every design principle to one value: good design is design that fits the people using it, and for code that means it **changes easily**. Every other principle is a special case. Decoupling makes things ETC because a change stays local. SRP does it because a requirement change touches one module. Good naming does it because readable code is easier to change.
 
 ETC is a *value*, not a rule, so you use it as a question while you work: "Did what I just did make the system easier or harder to change?" When you can't tell what kind of change is coming:
 1. Fall back on keeping the code *replaceable*: decoupled and cohesive.
@@ -129,7 +126,6 @@ public final class VatPolicy {
 
 ## Modifying Existing Code
 
-> If you want to maintain a clean design for a system, you must take a strategic approach when modifying existing code.
 
 **Source:** *A Philosophy of Software Design*, Chapter 16.
 
@@ -140,7 +136,7 @@ Most development is changing existing code, and that's where design gets worse. 
 - **Stay strategic.** After each change, the system should look as if it had been *designed from the start* with that change in mind. If that needs some refactoring, do it. If it truly can't be done now, avoid making things worse, and note the compromise.
 - **Keep comments up to date:**
   - **Keep comments near the code** they describe, so edits naturally update them. Avoid big header comments far from the code.
-  - **Comments belong in the code, not the commit log.** Future developers read the code, not `git log`. Put the explanation where they'll see it.
+  - **Put comments in the code instead of the commit log.** Future developers read the code, not `git log`. Put the explanation where they'll see it.
   - **Avoid duplicating comments.** Document each decision in one place and refer to it from the others.
   - **Check the diffs** before committing, to catch comments that no longer match.
   - **Higher-level comments are easier to maintain**, because they don't change with every implementation detail.
@@ -157,7 +153,6 @@ Adding a "pause subscription" feature. The tactical version: `if (sub.isPaused()
 
 ## Consistency
 
-> Consistency is a powerful tool for reducing the complexity of a system and making its behavior more obvious.
 
 **Source:** *A Philosophy of Software Design*, Chapter 17.
 
@@ -190,9 +185,8 @@ Every HTTP handler in a service returns errors as `{ "error": { "code": "...", "
 
 ## Don't Outrun Your Headlights
 
-> Take Small Steps—Always. — Tip 42
 
-**Source:** *The Pragmatic Programmer*, Topic 27 (also Tip 43, "Avoid Fortune-Telling").
+**Source:** *The Pragmatic Programmer*, Topic 27 (also Tip 43).
 
 ### What it means in practice
 
@@ -221,7 +215,6 @@ class StripeGateway implements PaymentGateway { ... }
 
 ## Designing for Performance
 
-> Clean design and high performance are compatible.
 
 **Source:** *A Philosophy of Software Design*, Chapter 20.
 
@@ -247,7 +240,6 @@ An API for listing a customer's orders makes N+1 queries (one for the orders, th
 
 ## Refactor Early, Refactor Often
 
-> Refactor Early, Refactor Often. — Tip 65
 
 **Source:** *The Pragmatic Programmer*, Topic 40.
 

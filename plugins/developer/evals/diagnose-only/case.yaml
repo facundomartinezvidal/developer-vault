@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: diagnose-only
+expected_outcome: |
+  Act as a consultant: explain the failure with evidence and do not edit code for a question.

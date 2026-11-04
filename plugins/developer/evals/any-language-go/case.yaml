@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: any-language-go
+expected_outcome: |
+  Work idiomatically in a language other than the examples, and be honest when the toolchain cannot be run.

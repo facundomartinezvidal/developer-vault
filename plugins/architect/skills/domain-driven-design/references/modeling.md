@@ -16,7 +16,6 @@ Chapters 1–3 and 8–11: learning the domain with experts, the shared language
 
 ## Knowledge Crunching
 
-> Effective domain modelers are knowledge crunchers. They take a torrent of information and probe for the relevant trickle.
 
 **Source:** *Domain-Driven Design*, Chapter 1.
 
@@ -66,7 +65,6 @@ The policy is now something experts can name, review and change (per route, per 
 
 ## Ubiquitous Language
 
-> Use the model as the backbone of a language. Commit the team to exercising that language relentlessly in all communication within the team and in the code.
 
 **Source:** *Domain-Driven Design*, Chapter 2.
 
@@ -83,7 +81,6 @@ On documents, Evans's view is that **the code and the spoken language are the pr
 
 ### Example: one sentence, two models
 
-> "When a customer's **subscription renews**, we **charge** the **default payment method**; if it fails, the subscription goes **past due** and we **retry** three times before **cancelling**."
 
 ```java
 // The code reads like the sentence
@@ -115,7 +112,6 @@ The version this replaces had `UserPlanRecord.status = 3` and a nightly `Process
 
 ## Model-Driven Design
 
-> Design a portion of the software system to reflect the domain model in a very literal way, so that mapping is obvious.
 
 **Source:** *Domain-Driven Design*, Chapters 3 and 5 (Modeling Paradigms).
 
@@ -152,7 +148,6 @@ Here `ReturnWindow` is a Value Object (`building-blocks.md`) the experts already
 
 ## Hands-On Modelers
 
-> Any technical person contributing to the model must spend some time touching the code, whatever primary role he or she plays on the project.
 
 **Source:** *Domain-Driven Design*, Chapter 3.
 
@@ -177,7 +172,6 @@ An architect delivers a UML model of `Policy`, `Coverage` and `Claim` for an ins
 
 ## Making Implicit Concepts Explicit
 
-> The key to distinguishing a process that ought to be made explicit from one that should be hidden is simple: Is this something the domain experts talk about, or is it just part of the mechanism of the computer program?
 
 **Source:** *Domain-Driven Design*, Chapter 9.
 
@@ -227,7 +221,6 @@ The support and risk teams now argue about `RefundPolicy` by name. Different mar
 
 ## Refactoring Toward Deeper Insight
 
-> If you wait until you can make a complete justification for a change, you've waited too long.
 
 **Source:** *Domain-Driven Design*, Part III introduction and Chapter 13.
 
@@ -271,7 +264,6 @@ The code for shipment tracking is clean and well tested. But ops keeps saying "a
 
 ## Breakthrough
 
-> This sort of breakthrough is not a technique; it is an event.
 
 **Source:** *Domain-Driven Design*, Chapters 8 and 13 ("Crisis as Opportunity").
 
@@ -301,7 +293,6 @@ A B2B SaaS product grows a tangle of `user.isAdmin`, `user.teamIds`, `user.billi
 
 ## Analysis Patterns
 
-> Analysis patterns are groups of concepts that represent a common construction in business modeling. It may be relevant to only one domain or it may span many domains.
 
 **Source:** *Domain-Driven Design*, Chapter 11 (quoting Fowler, *Analysis Patterns*, 1997).
 
@@ -348,7 +339,6 @@ Every balance becomes auditable, and refunds and chargebacks are just more entri
 
 ## Design Patterns as Domain Patterns
 
-> The only requirement is that the pattern should say something about the conceptual domain, not just be a technical solution to a technical problem.
 
 **Source:** *Domain-Driven Design*, Chapter 12.
 

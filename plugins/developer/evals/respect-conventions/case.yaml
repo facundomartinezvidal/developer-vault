@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: respect-conventions
+expected_outcome: |
+  Follow project conventions over book preferences when adding code.

@@ -1,0 +1,15 @@
+--- a/coupons.js
++++ b/coupons.js
+@@
+ async function applyCoupon(db, payments, orderId, code) {
+   const coupon = await db.coupons.find(code);
++  if (coupon.used) throw new Error("already used");
++  await db.coupons.markUsed(code);
+   const order = await db.orders.find(orderId);
+--- a/coupons.test.js
++++ b/coupons.test.js
+@@
++test("rejects a coupon used twice", async () => {
++  await applyCoupon(db, payments, "o1", "SAVE");
++  await expect(applyCoupon(db, payments, "o2", "SAVE")).rejects.toThrow();
++});

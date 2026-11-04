@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: characterize-legacy-fee
+expected_outcome: |
+  Pin down the existing behavior of untested code before changing it, without silently fixing odd behavior.

@@ -19,7 +19,6 @@ Ways to keep parts of a system from knowing too much about each other.
 
 ## Decoupling
 
-> Decoupled Code Is Easier to Change. — Tip 44
 
 **Source:** *The Pragmatic Programmer*, Topic 28 (Tips 44–48).
 
@@ -30,7 +29,7 @@ Coupling is the enemy of change: when two things are coupled, changing one means
 The three forms of coupling the topic goes after:
 
 1. **Train wrecks** (`customer.orders().find(id).totals().grandTotal()`). Each dot couples you to another class's internals. Fix it with Tell, Don't Ask and **don't chain method calls** (Tip 46), which is a simplified Law of Demeter. Chaining *language-level* things like stream pipelines is fine.
-2. **Globalization.** Global data couples every module that touches it, including singletons and external resources. **Avoid global data** (Tip 47). **If it's important enough to be global, wrap it in an API** (Tip 48).
+2. **Globalization.** Global data couples every module that touches it, including singletons and external resources. **Avoid global data** (Tip 47). **If it must be global, put it behind an API** (Tip 48).
 3. **Inheritance.** It's a form of coupling too. See Inheritance Tax.
 
 ### Example
@@ -68,7 +67,6 @@ Money discount = order.discountUnder(promotionPolicy);   // PromotionPolicy pass
 
 ## Strive for Loosely Coupled Designs
 
-> Strive for loosely coupled designs between objects that interact.
 
 **Source:** *Head First Design Patterns*, Chapter 2.
 
@@ -128,9 +126,7 @@ Adding a loyalty-points consumer is a new `OrderPlacedListener`; `OrderService` 
 
 ## Encapsulate What Varies
 
-> Identify the aspects of your application that vary and separate them from what stays the same.
 
-> Take what varies and "encapsulate" it so it won't affect the rest of your code. The result? Fewer unintended consequences from code changes and more flexibility in your systems!
 
 **Source:** *Head First Design Patterns*, Chapter 1.
 
@@ -198,9 +194,7 @@ Adding XLSX support later means adding one new `ExportFormat` implementation —
 
 ## Program To An Interface, Not An Implementation
 
-> Program to an interface, not an implementation.
 
-> "Program to an interface" really means "Program to a supertype."
 
 **Source:** *Head First Design Patterns*, Chapter 1.
 
@@ -258,9 +252,7 @@ public class UserService {
 
 ## Favor Composition Over Inheritance
 
-> Favor composition over inheritance.
 
-> The HAS-A relationship is an interesting one: each duck has a FlyBehavior and a QuackBehavior to which it delegates flying and quacking. When you put two classes together like this you're using composition. Instead of inheriting their behavior, the ducks get their behavior by being composed with the right behavior object.
 
 **Source:** *Head First Design Patterns*, Chapter 1.
 
@@ -328,7 +320,6 @@ Any engine/transmission combination — zero new subclasses, even as more varian
 
 ## The Hollywood Principle
 
-> Don't call us, we'll call you.
 
 **Source:** *Head First Design Patterns*, Chapter 8.
 
@@ -374,7 +365,6 @@ public class NightlySalesJob extends ScheduledJob { ... }
 
 ## Principle of Least Knowledge (Law of Demeter)
 
-> Principle of Least Knowledge — talk only to your immediate friends.
 
 **Source:** *Head First Design Patterns*, Chapter 7; *Clean Code*, Chapter 6 (and heuristic G36, "Avoid Transitive Navigation"); *The Pragmatic Programmer*, Topic 28.
 
@@ -432,7 +422,6 @@ If addresses later get geocoded zones instead of region-based ones, only `Addres
 
 ## Tell, Don't Ask
 
-> Tell, Don't Ask. — Tip 45
 
 **Source:** *The Pragmatic Programmer*, Topic 28.
 
@@ -468,7 +457,6 @@ sub.markOverdueIfUnpaidAsOf(today);
 
 ## Event-Driven Programming
 
-> An event represents the availability of information. — *The Pragmatic Programmer*, Topic 29
 
 **Source:** *The Pragmatic Programmer*, Topic 29; critique in *A Philosophy of Software Design*, Chapter 18.
 
@@ -513,9 +501,8 @@ eventBus.publish(new OrderPaid(orderId, amount));   // shipping, email and analy
 
 ## Transforming Programming
 
-> Programming Is About Code, But Programs Are About Data. — Tip 49
 
-**Source:** *The Pragmatic Programmer*, Topic 30 (also Tip 50, "Don't Hoard State; Pass It Around").
+**Source:** *The Pragmatic Programmer*, Topic 30 (also Tip 50).
 
 ### What it means in practice
 
@@ -556,7 +543,6 @@ Files.lines(csv)
 
 ## Inheritance Tax
 
-> Don't Pay Inheritance Tax. — Tip 51
 
 **Source:** *The Pragmatic Programmer*, Topic 31 (Tips 51–54).
 
@@ -597,7 +583,6 @@ class InvoiceService {
 
 ## Externalize Configuration
 
-> Parameterize Your App Using External Configuration. — Tip 55
 
 **Source:** *The Pragmatic Programmer*, Topic 32.
 

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: review-checkout
+expected_outcome: |
+  Find what actually costs readers and correctness in a small function, ranked, without flagging style noise.

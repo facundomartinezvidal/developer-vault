@@ -53,7 +53,7 @@ For a structural design where a diagram helps, include a source-dependency diagr
 
 ### Explain — the user asks what something means
 
-Give the book's definition (quote it when the reference has the quote), what it means in practice, one example — in the user's language and stack if known — and how it connects to neighbouring principles. Correct the popular misreadings head-on, because they are usually why the question is being asked: SRP is about actors, not "doing one thing"; "stable" means hard to change (many dependents), not rarely changed; the data model matters but the database is a detail; microservices are not an architecture by themselves; Martin's Entity is not a JPA `@Entity` or a DDD entity.
+Give the book's idea in your own words, what it means in practice, one example — in the user's language and stack if known — and how it connects to neighbouring principles. Correct the popular misreadings head-on, because they are usually why the question is being asked: SRP is about actors, not "doing one thing"; "stable" means hard to change (many dependents), not rarely changed; the data model matters but the database is a detail; microservices are not an architecture by themselves; Martin's Entity is not a JPA `@Entity` or a DDD entity.
 
 ## Reference files
 

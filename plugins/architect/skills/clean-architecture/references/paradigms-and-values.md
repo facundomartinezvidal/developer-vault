@@ -12,7 +12,6 @@ Chapters 1–6: what architecture is for, and the three paradigms it is built on
 
 ## Design vs. Architecture
 
-> The goal of software architecture is to minimize the human resources required to build and maintain the required system.
 
 **Source:** *Clean Architecture*, Chapter 1.
 
@@ -37,7 +36,6 @@ Separately, a controlled experiment (disciplined TDD vs. not, across 6 days) fou
 
 ## Two Values of Software: Behavior vs. Architecture
 
-> Every software system provides two different values to the stakeholders: behavior and structure.
 
 **Source:** *Clean Architecture*, Chapter 2.
 
@@ -45,7 +43,7 @@ Separately, a controlled experiment (disciplined TDD vs. not, across 6 days) fou
 
 **Behavior** is whether the software does what the spec says (features, bug fixes). **Architecture** is how easy the software is to change. Teams chronically over-invest in behavior because it's *urgent* — a stakeholder is waiting on it — while architecture, though the more *important* value long-term, never feels urgent on any given day, so it quietly loses every prioritization fight and the codebase stiffens release by release.
 
-Martin maps this onto Eisenhower's urgent/important matrix: behavior is urgent-but-not-always-important, architecture is important-but-never-urgent. Business stakeholders are well positioned to judge urgency, but usually can't judge architectural importance — so it falls to the engineering team, as legitimate stakeholders themselves, to protect it. "The difficulty in making a change should be proportional only to the scope of the change, not to its shape" — i.e. a small feature request should cost a small amount of work, regardless of how the codebase happens to be organized today.
+Martin maps this onto Eisenhower's urgent/important matrix: behavior is urgent-but-not-always-important, architecture is important-but-never-urgent. Business stakeholders are well positioned to judge urgency, but usually can't judge architectural importance — so it falls to the engineering team, as legitimate stakeholders themselves, to protect it. The cost of a change should depend on how big it is, not on its shape — i.e. a small feature request should cost a small amount of work, regardless of how the codebase happens to be organized today.
 
 ### Example: features that quietly erode architecture
 
@@ -59,7 +57,6 @@ A team under deadline pressure ships every sprint's features (urgent, satisfies 
 
 ## Structured Programming
 
-> Structured programming imposes discipline on direct transfer of control.
 
 **Source:** *Clean Architecture*, Chapters 3–4.
 
@@ -67,7 +64,7 @@ A team under deadline pressure ships every sprint's features (urgent, satisfies 
 
 Dijkstra found that unrestricted `goto` makes a program impossible to decompose into provably-correct units — you can't reason about a piece of it in isolation if control can jump in or out from anywhere. Restricting control flow to sequence, selection (`if`), and iteration (`while`/`for`) — proven sufficient by the Böhm–Jacopini theorem — makes a program decomposable into small units that can each be checked independently. That's the whole paradigm: it doesn't add a capability, it removes one (unrestricted jumps).
 
-Dijkstra's original goal was mathematical proof of correctness; that never really worked in practice. What structured programming actually gives modern developers is **falsifiability**: "testing shows the presence, not the absence, of bugs" — you can never prove a program correct by testing, but restricting control flow to these three constructs is what makes a unit small and well-defined enough to be meaningfully testable at all. This is the direct ancestor of why every mainstream language still forbids (or strongly discourages) arbitrary jumps.
+Dijkstra's original goal was mathematical proof of correctness; that never really worked in practice. What structured programming actually gives modern developers is **falsifiability**: tests can reveal bugs but can't prove there are none — you can never prove a program correct by testing, but restricting control flow to these three constructs is what makes a unit small and well-defined enough to be meaningfully testable at all. This is the direct ancestor of why every mainstream language still forbids (or strongly discourages) arbitrary jumps.
 
 ### Example: why every function you write is already "structured"
 
@@ -81,7 +78,6 @@ Any function built purely from `if`/`else`, `for`/`while`, and sequential statem
 
 ## Object-Oriented Programming
 
-> OO is the ability, through the use of polymorphism, to gain absolute control over every source code dependency in the system.
 
 **Source:** *Clean Architecture*, Chapters 3, 5.
 
@@ -129,17 +125,16 @@ public class StripeAdapter implements PaymentGateway { /* ... */ } // depends on
 
 ## Functional Programming
 
-> Functional programming imposes discipline upon assignment — variables in functional languages do not vary.
 
 **Source:** *Clean Architecture*, Chapters 3, 6.
 
 ### What it means in practice
 
-Why should an architect care about mutability? Because "all race conditions, deadlock conditions, and concurrent update problems are due to mutable variables. You cannot have a race condition or a concurrent update problem if no variable is ever updated." Immutability doesn't just avoid bugs — it removes an entire category of them by construction.
+Why should an architect care about mutability? Because races, deadlocks and concurrent update bugs all need a variable that changes; if nothing is ever updated, they can't occur. Immutability doesn't just avoid bugs — it removes an entire category of them by construction.
 
 The practical architectural move: segregate a system into immutable (purely functional) components — which can run concurrently with zero coordination — and a smaller set of components that must allow mutation, protected by a controlled, transactional mechanism (compare-and-swap, an actor model, or similar), and pushed to the edges of the system. Push as much logic as possible into the immutable side.
 
-A more radical, storage-is-cheap-now version of this is **event sourcing**: never mutate state at all — store only the sequence of transactions (deposits/withdrawals, not a balance), and recompute current state on demand by replaying them. "Our applications are not CRUD; they are just CR." No concurrent-update problem exists because nothing is ever updated or deleted.
+A more radical, storage-is-cheap-now version of this is **event sourcing**: never mutate state at all — store only the sequence of transactions (deposits/withdrawals, not a balance), and recompute current state on demand by replaying them. Applications then only create and read, never update or delete. No concurrent-update problem exists because nothing is ever updated or deleted.
 
 ### Example: mutable loop vs. no mutable state at all
 
