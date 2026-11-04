@@ -22,7 +22,7 @@ Hand-written from *Refactoring* (2nd ed.), Chapters 6–9, in our own words. Eac
 
 ## Inline Function
 
-**When:** the body is as clear as the name, the indirection adds nothing, or a badly split group is easier to re-split after merging.
+**When:** the body says as much as the name, the indirection adds nothing, or a badly split group is easier to re-split after merging.
 **How:** check it isn't overridden or polymorphic. Replace each call with the body, adjusting names, one at a time. Delete the definition when no calls remain.
 **Watch:** recursion, multiple returns and dynamic calls.
 

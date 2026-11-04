@@ -45,7 +45,7 @@ Just use `user.id` directly (or `user.getUserId()` doesn't need a free-standing 
 
 ### What it looks like
 
-Machinery built for a future that hasn't arrived: "oh, I think we'll need the ability to do this kind of thing someday," followed by hooks, abstract classes, and unused parameters added just in case. If the machinery isn't being used, it's not paying for itself — it just makes the code harder to understand and change today. A telltale sign: the only caller of a function or class is a test.
+Machinery built for a future that hasn't arrived: code added because it might be needed someday, followed by hooks, abstract classes, and unused parameters added just in case. If the machinery isn't being used, it's not paying for itself — it just makes the code harder to understand and change today. A telltale sign: the only caller of a function or class is a test.
 
 ### Example
 
@@ -121,7 +121,7 @@ class User {
 
 ### What it looks like
 
-A subclass that inherits methods and data from its parent but only wants part of what it's given. Fowler treats this as a mild smell most of the time — reusing a bit of behavior via subclassing is fine, and "nine times out of ten this smell is too faint to be worth cleaning." It gets much stronger when the subclass reuses the implementation but actively **doesn't want to support the parent's interface** — that's a real LSP violation, not just a style nitpick.
+A subclass that inherits methods and data from its parent but only wants part of what it's given. Fowler treats this as a mild smell most of the time — reusing a bit of behavior via subclassing is fine, and usually this smell is too weak to justify cleaning up. It gets much stronger when the subclass reuses the implementation but actively **doesn't want to support the parent's interface** — that's a real LSP violation, not just a style nitpick.
 
 ### Example
 

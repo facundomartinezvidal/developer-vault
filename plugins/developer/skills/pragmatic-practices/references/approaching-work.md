@@ -16,16 +16,15 @@ Learning requirements, cutting thin slices, prototyping, estimating, and decidin
 
 ## The Requirements Pit
 
-> No One Knows Exactly What They Want. — Tip 75 &nbsp;·&nbsp; Requirements Are Learned in a Feedback Loop. — Tip 77
 
 **Source:** *The Pragmatic Programmer*, Topic 45 (Tips 75–80).
 
 ### What it means in practice
 
-Requirements aren't lying around waiting to be gathered. They're buried under assumptions, misunderstandings and politics, and they're **learned through feedback**. A programmer's job is to **help people understand what they want** (Tip 76):
+Requirements aren't lying around waiting to be gathered. They're buried under assumptions, misunderstandings and politics, and they're **learned through feedback**. A programmer's job is to **help people discover what they need** (Tip 76):
 
 - **Ask questions and explore edge cases.** Restate the requirement and show mockups and prototypes. Every round of feedback refines the shared understanding.
-- **Work with a user to think like a user** (Tip 78). Spend a day doing their job.
+- **Work alongside users to see things as they do** (Tip 78). Spend a day doing their job.
 - **Policy is metadata** (Tip 79). "Only supervisors can see salary data" is a *policy* that will change. Implement the general mechanism (access rules), and keep the specific policy as configurable data.
 - **Requirements vs. documentation.** User stories and index cards are reminders for a conversation, not contracts. Avoid overspecifying.
 - **Watch out for scope creep.** Make every change's impact visible.
@@ -51,7 +50,6 @@ Request: "Users must be able to export their data." Questions: which data, in wh
 
 ## Tracer Bullets
 
-> Use Tracer Bullets to Find the Target. — Tip 20
 
 **Source:** *The Pragmatic Programmer*, Topic 12.
 
@@ -84,7 +82,6 @@ Building a document-signing product: week 1 is "upload a PDF → it's stored →
 
 ## Prototypes
 
-> Prototype to Learn. — Tip 21
 
 **Source:** *The Pragmatic Programmer*, Topic 13.
 
@@ -108,7 +105,6 @@ Because it's disposable, a prototype can ignore correctness, completeness, robus
 
 ## Estimating
 
-> Estimate to Avoid Surprises. — Tip 23 &nbsp;·&nbsp; Iterate the Schedule with the Code. — Tip 24
 
 **Source:** *The Pragmatic Programmer*, Topic 15.
 
@@ -138,7 +134,6 @@ Because it's disposable, a prototype can ignore correctness, completeness, robus
 
 ## Good-Enough Software
 
-> Make Quality a Requirements Issue. — Tip 8
 
 **Source:** *The Pragmatic Programmer*, Topic 5.
 
@@ -163,9 +158,8 @@ An internal admin dashboard: the ops team accepts no mobile layout and a 2-secon
 
 ## Don't Outrun Your Headlights
 
-> Take Small Steps—Always. — Tip 42
 
-**Source:** *The Pragmatic Programmer*, Topic 27 (also Tip 43, "Avoid Fortune-Telling").
+**Source:** *The Pragmatic Programmer*, Topic 27 (also Tip 43).
 
 ### What it means in practice
 
@@ -195,9 +189,8 @@ class StripeGateway implements PaymentGateway { ... }
 
 ## Reversibility
 
-> There Are No Final Decisions. — Tip 18
 
-**Source:** *The Pragmatic Programmer*, Topic 11 (also Tip 19, "Forgo Following Fads").
+**Source:** *The Pragmatic Programmer*, Topic 11 (also Tip 19).
 
 ### What it means in practice
 
@@ -220,7 +213,7 @@ class S3DocumentStore implements DocumentStore { ... }
 
 ### Where it applies
 
-- keep options open — Martin's architecture-level version: a good architect maximizes the number of decisions *not* made.
+- keep options open — Martin's architecture-level version: a good architect keeps as many decisions as possible open.
 - database is a detail, web is a detail, frameworks are details — Clean Architecture's case studies in keeping specific decisions reversible.
 - clean boundaries — wrapping vendor APIs is how reversibility is implemented in code.
 
@@ -232,7 +225,6 @@ class S3DocumentStore implements DocumentStore { ... }
 
 ## Listen to Your Lizard Brain
 
-> Listen to Your Inner Lizard. — Tip 61
 
 **Source:** *The Pragmatic Programmer*, Topic 37.
 
@@ -256,7 +248,6 @@ Adding a "simple" feature to the billing module keeps feeling hard: every change
 
 ## The Essence of Agility
 
-> Agile Is Not a Noun; Agile Is How You Do Things. — Tip 83
 
 **Source:** *The Pragmatic Programmer*, Topic 48.
 

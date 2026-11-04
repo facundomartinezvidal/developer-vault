@@ -12,7 +12,6 @@ Decoupling what happens from when it happens, without shared mutable state.
 
 ## Concurrency Defense Principles
 
-> Concurrency is a decoupling strategy. It helps us decouple what gets done from when it gets done.
 
 **Source:** *Clean Code*, Chapter 13 and Appendix A (Brett L. Schuchert).
 
@@ -55,9 +54,8 @@ class RateLimiter {
 
 ## Shared State Is Incorrect State
 
-> Shared State Is Incorrect State. — Tip 57
 
-**Source:** *The Pragmatic Programmer*, Topic 34 (also Tip 58, "Random Failures Are Often Concurrency Issues").
+**Source:** *The Pragmatic Programmer*, Topic 34 (also Tip 58).
 
 ### What it means in practice
 
@@ -93,7 +91,6 @@ if (updated == 0) throw new SoldOutException(flightId);
 
 ## Breaking Temporal Coupling
 
-> Analyze Workflow to Improve Concurrency. — Tip 56
 
 **Source:** *The Pragmatic Programmer*, Topic 33.
 
@@ -133,13 +130,12 @@ allOf(stock, charge).thenRun(() -> sendConfirmation(order));   // synchronizatio
 
 ## Actors and Processes
 
-> Use Actors For Concurrency Without Shared State. — Tip 59
 
 **Source:** *The Pragmatic Programmer*, Topic 35.
 
 ### What it means in practice
 
-An **actor** is an independent virtual processor with its own *private* state and a mailbox. It processes one message at a time. In response, it can send messages to other actors it knows, create new actors, and change its own state. There's no shared memory and no locks. The only way to affect an actor is to send it a message.
+An **actor** is an independent unit of execution with private state and a mailbox. It processes one message at a time. In response, it can send messages to other actors it knows, create new actors, and change its own state. There's no shared memory and no locks. The only way to affect an actor is to send it a message.
 
 Since only the actor itself ever touches its state, the shared-state problem can't happen. Actors communicate asynchronously and there's no central coordinator, so a system built this way scales from threads to processes to machines without changing the model. Erlang/Elixir processes are the standard example, and Akka brings the model to the JVM.
 
@@ -163,7 +159,7 @@ class SeatInventory extends AbstractBehavior<Command> {
 ### Related
 
 - Shared State Is Incorrect State
-- Concurrency Defense Principles — "threads should be as independent as possible", taken to the limit.
+- Concurrency Defense Principles — keep threads independent, taken to the limit.
 - Blackboards — another coordination style with no central coordinator.
 - Event-Driven Programming (`coupling.md`) — actors are event-driven: messages are the events.
 - Decoupling (`coupling.md`)
@@ -171,7 +167,6 @@ class SeatInventory extends AbstractBehavior<Command> {
 
 ## Blackboards
 
-> Use Blackboards to Coordinate Workflow. — Tip 60
 
 **Source:** *The Pragmatic Programmer*, Topic 36.
 

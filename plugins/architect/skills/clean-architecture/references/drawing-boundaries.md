@@ -14,7 +14,6 @@ Chapters 15–19, 24–25: policy vs. details, where boundaries go, decoupling m
 
 ## Keep Options Open: Policy vs. Details
 
-> The strategy behind that facilitation is to leave as many options open as possible, for as long as possible.
 
 **Source:** *Clean Architecture*, Chapter 15.
 
@@ -22,7 +21,7 @@ Chapters 15–19, 24–25: policy vs. details, where boundaries go, decoupling m
 
 Architecture is the *shape* of a system — its division into components, their arrangement, and how they communicate — and that shape exists to make the system easy to **develop, deploy, operate, and maintain**, not to make it work (plenty of terribly structured systems work fine). Martin weighs the four goals unequally: operational problems can usually be bought off with hardware, while development and maintenance (the "spelunking" through code plus the risk of breaking something) cost people, which is the expensive resource. A good architecture also makes operation *visible*: use cases are first-class, obvious elements of the code.
 
-Every system splits into **policy** (business rules — where the value lives) and **details** (database, web server, framework, protocols, DI container, IO devices). The architect's job is to make the policy ignorant of the details, so those decisions can be postponed until there's real information to make them with — or made, swapped, and experimented with cheaply later. If the company already "decided" on a database or framework, a good architect pretends it hasn't and keeps the code shaped so it could still change. "A good architect maximizes the number of decisions not made."
+Every system splits into **policy** (business rules — where the value lives) and **details** (database, web server, framework, protocols, DI container, IO devices). The architect's job is to make the policy ignorant of the details, so those decisions can be postponed until there's real information to make them with — or made, swapped, and experimented with cheaply later. If the company already "decided" on a database or framework, a good architect pretends it hasn't and keeps the code shaped so it could still change. "A good architect keeps as many decisions as possible open."
 
 Martin also insists that architects keep programming: they can't guide a design if they don't feel the problems it causes.
 
@@ -49,7 +48,6 @@ A team building a marketplace writes `PlaceOrder`, pricing, and stock-reservatio
 
 ## Policy and Level
 
-> A strict definition of "level" is "the distance from the inputs and outputs."
 
 **Source:** *Clean Architecture*, Chapter 19.
 
@@ -105,7 +103,6 @@ Next quarter the input becomes an S3 JSON feed and the output a CRM API — two 
 
 ## Decoupling Layers and Use Cases
 
-> If you decouple the elements of the system that change for different reasons, then you can continue to add new use cases without interfering with old ones.
 
 **Source:** *Clean Architecture*, Chapters 16, 33.
 
@@ -122,7 +119,6 @@ The Video Sales case study (Chapter 33) shows the two axes as the two dimensions
 
 #### Conway's law
 
-> Any organization that designs a system will produce a design whose structure is a copy of the organization's communication structure.
 
 ### Example: an order-management system
 
@@ -150,7 +146,6 @@ Each folder is a vertical slice with its own controller/interactor/gateway (the 
 
 ## Architectural Boundaries and the Plugin Architecture
 
-> Software architecture is the art of drawing lines that I call boundaries.
 
 **Source:** *Clean Architecture*, Chapter 17.
 
@@ -214,7 +209,6 @@ Every arrow crossing the boundary points into the core. The cautionary counter-e
 
 ## Decoupling Modes and Boundary Anatomy
 
-> A good architecture will allow a system to be born as a monolith, deployed in a single file, but then to grow into a set of independently deployable units, and then all the way to independent services and/or micro-services.
 
 **Source:** *Clean Architecture*, Chapters 16, 18.
 
@@ -255,7 +249,6 @@ Martin's preference: decouple **to the point where a service *could* be formed**
 
 ## Partial Boundaries
 
-> It is one of the functions of an architect to decide where an architectural boundary might one day exist, and whether to fully or partially implement that boundary.
 
 **Source:** *Clean Architecture*, Chapter 24.
 
@@ -287,7 +280,6 @@ Sales wants "maybe sell analytics standalone next year".
 
 ## Anticipating Boundaries: When to Pay for One
 
-> Your goal is to implement the boundaries right at the inflection point where the cost of implementing becomes less than the cost of ignoring.
 
 **Source:** *Clean Architecture*, Chapter 25 and Appendix A.
 
@@ -297,7 +289,7 @@ Sales wants "maybe sell analytics standalone next year".
 
 That leaves a real dilemma. Fully implemented boundaries are expensive; YAGNI rightly warns that over-engineering is often worse than under-engineering. But a boundary you ignored is very expensive to retrofit, even with good tests. There's no formula — the architect has to guess intelligently, decide for each potential boundary whether to implement it fully, partially, or not at all, and **keep watching**: note where a boundary could go, wait for the first friction from its absence, then re-weigh the cost, and revisit the decision regularly.
 
-The Appendix gives the cautionary tale for the other side: a CASE tool built with layer upon layer of communication overhead and an intrusive OO database was scrapped after years for a small desktop app written by a tiny team. "Architecture must be flexible enough to adapt to the size of the problem."
+The Appendix gives the cautionary tale for the other side: a CASE tool built with layer upon layer of communication overhead and an intrusive OO database was scrapped after years for a small desktop app written by a tiny team. Architecture has to fit the size of the problem.
 
 ### Example: notifications in a growing SaaS
 

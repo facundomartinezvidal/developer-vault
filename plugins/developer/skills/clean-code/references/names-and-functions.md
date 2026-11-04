@@ -13,7 +13,6 @@ Choosing names, sizing functions, their arguments, side effects and call orderin
 
 ## Meaningful Names
 
-> The name of a variable, function, or class, should answer all the big questions. It should tell you why it exists, what it does, and how it is used. — *Clean Code*
 
 **Source:** *Clean Code*, Chapter 2; *The Pragmatic Programmer*, Topic 44 ("Name Well; Rename When Needed"); *A Philosophy of Software Design*, Chapter 14.
 
@@ -62,7 +61,6 @@ externalRef  // always the payment-provider id — never also called "customerId
 
 ## Small Functions That Do One Thing
 
-> Functions should do one thing. They should do it well. They should do it only.
 
 **Source:** *Clean Code*, Chapter 3 (also heuristic G30).
 
@@ -119,7 +117,6 @@ Ousterhout pushes back in deep modules and better together or apart. Splitting a
 
 ## One Level of Abstraction per Function (the Stepdown Rule)
 
-> We want the code to read like a top-down narrative. We want every function to be followed by those at the next level of abstraction.
 
 **Source:** *Clean Code*, Chapter 3 (also heuristics G6 and G34).
 
@@ -153,14 +150,13 @@ private String line(Tx t) { return String.format("%-12s %10s%n", t.date(), t.amo
 
 ### Where it applies
 
-- different layer different abstraction — Ousterhout's version at the class and layer level: each layer should provide a different abstraction from the layers above and below it.
+- different layer different abstraction — Ousterhout's version at the class and layer level: each layer should offer its own abstraction, distinct from its neighbors.
 - policy and level — Martin's architecture version: "level" is distance from inputs and outputs, and high-level policy shouldn't mix with low-level detail.
 - Small Functions That Do One Thing — a function has to stay at one level to do one thing.
 
 
 ## Function Arguments
 
-> The ideal number of arguments for a function is zero (niladic). Next comes one (monadic), followed closely by two (dyadic). Three arguments (triadic) should be avoided where possible.
 
 **Source:** *Clean Code*, Chapter 3 (also heuristics F1–F3, G15).
 
@@ -198,7 +194,6 @@ Report salesReportWithRefunds(CustomerId customer, DateRange period);
 
 ## Command Query Separation
 
-> Functions should either do something or answer something, but not both.
 
 **Source:** *Clean Code*, Chapter 3 (principle from Bertrand Meyer).
 
@@ -241,7 +236,6 @@ if (auth.passwordMatches(user, pw)) auth.logIn(user);
 
 ## Hidden Temporal Coupling
 
-> Temporal couplings are often necessary, but you should not hide the coupling.
 
 **Source:** *Clean Code*, Chapter 17, heuristic G31 (see also Chapter 3's "Have No Side Effects").
 

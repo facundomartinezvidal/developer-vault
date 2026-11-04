@@ -14,7 +14,6 @@ Chapters 16, 20, 22–23, 26: the circles, the Dependency Rule, entities vs. use
 
 ## The Clean Architecture (the Circles)
 
-> By separating the software into layers and conforming to the Dependency Rule, you will create a system that is intrinsically testable, with all the benefits that implies.
 
 **Source:** *Clean Architecture*, Chapter 22.
 
@@ -27,7 +26,7 @@ Hexagonal Architecture / Ports and Adapters (Cockburn), DCI (Coplien & Reenskaug
 | **Entities** | Enterprise-wide Critical Business Rules |
 | **Use cases** | Application-specific rules; orchestrate entities; isolated from DB/UI/frameworks |
 | **Interface adapters** | Controllers, presenters, views (all of MVC lives here), gateways; convert data between use-case format and external format. All SQL lives here. |
-| **Frameworks & drivers** | Web framework, database, devices — mostly glue code. "The web is a detail. The database is a detail." |
+| **Frameworks & drivers** | Web framework, database, devices — mostly glue code. The web and the database are details. |
 
 Four circles is schematic, not a rule — what's fixed is that dependencies point inward and abstraction increases inward.
 
@@ -91,7 +90,6 @@ Swap Spring for Ktor, JPA for jOOQ, or the web page for a mobile API: only the o
 
 ## The Dependency Rule
 
-> Source code dependencies must point only inward, toward higher-level policies.
 
 **Source:** *Clean Architecture*, Chapter 22.
 
@@ -149,7 +147,6 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
 ## Critical Business Rules (Entities)
 
-> An Entity is an object within our computer system that embodies a small set of critical business rules operating on Critical Business Data.
 
 **Source:** *Clean Architecture*, Chapters 20, 22.
 
@@ -157,7 +154,7 @@ public class PlaceOrderInteractor implements PlaceOrderInputBoundary {
 
 **Critical Business Rules** are the rules that make or save the business money *even if nobody automated them* — a clerk with a calculator would apply them too. They operate on **Critical Business Data** (data that would exist without the system). The rules and their data are inseparable, so they're bundled into one module: an **Entity** (Ivar Jacobson's term). It doesn't have to be a class — any module that binds the data and the rules together works.
 
-An Entity is "pure business and nothing else": no database annotations, no HTTP types, no framework base classes. In the Clean Architecture it's the innermost circle — the most general, highest-level policy, the least likely to change when something external changes, and potentially shared by many applications in an enterprise. Entities know nothing about the use cases that drive them.
+An Entity is business rules only: no database annotations, no HTTP types, no framework base classes. In the Clean Architecture it's the innermost circle — the most general, highest-level policy, the least affected by external change, and potentially shared by many applications in an enterprise. Entities know nothing about the use cases that drive them.
 
 Note this is not the same as a DDD entity (an object with identity) or a JPA `@Entity` (a mapped table row) — Martin's Entity is defined by *what rules it carries*, not by identity or persistence.
 
@@ -196,7 +193,6 @@ Neither class imports anything from Spring, JPA, Stripe, or the web layer.
 
 ## Application Business Rules (Use Cases)
 
-> Use cases contain the rules that specify how and when the Critical Business Rules within the Entities are invoked. Use cases control the dance of the Entities.
 
 **Source:** *Clean Architecture*, Chapters 20, 22.
 
@@ -248,7 +244,6 @@ Nothing here mentions HTTP, JSON, SQL, or which UI called it.
 
 ## Humble Object
 
-> At each architectural boundary, we are likely to find the Humble Object pattern lurking somewhere nearby.
 
 **Source:** *Clean Architecture*, Chapter 23 (pattern originally from Meszaros, *xUnit Test Patterns*).
 
@@ -263,7 +258,7 @@ Split a behavior that's hard to test into two parts: a **humble** object that ke
 | ORM | — | **Data mapper** (ORM) — lives in the database layer, between gateway interfaces and the DB |
 | Services | Application code passes plain data structures | **Service listeners / senders** — translate to/from the wire format |
 
-Martin's aside on ORMs: there's no such thing as an "object-relational mapper", because objects aren't data structures (from the outside they're just operations). ORMs are *data mappers* — they load tables into data structures — and they belong in the outer database layer.
+Martin's aside on ORMs: the name object-relational mapper misleads, because objects aren't data structures (from the outside they're just operations). ORMs are *data mappers* — they load tables into data structures — and they belong in the outer database layer.
 
 ### Example: an invoice screen
 
@@ -306,13 +301,12 @@ The presenter gets fast unit tests (`present(overdueInvoice)` → assert the str
 
 ## The Main Component
 
-> Think of Main as the dirtiest of all the dirty components.
 
 **Source:** *Clean Architecture*, Chapter 26.
 
 ### What it means in practice
 
-Every system has at least one component that creates, coordinates, and oversees the others: **Main**. It's the ultimate detail — the lowest-level policy, the entry point, depended on by nothing except the OS. Its job is to build all the factories, strategies, configuration, and global facilities, then hand control to the high-level abstract parts of the system. It's the one place allowed to name every concrete class, which is how the rest of the code gets to obey DIP (`solid.md`) (the DIP note's "push every violation into one place").
+Every system has a component that creates and coordinates the rest: **Main**. It's the ultimate detail — the lowest-level policy, the entry point, depended on by nothing except the OS. Its job is to build all the factories, strategies, configuration, and global facilities, then hand control to the high-level abstract parts of the system. It's the one place allowed to name every concrete class, which is how the rest of the code gets to obey DIP (`solid.md`) (the DIP note's "push every violation into one place").
 
 If you use a DI framework, this is where it belongs: inject into Main, then have Main pass dependencies along normally — the framework doesn't leak inward.
 
@@ -354,7 +348,6 @@ public class DemoMain {
 
 ## True vs. Accidental Duplication
 
-> If two apparently duplicated sections of code evolve along different paths—if they change at different rates, and for different reasons—then they are not true duplicates.
 
 **Source:** *Clean Architecture*, Chapter 16.
 

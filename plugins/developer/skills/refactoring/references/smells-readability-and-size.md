@@ -22,7 +22,7 @@ Refactoring, Chapter 3: code that is hard to read, too big, or repeats itself.
 
 ### What it looks like
 
-A function, variable, class, or module whose name doesn't tell you what it does or how to use it — you have to read the body (or worse, ask someone) to find out. Fowler calls naming "one of the two hard things in programming," and treats a name you can't get right as a signal, not a cosmetic issue: "when you can't think of a good name for something, it's often a sign of a deeper design malaise."
+A function, variable, class, or module whose name doesn't tell you what it does or how to use it — you have to read the body (or worse, ask someone) to find out. Fowler calls naming one of the hardest things in programming, and treats a name you can't get right as a signal, not a cosmetic issue: struggling to name something often points to a design problem.
 
 ### Example
 
@@ -96,7 +96,7 @@ double shippingFee(double baseRate, double weightKg) {
 
 ### What it looks like
 
-A function that does too much in one place. Counter to intuition, the programs that age best have *lots of short, well-named functions* — "the real key to making it easy to understand small functions is good naming... if you have a good name for a function, you mostly don't need to look at its body." The heuristic Fowler and Beck use: whenever you feel the urge to write a comment explaining a chunk of code, write a function instead, named after what that code is *for*.
+A function that does too much in one place. Counter to intuition, the programs that age best have *lots of short, well-named functions* — and good names are what make that work, because a well-named function rarely needs its body read. The heuristic Fowler and Beck use: whenever you feel the urge to write a comment explaining a chunk of code, write a function instead, named after what that code is *for*.
 
 ### Example
 
@@ -176,7 +176,7 @@ User createUser(UserRequest request) { /* ... */ }
 
 ### What it looks like
 
-A class trying to do too much, usually showing up first as too many fields — and "when a class has too many fields, duplicated code cannot be far behind." A good signal for how to split it: common prefixes/suffixes among the fields, or looking at which *clients* only ever touch a subset of the class's features — each subset is a candidate for its own class.
+A class trying to do too much, usually showing up first as too many fields — and too many fields tend to bring duplicated code with them. A good signal for how to split it: common prefixes/suffixes among the fields, or looking at which *clients* only ever touch a subset of the class's features — each subset is a candidate for its own class.
 
 ### Example
 
@@ -218,7 +218,7 @@ class Shipment    { String carrier; String trackingNumber; String shippingAddres
 
 ### What it looks like
 
-The same small group of data items — three or four fields, or parameters — showing up together over and over, as fields in multiple classes or as parameters in many method signatures. A good test: "consider deleting one of the data values — if the others don't make sense without it, that's a sure sign you have an object that's dying to be born."
+The same small group of data items — three or four fields, or parameters — showing up together over and over, as fields in multiple classes or as parameters in many method signatures. A good test: remove one of the values; if the rest stop making sense, they want to be an object of their own.
 
 ### Example
 
@@ -290,7 +290,7 @@ record Money(long cents, String currencyCode) {
 
 ### What it looks like
 
-Not "any switch statement is bad" — Fowler is explicit that he's not "unconditionally opposed to the conditional." The smell is the *same* switch/case (or if/else cascade), switching on the same condition, duplicated in multiple places. Every time a new case is added, you have to hunt down and update every copy — miss one and behavior silently diverges between them.
+Not "any switch statement is bad" — Fowler is explicit that he has nothing against conditionals as such. The smell is the *same* switch/case (or if/else cascade), switching on the same condition, duplicated in multiple places. Every time a new case is added, you have to hunt down and update every copy — miss one and behavior silently diverges between them.
 
 ### Example
 
@@ -362,7 +362,7 @@ List<String> names = users.stream()
 
 ### What it looks like
 
-A field that's only set (and only meaningful) under certain circumstances, and sits null/unused the rest of the time. This is confusing because "you expect an object to need all of its fields" — trying to figure out why a field exists when it doesn't seem to be used can drive you nuts.
+A field that's only set (and only meaningful) under certain circumstances, and sits null/unused the rest of the time. This is confusing because readers assume that an object needs all of its fields, and then struggle to work out why this one exists.
 
 ### Example
 

@@ -14,7 +14,6 @@ Chapter 15: finding what deserves the best modeling effort, and getting everythi
 
 ## Core Domain
 
-> Boil the model down. Find the CORE DOMAIN and provide a means of easily distinguishing it from the mass of supporting model and code. Bring the most valuable and specialized concepts into sharp relief. Make the CORE small.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 
@@ -65,7 +64,6 @@ When two refactorings compete for time, the one in dispatch wins.
 
 ## Generic Subdomains
 
-> Identify cohesive subdomains that are not the motivation for your project. Factor out generic models of these subdomains and place them in separate MODULES. Leave no trace of your specialties in them.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 
@@ -102,7 +100,6 @@ A B2B scheduling product needs recurring events, time-zone conversion and holida
 
 ## Domain Vision Statement
 
-> Write a short description (about one page) of the CORE DOMAIN and the value it will bring, the "value proposition." Ignore those aspects that do not distinguish this domain model from others.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 
@@ -134,7 +131,6 @@ It's the cheapest distillation step, and it has the least effect on the design. 
 
 ## Highlighted Core
 
-> Flag the elements of the CORE DOMAIN within the primary repository of the model, without particularly trying to elucidate its role. Make it effortless for a developer to know what is in or out of the CORE.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 
@@ -166,7 +162,6 @@ An ArchUnit rule reports changes to `@CoreDomain` classes in PR descriptions, so
 
 ## Cohesive Mechanisms
 
-> Partition a conceptually COHESIVE MECHANISM into a separate lightweight framework. Particularly watch for formalisms or well-documented categories of algorithms. Expose the capabilities of the framework with an INTENTION-REVEALING INTERFACE.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 
@@ -174,7 +169,7 @@ An ArchUnit rule reports changes to `@CoreDomain` classes in PR descriptions, so
 
 Sometimes the bulk of a model's code isn't about *what* the domain is but about *how* to compute something it needs. That computational "how" buries the "what". Pull it out into a lightweight framework with an intention-revealing interface (`supple-design.md`). Then the core states the problem declaratively and the mechanism solves it.
 - **Look for formalisms:** graph theory, constraint solving, scheduling, specification evaluation. Proven algorithms come with documentation and textbook vocabulary for free.
-- **Generic Subdomain vs. Cohesive Mechanism.** A generic subdomain is still an expressive model of part of the domain, just a less central one. A mechanism represents nothing in the domain; it solves a computational problem. In Evans's words: "A model proposes; a COHESIVE MECHANISM disposes."
+- **Generic Subdomain vs. Cohesive Mechanism.** A generic subdomain is still an expressive model of part of the domain, just a less central one. A mechanism represents nothing in the domain; it solves a computational problem. As Evans puts it, the model states the problem and the mechanism solves it.
 - **Exception:** a proprietary algorithm that *is* the competitive advantage, such as a unique scheduling optimizer, belongs in the core.
 - **Full circle.** Once the mechanism exists, the model can often be simplified until the mechanism is folded back in as a declarative style.
 
@@ -206,12 +201,11 @@ The traversal (BFS/DFS, Dijkstra) is unit-tested once in isolation. The access m
 - Intention-Revealing Interfaces (`supple-design.md`)
 - Declarative Design (`supple-design.md`)
 - Specification (`building-blocks.md`) — a specification-evaluation framework is another typical mechanism.
-- Supple Design (`supple-design.md`) — "draw on established formalisms".
+- Supple Design (`supple-design.md`) — reuse established formalisms.
 - Segregated Core
 
 ## Segregated Core
 
-> Refactor the model to separate the CORE concepts from supporting players (including ill-defined ones) and strengthen the cohesion of the CORE while reducing its coupling to other code.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 
@@ -222,8 +216,8 @@ Even with the core highlighted, core classes still sit in modules alongside supp
 Steps from the book:
 1. Identify a core subdomain, possibly using the distillation document.
 2. Move related classes into a new module named for the concept.
-3. Refactor code to sever data and functionality that aren't directly part of the concept, putting it in other packages.
-4. Refactor the segregated core module to make its relationships and interactions simpler and more communicative.
+3. Move data and functions that aren't part of the concept into other packages.
+4. Simplify the relationships of the separated core, and make them clearer.
 5. Repeat with another core subdomain until done.
 
 **Costs:** this can make relationships with tightly coupled classes more obscure or complicated, and it is a lot of work. It's worth it when the system is large, the core is critical, and the core is being lost in the noise. Like any team-wide structural decision, it is made deliberately, and the team agrees on what goes in the core.
@@ -251,7 +245,6 @@ com.delivery.notifications   OrderEmailTemplates, OrderReceiptPdf (generic)
 
 ## Abstract Core
 
-> Identify the most fundamental concepts in the model and factor them into distinct classes, abstract classes, or interfaces. Design this abstract model so that it expresses most of the interaction between significant components.
 
 **Source:** *Domain-Driven Design*, Chapter 15.
 

@@ -18,7 +18,6 @@ Ways to distribute behavior and communication between objects.
 
 ## Strategy Pattern
 
-> The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
 **Source:** *Head First Design Patterns*, Chapter 1 — "Intro to Design Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -171,7 +170,6 @@ checkout.completeOrder(new BigDecimal("49.99"));
 
 ## State Pattern
 
-> The State Pattern allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
 **Source:** *Head First Design Patterns*, Chapter 10 — "the State Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -291,7 +289,6 @@ public class Order {
 
 ## Observer Pattern
 
-> The Observer Pattern defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
 **Source:** *Head First Design Patterns*, Chapter 2 — "the Observer Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -426,7 +423,6 @@ The Slack alert is one new `OrderObserver` — `Order` doesn't change. (Java's o
 
 ## Command Pattern
 
-> The Command Pattern encapsulates a request as an object, thereby letting you parameterize other objects with different requests, queue or log requests, and support undoable operations.
 
 **Source:** *Head First Design Patterns*, Chapter 6 — "the Command Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -578,7 +574,6 @@ public class AdminConsole {
 
 ## Template Method Pattern
 
-> The Template Method Pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
 
 **Source:** *Head First Design Patterns*, Chapter 8 — "the Template Method Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -699,7 +694,6 @@ Factory Method (`creational.md`) is a specialization of Template Method where th
 
 ## Iterator Pattern
 
-> The Iterator Pattern provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
 
 **Source:** *Head First Design Patterns*, Chapter 9 — "the Iterator and Composite Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -830,7 +824,6 @@ Pages are fetched lazily as the loop advances; if the provider switches from cur
 
 ## Chain of Responsibility Pattern
 
-> Use the Chain of Responsibility Pattern when you want to give more than one object a chance to handle a request.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -943,7 +936,6 @@ Finance adding "travel > $2,000 also needs Compliance" is a new handler inserted
 
 ## Mediator Pattern
 
-> Use the Mediator Pattern to centralize complex communications and control between related objects.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -1062,7 +1054,6 @@ Each widget is reusable on other pages; product changing "pickup is only for ord
 
 ## Memento Pattern
 
-> Use the Memento Pattern when you need to be able to return an object to one of its previous states; for instance, if your user requests an "undo."
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -1171,7 +1162,6 @@ public class EditorHistory {
 
 ## Visitor Pattern
 
-> Use the Visitor Pattern when you want to add capabilities to a composite of objects and encapsulation is not important.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -1299,7 +1289,6 @@ The XML feed is a third visitor; `Product` and `Bundle` don't change. But adding
 
 ## Interpreter Pattern
 
-> Use the Interpreter Pattern to build an interpreter for a language.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 

@@ -16,7 +16,6 @@ Objects versus data structures, cohesion, construction versus use, and the SOLID
 
 ## Data/Object Anti-Symmetry
 
-> Objects hide their data behind abstractions and expose functions that operate on that data. Data structures expose their data and have no meaningful functions.
 
 **Source:** *Clean Code*, Chapter 6.
 
@@ -65,7 +64,6 @@ class BankTransfer implements Payment { public Money fee() { ... } }
 
 ## Class Cohesion (Classes Should Be Small)
 
-> We want our systems to be composed of many small classes, not a few large ones. Each small class encapsulates a single responsibility, has a single reason to change, and collaborates with a few others.
 
 **Source:** *Clean Code*, Chapter 10 (Martin & Jeff Langr).
 
@@ -111,7 +109,6 @@ deep modules criticizes "classitis": too many small, *shallow* classes, each add
 
 ## Separate Constructing a System from Using It
 
-> Software systems should separate the startup process, when the application objects are constructed and the dependencies are "wired" together, from the runtime logic that takes over after startup.
 
 **Source:** *Clean Code*, Chapter 11 (Kevin Dean Wampler).
 
@@ -157,7 +154,6 @@ var checkout = new CheckoutService(new StripeGateway(config.stripeKey()));
 
 ## Tell, Don't Ask
 
-> Tell, Don't Ask. — Tip 45
 
 **Source:** *The Pragmatic Programmer*, Topic 28.
 
@@ -192,13 +188,12 @@ sub.markOverdueIfUnpaidAsOf(today);
 
 ## SRP: Single Responsibility Principle
 
-> A module should be responsible to one, and only one, actor.
 
 **Source:** *Clean Architecture*, Chapter 7.
 
 ### What it means in practice
 
-SRP is widely misquoted as "a module should do one thing" — that's a different, function-level principle. The real SRP is about *organizational* coupling: a module should answer to exactly one **actor** (a stakeholder or group of stakeholders who'd request the same kind of change). "Gather together those things that change at the same times and for the same reasons; separate those things that change at different times or for different reasons."
+SRP is widely misquoted as "a module should do one thing" — that's a different, function-level principle. The real SRP is about *organizational* coupling: a module should answer to exactly one **actor** (a stakeholder or group of stakeholders who'd request the same kind of change). Keep together what changes for the same reasons at the same times, and split apart what doesn't.
 
 When code serving two different actors is crammed into one class, a change requested by actor A can accidentally break behavior actor B depends on — because both changes touch the same file, get merged by the same team, and share state neither actor intended to share. The fix is splitting by actor, even if it means more, smaller classes.
 
@@ -239,13 +234,12 @@ A change to how hours get reported no longer risks breaking how pay gets calcula
 
 ## OCP: Open-Closed Principle
 
-> A software artifact should be open for extension but closed for modification.
 
 **Source:** *Clean Architecture*, Chapter 8.
 
 ### What it means in practice
 
-At the architecture level this isn't a small class-design tweak — Martin calls it "the most fundamental reason we study software architecture." A good design lets new requirements be met by **adding** code, not editing existing, already-tested code. That requires two things working together: separating things that change for different reasons (SRP), and then directing the dependencies between those pieces (via interfaces) so that important, stable components never depend on volatile, low-level ones. "If component A should be protected from changes in component B, then component B should depend on component A" — not the other way around.
+At the architecture level this isn't a small class-design tweak — Martin treats it as the core reason to study architecture. A good design lets new requirements be met by **adding** code, not editing existing, already-tested code. That requires two things working together: separating things that change for different reasons (SRP), and then directing the dependencies between those pieces (via interfaces) so that important, stable components never depend on volatile, low-level ones. To protect A from changes in B, make B depend on A — not the other way around.
 
 This produces a hierarchy of "levels": the most protected component (business rules) sits at the top, shielded by interfaces from everything underneath it (UI, database, frameworks), which are free to change without ever forcing a change in the business rules.
 
@@ -276,7 +270,6 @@ Adding cryptocurrency payments later means writing `CryptoPayment implements Pay
 
 ## LSP: Liskov Substitution Principle
 
-> If for each object o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T, the behavior of P is unchanged when o1 is substituted for o2, then S is a subtype of T.
 
 **Source:** *Clean Architecture*, Chapter 9. (Barbara Liskov, 1988.)
 
@@ -302,7 +295,6 @@ If `getNames()` sometimes returns `Collections.unmodifiableList(...)`, this thro
 
 ## ISP: Interface Segregation Principle
 
-> Clients should not be forced to depend on methods they do not use.
 
 **Source:** *Clean Architecture*, Chapter 10.
 
@@ -345,7 +337,6 @@ public class StripeAdapter implements Payments, PaymentReporting { /* ... */ }
 
 ## DIP: Dependency Inversion Principle
 
-> The most flexible systems are those in which source code dependencies refer only to abstractions, not to concretions.
 
 **Source:** *Clean Architecture*, Chapter 11.
 

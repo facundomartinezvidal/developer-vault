@@ -6,7 +6,7 @@ Estado al **2026-11-03**. Este archivo es para quien continúe el trabajo, perso
 
 Un agente de arquitectura de software y 6 skills, instalable en **Claude Code** y **GitHub Copilot CLI**. Codex se probó y se sacó por ahora: su formato de plugin no documenta agentes y no hubo forma de probarlo con sesión iniciada.
 
-- **Agente:** `architect`. Trabaja como consultor y creador sobre interfaces, packages, módulos, capas o sistemas completos. Una consulta produce análisis; un pedido concreto de creación o refactor autoriza ese trabajo y sus verificaciones dentro del alcance. Identifica y respeta los principios del proyecto y ADRs aceptados; distingue propuestas pendientes. Estas reglas son instrucciones, no bloqueos técnicos.
+- **Agente:** `architect`. Planea, diseña y consulta sobre interfaces, packages, módulos, capas o sistemas completos, y no edita código. Produce análisis, diseños, ADRs, diagramas y planes. Si le piden implementar, entrega un plan para el agente `developer`. Esta división la pidió el usuario el 2026-11-04 y reemplaza a la anterior, en la que también implementaba refactors. Identifica y respeta los principios del proyecto y ADRs aceptados; distingue propuestas pendientes. Estas reglas son instrucciones, no bloqueos técnicos.
 - **Skills:** manuales que el agente abre según la tarea. Un `SKILL.md` corto, con material de consulta aparte.
 
 ## Cómo está armado
@@ -28,6 +28,7 @@ plugins/architect/
 
 Reglas de mantenimiento:
 
+- **Sin citas:** al sumar notas, revisar si aparecen pasajes textuales de libros y agregarlos a `scripts/quote_rewrites.py`. `quote_rewrites.py` es igual en ambos plugins.
 - **No editar a mano** lo generado: `agents/`, `com.github.copilot/`, `skills/architect/` ni los `references/` de `clean-architecture`, `domain-driven-design`, `software-design` y `architecture-decisions/references/decision-principles.md`. Se cambian en `src/` o en el vault.
 - Se regeneran con `python3 scripts/build_agents.py` y `python3 scripts/sync_vault.py <ruta al vault developer-knowledge>`. Con `--check` fallan si algo quedó desactualizado.
 - A mano quedan: `architecture-documentation/references/c4-mermaid.md`, `threat-modeling/references/common-threats.md` y los `SKILL.md`.
@@ -36,7 +37,7 @@ Reglas de mantenimiento:
 
 ## Ronda integral en curso
 
-El usuario pidió dejar todas las skills validadas y útiles, y aclaró que el arquitecto debe funcionar como consultor y creador, también para refactors de packages/módulos/capas, respetando principios acordados. La ronda actual incluye 27 casos: 21 de las seis especialistas (con/sin skill) y seis del agente. Hay 48 respuestas previstas, con reutilización explícita de nueve respuestas previas cuyo pedido coincide (software-design sin cambios de instrucciones y tres baselines de DDD).
+Nota del 2026-11-04: esta ronda es anterior a la división actual, así que sus resultados del agente reflejan el rol anterior. El caso `create-package-refactor` pasó a `developer` como `implement-package-refactor`, y acá lo reemplaza `refactor-request-handoff`. El usuario pidió dejar todas las skills validadas y útiles, y aclaró entonces que el arquitecto debía funcionar como consultor y creador, también para refactors de packages/módulos/capas, respetando principios acordados. La ronda actual incluye 27 casos: 21 de las seis especialistas (con/sin skill) y seis del agente. Hay 48 respuestas previstas, con reutilización explícita de nueve respuestas previas cuyo pedido coincide (software-design sin cambios de instrucciones y tres baselines de DDD).
 
 - Estado vivo y artefactos: `/private/tmp/architect-final-evaluation/manifest.json`, `runs/`, `contexts/`, `grading/` y `attempts/`.
 - Hubo dos correcciones basadas en fallos reales: puntuación inválida en un diagrama de secuencia y omisión de la regla de suspensión en una revisión. Se conservan las primeras respuestas y sus calificaciones en `attempts/`; se repitieron los casos con sesiones nuevas.
@@ -218,7 +219,7 @@ Se usa el procedimiento de subagentes independientes descrito en la reevaluació
 
 ## Decisiones abiertas
 
-- **Repo público y citas:** los `references/` incluyen citas textuales de libros que salen de las notas del vault. No hay PDFs. Quien publique esto debería decidir si deja el repo público con esas citas o lo pasa a privado.
+- **Citas de libros:** resuelto el 2026-11-04: el repo es público y no publica citas. `sync_vault.py` descarta las citas en bloque y reescribe los pasajes de `scripts/quote_rewrites.py`. El vault privado las conserva. Siguen en el historial de git de antes de ese cambio; reescribirlo es una decisión aparte.
 - **Dos copias de `clean-architecture`:** también existe en `skillswap/.claude/skills/clean-architecture`. La del plugin es la que se mantiene. Falta decidir si skillswap pasa a usar la del plugin.
 - **Codex:** pendiente. Si se retoma, hay que revisar cómo instalar agentes, porque su formato de plugin no lo documenta.
 - **Nombre del agente en Copilot:** con `--plugin-dir`, el agente se llama `architect:architect`, no `architect`.

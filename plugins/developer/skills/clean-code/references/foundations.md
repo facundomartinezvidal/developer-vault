@@ -13,7 +13,6 @@ What readable code means, the rules of simple design, consistency, formatting, a
 
 ## What Is Clean Code
 
-> Clean code is simple and direct. Clean code reads like well-written prose. — Grady Booch, quoted in *Clean Code*
 
 **Source:** *Clean Code*, Chapter 1.
 
@@ -25,7 +24,7 @@ The chapter collects definitions from well-known programmers. They share the sam
 - **Does one thing well** and is focused (Stroustrup). The same idea recurs in Small Functions That Do One Thing (`names-and-functions.md`) and Class Cohesion (Classes Should Be Small) (`objects-and-classes.md`).
 - **Reads like prose.** Intent is obvious and there are no surprises (Booch, Cunningham: each routine is pretty much what you expected).
 - **Has tests** and **no duplication**, expresses every design idea, and has few entities (Jeffries). These are Beck's Simple Design Rules (Emergence).
-- **Looks like it was written by someone who cares** (Feathers).
+- **Shows that its author cared** (Feathers).
 
 **We are authors.** Time spent *reading* code is over 10× the time spent *writing* it, so making code easy to read also makes it easier to write. That's the justification for Meaningful Names (`names-and-functions.md`), Code Formatting and everything else in the book.
 
@@ -52,7 +51,6 @@ if (order.isDelivered() && order.isOlderThan(Duration.ofDays(30)) && !order.isFl
 
 ## Simple Design Rules (Emergence)
 
-> According to Kent, a design is "simple" if it follows these rules: Runs all the tests; Contains no duplication; Expresses the intent of the programmer; Minimizes the number of classes and methods.
 
 **Source:** *Clean Code*, Chapter 12 (Jeff Langr, after Kent Beck).
 
@@ -96,7 +94,6 @@ abstract class SalesExport {
 
 ## Code Should Be Obvious
 
-> If code is obvious, it means that someone can read the code quickly, without much thought, and their first guesses about the behavior or meaning of the code will be correct.
 
 **Source:** *A Philosophy of Software Design*, Chapter 18.
 
@@ -138,7 +135,6 @@ if (stock.canShipToday()) ship(stock.availableUnits());
 
 ## Consistency
 
-> Consistency is a powerful tool for reducing the complexity of a system and making its behavior more obvious.
 
 **Source:** *A Philosophy of Software Design*, Chapter 17.
 
@@ -172,7 +168,6 @@ Every HTTP handler in a service returns errors as `{ "error": { "code": "...", "
 
 ## Code Formatting
 
-> Code formatting is about communication, and communication is the professional developer's first order of business.
 
 **Source:** *Clean Code*, Chapter 5 (also heuristic G10, Vertical Separation).
 
@@ -215,7 +210,6 @@ Today this mostly means agreeing on Prettier, Spotless or `gofmt` and never argu
 
 ## Successive Refinement
 
-> To write clean code, you must first write dirty code and then clean it.
 
 **Source:** *Clean Code*, Chapters 14–16 (case studies: `Args`, JUnit's `ComparisonCompactor`, `SerialDate`).
 

@@ -9,7 +9,7 @@ Un agente de desarrollo y 15 skills para cualquier lenguaje, instalable en **Cla
 - **Agente:** `developer`. Trabaja como consultor y como realizador. Una pregunta o revisión produce análisis sin tocar archivos; un pedido de implementar, arreglar o refactorizar autoriza ese trabajo y su verificación dentro del alcance. Las convenciones del proyecto están por encima de las preferencias de los libros. Estas reglas son instrucciones, no bloqueos técnicos.
 - **Lenguajes:** no está atado a ninguno. Descubre el toolchain del proyecto, escribe código idiomático y consulta la documentación de la versión instalada. `clean-code/references/across-languages.md` traduce los principios entre familias de lenguajes.
 - **Frameworks:** `framework-practices` tiene guía profunda para ASP.NET Core y Spring Boot y, para cualquier versión o framework, consulta la documentación actual con Context7 o las fuentes oficiales. Si no puede verificar, lo dice.
-- **Límite con `architect`:** `architect` decide y `developer` implementa, con `implementing-designs`: las decisiones aceptadas son compromisos y las propuestas no. Las decisiones estructurales nuevas se derivan a `architect`. `developer` trabaja dentro de una función, una clase, un módulo o una funcionalidad. Las notas de `software-architecture/`, `component-principles/` y `domain-driven-design/`, y la mayoría de `software-design/`, siguen allá.
+- **Límite con `architect`:** el usuario definió esta división el 2026-11-04: `architect` planea, diseña y consulta, y no edita código; `developer` implementa lo planeado y consulta. Es decir, `architect` decide y `developer` implementa, con `implementing-designs`: las decisiones aceptadas son compromisos y las propuestas no. Las decisiones estructurales nuevas se derivan a `architect`. `developer` trabaja dentro de una función, una clase, un módulo o una funcionalidad. Las notas de `software-architecture/`, `component-principles/` y `domain-driven-design/`, y la mayoría de `software-design/`, siguen allá.
 
 ## Cómo está armado
 
@@ -35,6 +35,7 @@ Reglas de mantenimiento:
 - Las referencias a mano están escritas con palabras propias. No copiar texto de los libros ni de otras fuentes, también porque el repo puede publicarse.
 - `sync_vault.py` no toca las referencias a mano. Si más adelante una nota del vault cubre el mismo tema, reemplazarla y borrar la copia manual.
 - Regenerar: `python3 scripts/build_agents.py` y `python3 scripts/sync_vault.py <ruta a developer-knowledge>`. Con `--check` fallan si algo quedó desactualizado.
+- **Sin citas:** al sumar notas, revisar si aparecen pasajes textuales de libros y agregarlos a `scripts/quote_rewrites.py`.
 - Los scripts son copias adaptadas de los de `architect`. Si se corrige un error en uno, revisar el otro.
 - El vault vive fuera del repo. No se copian los PDFs y no deben entrar.
 - Validar: `claude plugin validate .` desde `plugins/developer` y desde la raíz del repo.
@@ -96,7 +97,7 @@ Notas del vault que no se usaron a propósito: `coconuts-dont-cut-it` y `blackbo
 
 ## Evaluaciones
 
-Hay 24 casos: 17 de skills y 7 del agente. El procedimiento es el de `plugins/architect/AGENTS.md` ("Proceso de revisión acordado" y "Cómo evaluar sin contaminar").
+Hay 25 casos: 17 de skills y 8 del agente. `implement-package-refactor` vino de `architect` con la nueva división y todavía no se corrió acá. El procedimiento es el de `plugins/architect/AGENTS.md` ("Proceso de revisión acordado" y "Cómo evaluar sin contaminar").
 
 ### Primera corrida (2026-11-04)
 
@@ -168,5 +169,5 @@ Límites: una sola corrida por caso. Spring se evaluó solo por lectura, sin Mav
 
 ## Decisiones abiertas
 
-- **Repo público y citas:** igual que en `architect`, los `references/` incluyen citas textuales de libros que salen de las notas. Hay que decidirlo antes de publicar.
+- **Citas de libros:** resuelto el 2026-11-04: el repo es público y no publica citas. `sync_vault.py` descarta las citas en bloque y reescribe los pasajes de `scripts/quote_rewrites.py`, igual que en `architect`. Quedan frases cortas y títulos que coinciden con los libros, sin formato de cita. El historial de git anterior aún las tiene.
 - **Nombre del agente en Copilot:** con `--plugin-dir`, el agente se llama `developer:developer`.

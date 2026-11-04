@@ -18,7 +18,6 @@ Chapter 14: where one model applies, and the relationships available between mod
 
 ## Bounded Context
 
-> Explicitly define the context within which a model applies. Explicitly set boundaries in terms of team organization, usage within specific parts of the application, and physical manifestations such as code bases and database schemas. Keep the model strictly consistent within these bounds, but don't be distracted or confused by issues outside.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -60,7 +59,6 @@ Forcing one shared `Product` class across all three gives a 60-field class where
 
 ## Context Map
 
-> Identify each model in play on the project and define its BOUNDED CONTEXT. This includes the implicit models of non-object-oriented subsystems. Name each BOUNDED CONTEXT, and make the names part of the UBIQUITOUS LANGUAGE.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -107,7 +105,6 @@ On an existing marketplace, drawing the map for the first time shows that Orderi
 
 ## Choosing a Model Context Strategy
 
-> You trade more independent action against smoother communication. More ambitious unification requires control over the design of the subsystems involved.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -149,7 +146,6 @@ A company running a monolith decides that Payments should leave it. Step 1: map 
 
 ## Continuous Integration (of a Model)
 
-> Institute a process of merging all code and other implementation artifacts frequently, with automated tests to flag fragmentation quickly. Relentlessly exercise the UBIQUITOUS LANGUAGE to hammer out a shared view of the model as the concepts evolve in different people's heads.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -178,7 +174,6 @@ The checkout team of six works in one repo with trunk-based development, a 10-mi
 
 ## Shared Kernel
 
-> Designate some subset of the domain model that the two teams agree to share. Of course this includes, along with this subset of the model, the subset of code or of the database design associated with that part of the model.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -208,7 +203,6 @@ The Ordering and Billing teams share a `commerce-kernel` library containing `Mon
 
 ## Customer/Supplier Development Teams
 
-> Establish a clear customer/supplier relationship between the two teams. In planning sessions, make the downstream team play the customer role to the upstream team.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -236,7 +230,6 @@ The Orders team (upstream) emits `OrderPlaced` and `OrderRefunded` events, and t
 
 ## Conformist
 
-> Eliminate the complexity of translation between BOUNDED CONTEXTS by slavishly adhering to the model of the upstream team.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -268,7 +261,6 @@ An internal reporting tool reads accounting data from a NetSuite-like ERP. Rathe
 
 ## Anticorruption Layer
 
-> Create an isolating layer to provide clients with functionality in terms of their own domain model. The layer talks to the other system through its existing interface, requiring little or no modification to the other system. Internally, the layer translates in both directions as necessary between the two models.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -339,7 +331,6 @@ Billing never sees `PaymentIntent`, `requires_action` or amounts expressed in ce
 
 ## Open Host Service
 
-> Define a protocol that gives access to your subsystem as a set of SERVICES. Open the protocol so that all who need to integrate with you can use it.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -364,7 +355,6 @@ Catalog exposes a versioned REST and event API: `GET /products/{id}`, `GET /prod
 
 ## Published Language
 
-> Use a well-documented shared language that can express the necessary domain information as a common medium of communication, translating as necessary into and out of that language.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 
@@ -399,7 +389,6 @@ An order platform publishes `OrderPlaced v3` as an Avro schema in a registry. Th
 
 ## Separate Ways
 
-> Declare a BOUNDED CONTEXT to have no connection to the others at all, allowing developers to find simple, specialized solutions within this small scope.
 
 **Source:** *Domain-Driven Design*, Chapter 14.
 

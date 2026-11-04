@@ -16,7 +16,6 @@ How to generate options, how much to commit, and how to learn cheaply before com
 
 ## Design It Twice
 
-> Designing software is hard, so it's unlikely that your first thoughts about how to structure a module or system will produce the best design.
 
 **Source:** *A Philosophy of Software Design*, Chapter 11.
 
@@ -45,9 +44,8 @@ The comparison picks (3) for the common case, with (2) as the fallback, an answe
 
 ## Reversibility
 
-> There Are No Final Decisions. — Tip 18
 
-**Source:** *The Pragmatic Programmer*, Topic 11 (also Tip 19, "Forgo Following Fads").
+**Source:** *The Pragmatic Programmer*, Topic 11 (also Tip 19).
 
 ### What it means in practice
 
@@ -70,7 +68,7 @@ class S3DocumentStore implements DocumentStore { ... }
 
 ### Where it applies
 
-- Keep Options Open: Policy vs. Details — Martin's architecture-level version: a good architect maximizes the number of decisions *not* made.
+- Keep Options Open: Policy vs. Details — Martin's architecture-level version: a good architect keeps as many decisions as possible open.
 - database is a detail, web is a detail, frameworks are details — Clean Architecture's case studies in keeping specific decisions reversible.
 - clean boundaries — wrapping vendor APIs is how reversibility is implemented in code.
 
@@ -80,7 +78,6 @@ class S3DocumentStore implements DocumentStore { ... }
 
 ## Keep Options Open: Policy vs. Details
 
-> The strategy behind that facilitation is to leave as many options open as possible, for as long as possible.
 
 **Source:** *Clean Architecture*, Chapter 15.
 
@@ -88,7 +85,7 @@ class S3DocumentStore implements DocumentStore { ... }
 
 Architecture is the *shape* of a system — its division into components, their arrangement, and how they communicate — and that shape exists to make the system easy to **develop, deploy, operate, and maintain**, not to make it work (plenty of terribly structured systems work fine). Martin weighs the four goals unequally: operational problems can usually be bought off with hardware, while development and maintenance (the "spelunking" through code plus the risk of breaking something) cost people, which is the expensive resource. A good architecture also makes operation *visible*: use cases are first-class, obvious elements of the code.
 
-Every system splits into **policy** (business rules — where the value lives) and **details** (database, web server, framework, protocols, DI container, IO devices). The architect's job is to make the policy ignorant of the details, so those decisions can be postponed until there's real information to make them with — or made, swapped, and experimented with cheaply later. If the company already "decided" on a database or framework, a good architect pretends it hasn't and keeps the code shaped so it could still change. "A good architect maximizes the number of decisions not made."
+Every system splits into **policy** (business rules — where the value lives) and **details** (database, web server, framework, protocols, DI container, IO devices). The architect's job is to make the policy ignorant of the details, so those decisions can be postponed until there's real information to make them with — or made, swapped, and experimented with cheaply later. If the company already "decided" on a database or framework, a good architect pretends it hasn't and keeps the code shaped so it could still change. "A good architect keeps as many decisions as possible open."
 
 Martin also insists that architects keep programming: they can't guide a design if they don't feel the problems it causes.
 
@@ -102,7 +99,6 @@ A team building a marketplace writes `PlaceOrder`, pricing, and stock-reservatio
 
 ## Software Trends (Seen Through Complexity)
 
-> Whenever you encounter a proposal for a new software development paradigm, challenge it from the standpoint of complexity.
 
 **Source:** *A Philosophy of Software Design*, Chapter 19.
 
@@ -130,9 +126,8 @@ A team adds an `AbstractBaseService<T>` with generic CRUD that every service ext
 
 ## Coconuts Don't Cut It
 
-> Do What Works, Not What's Fashionable. — Tip 87
 
-**Source:** *The Pragmatic Programmer*, Topic 50 (also Tip 88, "Deliver When Users Need It").
+**Source:** *The Pragmatic Programmer*, Topic 50 (also Tip 88).
 
 ### What it means in practice
 
@@ -152,7 +147,6 @@ A five-person startup adopts Kubernetes, service mesh and twelve microservices "
 
 ## Good-Enough Software
 
-> Make Quality a Requirements Issue. — Tip 8
 
 **Source:** *The Pragmatic Programmer*, Topic 5.
 
@@ -175,16 +169,15 @@ An internal admin dashboard: the ops team accepts no mobile layout and a 2-secon
 
 ## The Requirements Pit
 
-> No One Knows Exactly What They Want. — Tip 75 &nbsp;·&nbsp; Requirements Are Learned in a Feedback Loop. — Tip 77
 
 **Source:** *The Pragmatic Programmer*, Topic 45 (Tips 75–80).
 
 ### What it means in practice
 
-Requirements aren't lying around waiting to be gathered. They're buried under assumptions, misunderstandings and politics, and they're **learned through feedback**. A programmer's job is to **help people understand what they want** (Tip 76):
+Requirements aren't lying around waiting to be gathered. They're buried under assumptions, misunderstandings and politics, and they're **learned through feedback**. A programmer's job is to **help people discover what they need** (Tip 76):
 
 - **Ask questions and explore edge cases.** Restate the requirement and show mockups and prototypes. Every round of feedback refines the shared understanding.
-- **Work with a user to think like a user** (Tip 78). Spend a day doing their job.
+- **Work alongside users to see things as they do** (Tip 78). Spend a day doing their job.
 - **Policy is metadata** (Tip 79). "Only supervisors can see salary data" is a *policy* that will change. Implement the general mechanism (access rules), and keep the specific policy as configurable data.
 - **Requirements vs. documentation.** User stories and index cards are reminders for a conversation, not contracts. Avoid overspecifying.
 - **Watch out for scope creep.** Make every change's impact visible.
@@ -207,7 +200,6 @@ Request: "Users must be able to export their data." Questions: which data, in wh
 
 ## Tracer Bullets
 
-> Use Tracer Bullets to Find the Target. — Tip 20
 
 **Source:** *The Pragmatic Programmer*, Topic 12.
 
@@ -235,7 +227,6 @@ Building a document-signing product: week 1 is "upload a PDF → it's stored →
 
 ## Prototypes
 
-> Prototype to Learn. — Tip 21
 
 **Source:** *The Pragmatic Programmer*, Topic 13.
 

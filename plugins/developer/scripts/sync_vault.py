@@ -10,6 +10,8 @@ Each reference file is a concatenation of whole notes, with Obsidian-only syntax
 frontmatter (including deep links into book PDFs) is dropped, [[wikilinks]] become plain
 text naming the target reference file when it lives in another one, and "Related" bullets
 pointing at notes outside the skill are dropped, since the reader can't follow them.
+Blockquotes are dropped too, because they hold verbatim book quotes and the repo is public.
+Passages quoted inside paragraphs are reworded through quote_rewrites.py.
 Hand-written reference files are not listed in the manifest and are left alone.
 """
 
@@ -18,6 +20,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from quote_rewrites import apply as rewrite_quotes  # noqa: E402
 from vault_manifest import SKILLS  # noqa: E402
 
 PLUGIN_DIR = Path(__file__).resolve().parent.parent
@@ -73,6 +76,8 @@ def convert_note(body, index, current_file):
         if in_code or line.startswith("```"):
             out.append(line)
             continue
+        if line.startswith(">"):
+            continue  # book quotes stay in the private vault: the repo is public
         if line.startswith("**Source:**"):
             out.append(WIKILINK.sub(lambda m: m.group(3) or target_of(m.group(1)), line))
             continue
@@ -109,7 +114,7 @@ def build_file(vault, spec, ref_file, index):
     head = [f"# {title}", "", intro, ""]
     if len(content) > TOC_THRESHOLD_LINES:
         head += ["## Contents", ""] + [f"- [{t}](#{anchor(t)})" for t in titles] + [""]
-    return "\n".join(head + content).rstrip() + "\n"
+    return rewrite_quotes("\n".join(head + content).rstrip() + "\n")
 
 
 def main():

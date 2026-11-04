@@ -12,7 +12,6 @@ How to find the real cause, avoid working by luck, and get unstuck.
 
 ## Debugging
 
-> Fix the Problem, Not the Blame. — Tip 29 &nbsp;·&nbsp; Don't Panic. — Tip 30
 
 **Source:** *The Pragmatic Programmer*, Topic 20 (Tips 29–34).
 
@@ -40,13 +39,12 @@ A customer is charged twice "sometimes". Reproduce it: a test fires two concurre
 - Crash Early (Dead Programs Tell No Lies) (`failure-sources.md`) — a clear crash close to the cause is the easiest bug to debug.
 - Assertive Programming (`failure-sources.md`)
 - Programming by Coincidence — "it works and I don't know why" is a bug that hasn't shown up yet.
-- Concurrency Defense Principles (`failure-sources.md`) — "treat spurious failures as candidate threading issues".
+- Concurrency Defense Principles (`failure-sources.md`) — suspect threading when failures look random.
 - Power Tools (Shell, Editor, Text Manipulation)
 - Engineering Daybook
 
 ## Programming by Coincidence
 
-> Don't Program by Coincidence. — Tip 62
 
 **Source:** *The Pragmatic Programmer*, Topic 38.
 
@@ -80,7 +78,6 @@ Map<String, LineItem> items = new LinkedHashMap<>();
 
 ## Solving Impossible Puzzles
 
-> Don't Think Outside the Box—Find the Box. — Tip 81
 
 **Source:** *The Pragmatic Programmer*, Topic 46.
 
@@ -101,7 +98,6 @@ When a problem seems impossible, the trick is usually that you're assuming a con
 
 ## Engineering Daybook
 
-> The daybook is like a kind of rubber duck. — *The Pragmatic Programmer*, Topic 22 (paraphrased)
 
 **Source:** *The Pragmatic Programmer*, Topic 22.
 
@@ -130,7 +126,6 @@ They recommend paper, because writing by hand is different from typing, but any 
 
 ## Power Tools (Shell, Editor, Text Manipulation)
 
-> Use the Power of Command Shells. — Tip 26 &nbsp;·&nbsp; Achieve Editor Fluency. — Tip 27 &nbsp;·&nbsp; Learn a Text Manipulation Language. — Tip 35
 
 **Source:** *The Pragmatic Programmer*, Topics 17, 18 and 21.
 

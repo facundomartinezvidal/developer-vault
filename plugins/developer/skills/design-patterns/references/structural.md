@@ -14,7 +14,6 @@ Ways to compose objects and adapt interfaces.
 
 ## Adapter Pattern
 
-> The Adapter Pattern converts the interface of a class into another interface the clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
 
 **Source:** *Head First Design Patterns*, Chapter 7 — "the Adapter and Facade Patterns", Adapter section (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -144,7 +143,6 @@ See Decorator Pattern — not read yet (Chapter 3).
 
 ## Facade Pattern
 
-> The Facade Pattern provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
 **Source:** *Head First Design Patterns*, Chapter 7 — "the Adapter and Facade Patterns", Facade section (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -261,7 +259,6 @@ The web controller, the mobile API, and the "reorder" button all call `placeOrde
 
 ## Decorator Pattern
 
-> The Decorator Pattern attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
 **Source:** *Head First Design Patterns*, Chapter 3 — "the Decorator Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -404,7 +401,6 @@ Composite has a similar structure (a component holding components), but a compos
 
 ## Proxy Pattern
 
-> The Proxy Pattern provides a surrogate or placeholder for another object to control access to it.
 
 **Source:** *Head First Design Patterns*, Chapter 11 — "the Proxy Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -523,7 +519,6 @@ The line between proxy and decorator is about intent — the caching proxy above
 
 ## Composite Pattern
 
-> The Composite Pattern allows you to compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
 
 **Source:** *Head First Design Patterns*, Chapter 9 — "the Iterator and Composite Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -662,7 +657,6 @@ This version takes the *safe* side: `add()` lives only on `Bundle`.
 
 ## Bridge Pattern
 
-> The Bridge Pattern allows you to vary the implementation and the abstraction by placing the two in separate class hierarchies.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -771,7 +765,6 @@ new SecurityAlert(new PushSender(fcm), loginEvent).send(user);
 
 ## Flyweight Pattern
 
-> Use the Flyweight Pattern when one instance of a class can be used to provide many "virtual instances."
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 

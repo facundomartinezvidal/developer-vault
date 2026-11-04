@@ -12,7 +12,6 @@ Ways to decouple code from how its objects are created.
 
 ## Factory Method Pattern
 
-> The Factory Method Pattern defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
 
 **Source:** *Head First Design Patterns*, Chapter 4 — "the Factory Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -138,7 +137,6 @@ All factories serve DIP: high-level code (`PaymentProcessor`) and low-level code
 
 ## Abstract Factory Pattern
 
-> The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.
 
 **Source:** *Head First Design Patterns*, Chapter 4 — "the Factory Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -268,7 +266,6 @@ See Factory Method vs. Abstract Factory. In short: Factory Method = one product 
 
 ## Builder Pattern
 
-> Use the Builder Pattern to encapsulate the construction of a product and allow it to be constructed in steps.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -398,7 +395,6 @@ The result is immutable and validated once; no 7-argument constructor with `null
 
 ## Prototype Pattern
 
-> Use the Prototype Pattern when creating an instance of a given class is either expensive or complicated.
 
 **Source:** *Head First Design Patterns*, Appendix — "Leftover Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 
@@ -521,7 +517,6 @@ Personalizing the copy never touches the template, because blocks and variants a
 
 ## Singleton Pattern
 
-> The Singleton Pattern ensures a class has only one instance, and provides a global point of access to it.
 
 **Source:** *Head First Design Patterns*, Chapter 5 — "the Singleton Pattern" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 

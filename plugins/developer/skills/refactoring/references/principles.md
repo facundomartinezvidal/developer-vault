@@ -4,7 +4,7 @@ Hand-written summary, in our own words, of *Refactoring* (2nd ed.), Chapters 2 a
 
 ## What counts as refactoring
 
-A refactoring is a small change to internal structure that makes code easier to understand and cheaper to modify, without changing observable behavior. Refactoring (the activity) strings many of these together. The code keeps working between steps, so you can stop at any point. If code stays broken for days, that was a restructuring, not a refactoring.
+A refactoring is a small structural change that makes code simpler to read and to change, while observable behavior stays the same. Refactoring (the activity) strings many of these together. The code keeps working between steps, so you can stop at any point. If code stays broken for days, that was a restructuring, not a refactoring.
 
 Observable behavior means what users and callers care about. Call stacks and timing can shift slightly. A bug you notice normally stays in place until a separate step fixes it, unless nobody has observed it yet and the fix is safe.
 

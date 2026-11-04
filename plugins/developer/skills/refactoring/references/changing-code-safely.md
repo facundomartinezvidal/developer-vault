@@ -15,7 +15,6 @@ When and how to refactor, how to leave code better than you found it, and when d
 
 ## Refactor Early, Refactor Often
 
-> Refactor Early, Refactor Often. — Tip 65
 
 **Source:** *The Pragmatic Programmer*, Topic 40.
 
@@ -48,7 +47,6 @@ PR 1: "Extract `TaxCalculator` from `CheckoutService` (no behavior change)". All
 
 ## Modifying Existing Code
 
-> If you want to maintain a clean design for a system, you must take a strategic approach when modifying existing code.
 
 **Source:** *A Philosophy of Software Design*, Chapter 16.
 
@@ -59,7 +57,7 @@ Most development is changing existing code, and that's where design gets worse. 
 - **Stay strategic.** After each change, the system should look as if it had been *designed from the start* with that change in mind. If that needs some refactoring, do it. If it truly can't be done now, avoid making things worse, and note the compromise.
 - **Keep comments up to date:**
   - **Keep comments near the code** they describe, so edits naturally update them. Avoid big header comments far from the code.
-  - **Comments belong in the code, not the commit log.** Future developers read the code, not `git log`. Put the explanation where they'll see it.
+  - **Put comments in the code instead of the commit log.** Future developers read the code, not `git log`. Put the explanation where they'll see it.
   - **Avoid duplicating comments.** Document each decision in one place and refer to it from the others.
   - **Check the diffs** before committing, to catch comments that no longer match.
   - **Higher-level comments are easier to maintain**, because they don't change with every implementation detail.
@@ -78,7 +76,6 @@ Adding a "pause subscription" feature. The tactical version: `if (sub.isPaused()
 
 ## The Boy Scout Rule
 
-> Leave the campground cleaner than you found it.
 
 **Source:** *Clean Code*, Chapter 1.
 
@@ -117,7 +114,6 @@ The late-fee change goes in a separate commit from the cleanup, so each one is e
 
 ## Broken Windows (Software Entropy)
 
-> Don't Live with Broken Windows. — Tip 5
 
 **Source:** *The Pragmatic Programmer*, Topic 3.
 
@@ -145,7 +141,6 @@ The CI pipeline has had three "known flaky" tests marked `@Disabled` for months,
 
 ## Strategic vs. Tactical Programming
 
-> Working code isn't enough. … The most important thing is the long-term structure of the system.
 
 **Source:** *A Philosophy of Software Design*, Chapter 3 (see also Chapter 16, Modifying Existing Code).
 
@@ -175,13 +170,12 @@ The task is to add a second shipping carrier. Tactical: copy `UpsShippingService
 
 ## ETC — Easier to Change
 
-> Good Design Is Easier to Change Than Bad Design. — Tip 14
 
 **Source:** *The Pragmatic Programmer*, Topic 8.
 
 ### What it means in practice
 
-Hunt & Thomas reduce every design principle to one value: a thing is well designed if it adapts to the people who use it, and for code that means it **changes easily**. Every other principle is a special case. Decoupling makes things ETC because a change stays local. SRP does it because a requirement change touches one module. Good naming does it because readable code is easier to change.
+Hunt & Thomas reduce every design principle to one value: good design is design that fits the people using it, and for code that means it **changes easily**. Every other principle is a special case. Decoupling makes things ETC because a change stays local. SRP does it because a requirement change touches one module. Good naming does it because readable code is easier to change.
 
 ETC is a *value*, not a rule, so you use it as a question while you work: "Did what I just did make the system easier or harder to change?" When you can't tell what kind of change is coming:
 1. Fall back on keeping the code *replaceable*: decoupled and cohesive.
@@ -211,7 +205,6 @@ public final class VatPolicy {
 
 ## DRY — Don't Repeat Yourself
 
-> Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
 
 **Source:** *The Pragmatic Programmer*, Topic 9 (Tips 15–16); also *Clean Code* Chapters 3 and 12 and heuristic G5.
 
@@ -225,7 +218,7 @@ DRY is about **knowledge and intent, not text**. Two identical-looking lines tha
 - **Between systems:** an API spec, server code and client code each describing the same contract. Generate one from another.
 - **Between developers:** two people building the same utility. Fix this with communication, a project librarian, and reuse that's easy (Tip 16).
 
-Martin's version in Clean Code is more about code: duplication is "the root of all evil in software", and every `switch` repeated across the code is duplicated knowledge.
+Martin's version in Clean Code is more about code: duplication is the worst of the problems, and every `switch` repeated across the code is duplicated knowledge.
 
 ### Example
 
@@ -258,7 +251,6 @@ Martin's True vs. Accidental Duplication warns against the opposite mistake: mer
 
 ## True vs. Accidental Duplication
 
-> If two apparently duplicated sections of code evolve along different paths—if they change at different rates, and for different reasons—then they are not true duplicates.
 
 **Source:** *Clean Architecture*, Chapter 16.
 

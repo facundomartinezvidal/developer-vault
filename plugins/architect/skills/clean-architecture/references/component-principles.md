@@ -16,13 +16,12 @@ Chapters 12–14: what goes in a component (cohesion) and how components may dep
 
 ## Components
 
-> Components are the units of deployment. They are the smallest entities that can be deployed as part of a system.
 
 **Source:** *Clean Architecture*, Chapter 12.
 
 ### What it means in practice
 
-A component is whatever unit a language/platform actually ships: a jar in Java, a gem in Ruby, a DLL in .NET, an npm package in JS — "in all languages, they are the granule of deployment." The chapter's real point is historical: programs used to be written at fixed memory addresses with no way to combine separately-compiled pieces; relocatable binaries and linking loaders made it possible to compile modules independently and link them later; and as linking got fast enough (1990s), dynamically-loaded plugin components (jars, DLLs, shared libraries) became the casual default they are today — you `import`/`require` a component without a second thought.
+A component is whatever unit a language/platform actually ships: a jar in Java, a gem in Ruby, a DLL in .NET, an npm package in JS — whatever the language, it's the smallest unit you deploy. The chapter's real point is historical: programs used to be written at fixed memory addresses with no way to combine separately-compiled pieces; relocatable binaries and linking loaders made it possible to compile modules independently and link them later; and as linking got fast enough (1990s), dynamically-loaded plugin components (jars, DLLs, shared libraries) became the casual default they are today — you `import`/`require` a component without a second thought.
 
 The practical takeaway: well-designed components stay **independently deployable and therefore independently developable** — a team can change and ship one component without forcing every other component to rebuild and redeploy with it. That property is what the three cohesion principles (REP, CCP, CRP) and the coupling principles exist to protect.
 
@@ -41,7 +40,6 @@ The practical takeaway: well-designed components stay **independently deployable
 
 ## REP: Reuse/Release Equivalence Principle
 
-> The granule of reuse is the granule of release.
 
 **Source:** *Clean Architecture*, Chapter 13.
 
@@ -64,13 +62,12 @@ A `utils` package that mixes date formatting, HTTP retry logic, and PDF generati
 
 ## CCP: Common Closure Principle
 
-> Gather into components those classes that change for the same reasons and at the same times. Separate into different components those classes that change at different times and for different reasons.
 
 **Source:** *Clean Architecture*, Chapter 13.
 
 ### What it means in practice
 
-CCP is SRP (`solid.md`) restated one level up, for components instead of classes: "a component should not have multiple reasons to change." Since 100% closure against every possible change is unattainable (OCP (`solid.md`)), the pragmatic move is to close a component against the kinds of change actually expected, by co-locating the classes that tend to change together for the same reason. When a requirement changes, the goal is that the change is confined to as few components as possible, so only those need re-testing and redeploying — "for most applications, maintainability is more important than reusability."
+CCP is SRP (`solid.md`) restated one level up, for components instead of classes: a component should have one reason to change. Since 100% closure against every possible change is unattainable (OCP (`solid.md`)), the pragmatic move is to close a component against the kinds of change actually expected, by co-locating the classes that tend to change together for the same reason. When a requirement changes, the goal is that the change is confined to as few components as possible, so only those need re-testing and redeploying — most applications need to be easy to maintain more than they need reuse.
 
 ### Example: co-locating what changes together
 
@@ -92,7 +89,6 @@ If checkout's tax-calculation rules and its receipt-formatting rules both change
 
 ## CRP: Common Reuse Principle
 
-> Don't force users of a component to depend on things they don't need.
 
 **Source:** *Clean Architecture*, Chapter 13.
 
@@ -115,7 +111,6 @@ A `checkout` component that bundles `PaymentGateway`, `PaymentGatewayFactory`, a
 
 ## Component Cohesion: The Tension Diagram
 
-> Projects tend to start on the right hand side of the triangle, where the only sacrifice is reuse. As the project matures, and other projects begin to draw from it, the project will slide over to the left.
 
 **Source:** *Clean Architecture*, Chapter 13.
 
@@ -149,7 +144,6 @@ A `notifications` component starts life optimized for CCP — email, SMS, and pu
 
 ## ADP: Acyclic Dependencies Principle
 
-> Allow no cycles in the component dependency graph.
 
 **Source:** *Clean Architecture*, Chapter 14.
 
@@ -210,7 +204,6 @@ graph LR
 
 ## SDP: Stable Dependencies Principle
 
-> Depend in the direction of stability.
 
 **Source:** *Clean Architecture*, Chapter 14.
 
@@ -259,7 +252,6 @@ graph BT
 
 ## SAP: Stable Abstractions Principle
 
-> A component should be as abstract as it is stable.
 
 **Source:** *Clean Architecture*, Chapter 14.
 
@@ -301,7 +293,6 @@ Adding Adyen means writing `payments-adyen` against the same interfaces; `paymen
 
 ## The Main Sequence
 
-> A component that sits on the Main Sequence is not "too abstract" for its stability, nor is it "too unstable" for its abstractness.
 
 **Source:** *Clean Architecture*, Chapter 14.
 
@@ -312,7 +303,7 @@ Plot every component on a graph with instability **I** (SDP) on the x-axis and a
 - **Zone of Pain (≈ 0, 0)** — stable *and* concrete: heavily depended on, but impossible to extend, so every change hurts. Classic resident: a database schema. Only *volatile* things here are painful; a non-volatile concrete utility like a `String` library sits there harmlessly.
 - **Zone of Uselessness (≈ 1, 1)** — fully abstract with no dependents: leftover interfaces nobody implements or uses.
 
-The distance metric **D = |A + I − 1|** (0 = on the line, 1 = as far as possible) turns this into something you can track: flag components whose D isn't near 0, look at mean/variance across the system for outliers, or plot one component's D release over release to spot dependencies creeping in. Martin is explicit that it's a heuristic: "a metric is not a god."
+The distance metric **D = |A + I − 1|** (0 = on the line, 1 = as far as possible) turns this into something you can track: flag components whose D isn't near 0, look at mean/variance across the system for outliers, or plot one component's D release over release to spot dependencies creeping in. Martin is explicit that it's a heuristic, and shouldn't be followed blindly.
 
 ```mermaid
 quadrantChart

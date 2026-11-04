@@ -16,14 +16,13 @@ Error handling, null, contracts, failing fast, resource ownership, third-party c
 
 ## Exceptions over Error Codes
 
-> Error handling is important, but if it obscures logic, it's wrong.
 
 **Source:** *Clean Code*, Chapter 7 (Michael Feathers) and Chapter 3.
 
 ### What it means in practice
 
 - **Use exceptions, not return codes.** Error codes force every caller to check right away, and the happy path gets buried in `if (result != OK)` branches. Exceptions keep the main logic and the error handling apart.
-- **Error handling is one thing.** A function that handles errors should do nothing else. Extract the body of a `try` into its own function, so you have one function with the logic and one with the `try/catch`.
+- **Error handling is one thing.** Keep error handling in a function of its own. Extract the body of a `try` into its own function, so you have one function with the logic and one with the `try/catch`.
 - **Write the try-catch-finally first** when code can throw. It defines what the caller can expect no matter what goes wrong inside, a bit like a transaction.
 - **Use unchecked exceptions.** Checked exceptions break the OCP: Open-Closed Principle (`objects-and-classes.md`): a new `throws` deep down forces signature changes in every layer above it.
 - **Provide context.** Include the operation and why it failed.
@@ -68,7 +67,6 @@ public class PaymentGateway {
 
 ## Don't Return Null (and Don't Pass It)
 
-> When we return null, we are essentially creating work for ourselves and foisting problems upon our callers.
 
 **Source:** *Clean Code*, Chapter 7.
 
@@ -111,7 +109,6 @@ Money total = discounts.forCustomer(customer).applyTo(subtotal);   // never null
 
 ## Define Errors Out of Existence
 
-> The best way to eliminate exception handling complexity is to define your APIs so that there are no exceptions to handle.
 
 **Source:** *A Philosophy of Software Design*, Chapter 10.
 
@@ -148,7 +145,6 @@ void ensureCancelled(SubId id);   // no-op if already cancelled or never existed
 
 ## Design by Contract
 
-> Design with Contracts. — Tip 37
 
 **Source:** *The Pragmatic Programmer*, Topic 23 (DBC from Bertrand Meyer, Eiffel). Also Tip 36: "You Can't Write Perfect Software".
 
@@ -160,7 +156,7 @@ Every routine has a contract with its callers:
 - **Postconditions** say what the routine guarantees when it finishes.
 - **Class invariants** must always hold from the caller's point of view.
 
-If the caller meets the preconditions, the routine promises the postconditions and invariants, and it makes no promises otherwise. This leads to Hunt & Thomas's **lazy code**: be strict about what you accept, and promise as little as possible in return. The contract also tells you where the bug is. A broken precondition is a bug in the caller, and a broken postcondition is a bug in the routine.
+If the caller meets the preconditions, the routine promises the postconditions and invariants, and it makes no promises otherwise. This leads to Hunt & Thomas's **lazy code**: accept strictly and promise little. The contract also tells you where the bug is. A broken precondition is a bug in the caller, and a broken postcondition is a bug in the routine.
 
 Most languages don't support contracts directly, so they're expressed through assertions, guard clauses, types, documentation, and tests (property based testing fits them well). When a contract is violated, Crash Early (Dead Programs Tell No Lies) instead of continuing in an unknown state. DBC also helps with concurrency (`concurrency.md`), because an invariant tells you exactly what a lock has to protect.
 
@@ -197,7 +193,6 @@ public void withdraw(Money amount) {
 
 ## Crash Early (Dead Programs Tell No Lies)
 
-> Crash Early. — Tip 38
 
 **Source:** *The Pragmatic Programmer*, Topic 24.
 
@@ -235,7 +230,6 @@ public void importAll(List<Row> rows) { rows.forEach(this::importRow); }   // an
 
 ## Assertive Programming
 
-> Use Assertions to Prevent the Impossible. — Tip 39
 
 **Source:** *The Pragmatic Programmer*, Topic 25.
 
@@ -270,13 +264,12 @@ public Money refund(Order order, Money amount) {
 
 ## Finish What You Start (Balancing Resources)
 
-> Finish What You Start. — Tip 40
 
-**Source:** *The Pragmatic Programmer*, Topic 26 (also Tip 41, "Act Locally").
+**Source:** *The Pragmatic Programmer*, Topic 26 (also Tip 41).
 
 ### What it means in practice
 
-Memory, files, sockets, locks, transactions and DB connections all have to be released. The rule: **the function or object that allocates a resource is responsible for deallocating it.** If a resource is opened in one function and closed in another, sooner or later some code path skips the close.
+Memory, files, sockets, locks, transactions and DB connections all have to be released. The rule: **whoever allocates a resource releases it.** If a resource is opened in one function and closed in another, sooner or later some code path skips the close.
 
 Related habits:
 - **Act locally.** Keep the resource's lifetime inside one scope.
@@ -309,7 +302,6 @@ try (Connection c = pool.getConnection();
 
 ## Clean Boundaries
 
-> Code at the boundaries needs clear separation and tests that define expectations.
 
 **Source:** *Clean Code*, Chapter 8 (James Grenning).
 
@@ -351,7 +343,6 @@ public class TwilioSmsSender implements SmsSender {
 
 ## Stay Safe Out There
 
-> Keep It Simple and Minimize Attack Surfaces. — Tip 72 &nbsp;·&nbsp; Apply Security Patches Quickly. — Tip 73
 
 **Source:** *The Pragmatic Programmer*, Topic 43.
 

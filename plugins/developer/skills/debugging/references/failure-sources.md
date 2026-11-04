@@ -14,7 +14,6 @@ Making failures visible close to their cause, and the recurring sources of inter
 
 ## Crash Early (Dead Programs Tell No Lies)
 
-> Crash Early. — Tip 38
 
 **Source:** *The Pragmatic Programmer*, Topic 24.
 
@@ -50,7 +49,6 @@ public void importAll(List<Row> rows) { rows.forEach(this::importRow); }   // an
 
 ## Assertive Programming
 
-> Use Assertions to Prevent the Impossible. — Tip 39
 
 **Source:** *The Pragmatic Programmer*, Topic 25.
 
@@ -86,7 +84,6 @@ public Money refund(Order order, Money amount) {
 
 ## Design by Contract
 
-> Design with Contracts. — Tip 37
 
 **Source:** *The Pragmatic Programmer*, Topic 23 (DBC from Bertrand Meyer, Eiffel). Also Tip 36: "You Can't Write Perfect Software".
 
@@ -98,7 +95,7 @@ Every routine has a contract with its callers:
 - **Postconditions** say what the routine guarantees when it finishes.
 - **Class invariants** must always hold from the caller's point of view.
 
-If the caller meets the preconditions, the routine promises the postconditions and invariants, and it makes no promises otherwise. This leads to Hunt & Thomas's **lazy code**: be strict about what you accept, and promise as little as possible in return. The contract also tells you where the bug is. A broken precondition is a bug in the caller, and a broken postcondition is a bug in the routine.
+If the caller meets the preconditions, the routine promises the postconditions and invariants, and it makes no promises otherwise. This leads to Hunt & Thomas's **lazy code**: accept strictly and promise little. The contract also tells you where the bug is. A broken precondition is a bug in the caller, and a broken postcondition is a bug in the routine.
 
 Most languages don't support contracts directly, so they're expressed through assertions, guard clauses, types, documentation, and tests (property based testing fits them well). When a contract is violated, Crash Early (Dead Programs Tell No Lies) instead of continuing in an unknown state. DBC also helps with concurrency, because an invariant tells you exactly what a lock has to protect.
 
@@ -131,13 +128,12 @@ public void withdraw(Money amount) {
 
 ## Finish What You Start (Balancing Resources)
 
-> Finish What You Start. — Tip 40
 
-**Source:** *The Pragmatic Programmer*, Topic 26 (also Tip 41, "Act Locally").
+**Source:** *The Pragmatic Programmer*, Topic 26 (also Tip 41).
 
 ### What it means in practice
 
-Memory, files, sockets, locks, transactions and DB connections all have to be released. The rule: **the function or object that allocates a resource is responsible for deallocating it.** If a resource is opened in one function and closed in another, sooner or later some code path skips the close.
+Memory, files, sockets, locks, transactions and DB connections all have to be released. The rule: **whoever allocates a resource releases it.** If a resource is opened in one function and closed in another, sooner or later some code path skips the close.
 
 Related habits:
 - **Act locally.** Keep the resource's lifetime inside one scope.
@@ -172,7 +168,7 @@ try (Connection c = pool.getConnection();
 
 ### What it looks like
 
-Data that gets updated in place, where one part of the system changes it without realizing another part expected it to stay the same — a failure "that's particularly hard to spot if it only happens under rare conditions." This is the whole reason functional programming treats variables as never varying: an update always returns a new copy instead of mutating in place. Most of us still work in languages that allow mutation, but the same risk-reduction ideas apply at a smaller scale: narrow the surface that's allowed to update a value, and separate the code that reads/computes from the code that actually performs the update.
+Data that gets updated in place, where one part of the system changes it without realizing another part expected it to stay the same — a failure that's hard to notice when it occurs only in rare conditions. This is the whole reason functional programming treats variables as never varying: an update always returns a new copy instead of mutating in place. Most of us still work in languages that allow mutation, but the same risk-reduction ideas apply at a smaller scale: narrow the surface that's allowed to update a value, and separate the code that reads/computes from the code that actually performs the update.
 
 ### Example
 
@@ -203,9 +199,8 @@ double total() {
 
 ## Shared State Is Incorrect State
 
-> Shared State Is Incorrect State. — Tip 57
 
-**Source:** *The Pragmatic Programmer*, Topic 34 (also Tip 58, "Random Failures Are Often Concurrency Issues").
+**Source:** *The Pragmatic Programmer*, Topic 34 (also Tip 58).
 
 ### What it means in practice
 
@@ -239,7 +234,6 @@ if (updated == 0) throw new SoldOutException(flightId);
 
 ## Concurrency Defense Principles
 
-> Concurrency is a decoupling strategy. It helps us decouple what gets done from when it gets done.
 
 **Source:** *Clean Code*, Chapter 13 and Appendix A (Brett L. Schuchert).
 

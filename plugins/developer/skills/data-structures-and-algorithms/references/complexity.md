@@ -11,7 +11,6 @@ How to reason about cost, and when performance deserves design attention.
 
 ## Algorithm Speed (Big-O in Practice)
 
-> Estimate the Order of Your Algorithms. — Tip 63 &nbsp;·&nbsp; Test Your Estimates. — Tip 64
 
 **Source:** *The Pragmatic Programmer*, Topic 39.
 
@@ -138,7 +137,6 @@ When a > 1 and the recursion branches into multiple calls per level without shar
 
 ## Designing for Performance
 
-> Clean design and high performance are compatible.
 
 **Source:** *A Philosophy of Software Design*, Chapter 20.
 

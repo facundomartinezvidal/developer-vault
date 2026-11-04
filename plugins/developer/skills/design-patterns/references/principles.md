@@ -16,7 +16,6 @@ What a pattern is, how good ones go bad, and the object-oriented principles patt
 
 ## What Is a Design Pattern
 
-> A Pattern is a solution to a problem in a context.
 
 **Source:** *Head First Design Patterns*, Chapter 13 — "Better Living with Patterns".
 
@@ -56,7 +55,6 @@ A notification service sends email only. Wrapping it in Strategy + Abstract Fact
 
 ## Anti-Patterns
 
-> An Anti-Pattern tells you how to go from a problem to a BAD solution.
 
 **Source:** *Head First Design Patterns*, Chapter 13 — "Better Living with Patterns".
 
@@ -83,9 +81,7 @@ A team fluent in their relational database implements a job queue as a `jobs` ta
 
 ## Encapsulate What Varies
 
-> Identify the aspects of your application that vary and separate them from what stays the same.
 
-> Take what varies and "encapsulate" it so it won't affect the rest of your code. The result? Fewer unintended consequences from code changes and more flexibility in your systems!
 
 **Source:** *Head First Design Patterns*, Chapter 1.
 
@@ -161,9 +157,7 @@ Adding XLSX support later means adding one new `ExportFormat` implementation —
 
 ## Favor Composition Over Inheritance
 
-> Favor composition over inheritance.
 
-> The HAS-A relationship is an interesting one: each duck has a FlyBehavior and a QuackBehavior to which it delegates flying and quacking. When you put two classes together like this you're using composition. Instead of inheriting their behavior, the ducks get their behavior by being composed with the right behavior object.
 
 **Source:** *Head First Design Patterns*, Chapter 1.
 
@@ -238,9 +232,7 @@ Any engine/transmission combination — zero new subclasses, even as more varian
 
 ## Program To An Interface, Not An Implementation
 
-> Program to an interface, not an implementation.
 
-> "Program to an interface" really means "Program to a supertype."
 
 **Source:** *Head First Design Patterns*, Chapter 1.
 
@@ -308,7 +300,6 @@ public class UserService {
 
 ## Strive for Loosely Coupled Designs
 
-> Strive for loosely coupled designs between objects that interact.
 
 **Source:** *Head First Design Patterns*, Chapter 2.
 
@@ -371,7 +362,6 @@ Adding a loyalty-points consumer is a new `OrderPlacedListener`; `OrderService` 
 
 ## The Hollywood Principle
 
-> Don't call us, we'll call you.
 
 **Source:** *Head First Design Patterns*, Chapter 8.
 
@@ -420,7 +410,6 @@ public class NightlySalesJob extends ScheduledJob { ... }
 
 ## Principle of Least Knowledge (Law of Demeter)
 
-> Principle of Least Knowledge — talk only to your immediate friends.
 
 **Source:** *Head First Design Patterns*, Chapter 7; *Clean Code*, Chapter 6 (and heuristic G36, "Avoid Transitive Navigation"); *The Pragmatic Programmer*, Topic 28.
 
@@ -476,7 +465,6 @@ If addresses later get geocoded zones instead of region-based ones, only `Addres
 
 ## Inheritance Tax
 
-> Don't Pay Inheritance Tax. — Tip 51
 
 **Source:** *The Pragmatic Programmer*, Topic 31 (Tips 51–54).
 

@@ -12,9 +12,8 @@ Version control, automation, plain text, configuration and keeping systems safe.
 
 ## Version Control
 
-> Always Use Version Control. — Tip 28
 
-**Source:** *The Pragmatic Programmer*, Topic 19 (also Tip 89, "Use Version Control to Drive Builds, Tests, and Releases").
+**Source:** *The Pragmatic Programmer*, Topic 19 (also Tip 89).
 
 ### What it means in practice
 
@@ -43,7 +42,6 @@ git bisect run ./gradlew test --tests "*InvoiceRoundingTest"
 
 ## Pragmatic Starter Kit
 
-> Test Early, Test Often, Test Automatically. — Tip 90 &nbsp;·&nbsp; Don't Use Manual Procedures. — Tip 95
 
 **Source:** *The Pragmatic Programmer*, Topic 51 (Tips 89–95).
 
@@ -54,7 +52,7 @@ Every project needs three basics before anything else:
 1. **Version control** drives builds, tests and releases (Tip 89). A push triggers everything, and a tag deploys.
 2. **Ruthless, continuous testing:**
    - Test early, often, and automatically.
-   - "Coding ain't done 'til all the tests run" (Tip 91).
+   - Coding isn't finished until all the tests pass (Tip 91).
    - Test at every level: unit, integration, validation and verification, performance and stress, usability.
    - **Use saboteurs to test your testing** (Tip 92). Deliberately introduce bugs (mutation testing) to make sure the tests notice.
    - **Test state coverage, not code coverage** (Tip 93).
@@ -84,7 +82,6 @@ jobs:
 
 ## The Power of Plain Text
 
-> Keep Knowledge in Plain Text. — Tip 25
 
 **Source:** *The Pragmatic Programmer*, Topic 16.
 
@@ -110,7 +107,6 @@ Infrastructure as code (Terraform), configuration in YAML, database migrations a
 
 ## Externalize Configuration
 
-> Parameterize Your App Using External Configuration. — Tip 55
 
 **Source:** *The Pragmatic Programmer*, Topic 32.
 
@@ -147,7 +143,6 @@ pull complexity downwards warns that configuration parameters can be a way of *e
 
 ## Stay Safe Out There
 
-> Keep It Simple and Minimize Attack Surfaces. — Tip 72 &nbsp;·&nbsp; Apply Security Patches Quickly. — Tip 73
 
 **Source:** *The Pragmatic Programmer*, Topic 43.
 

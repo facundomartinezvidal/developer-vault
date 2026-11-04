@@ -11,7 +11,6 @@ What makes tests useful and readable, three positions on TDD, and generated inpu
 
 ## Clean Tests (F.I.R.S.T.)
 
-> Test code is just as important as production code.
 
 **Source:** *Clean Code*, Chapter 9 (heuristics T1–T9).
 
@@ -57,16 +56,15 @@ Chapter 17's T-heuristics add: use a coverage tool, test boundary conditions, te
 
 ## Test to Code
 
-> Testing Is Not About Finding Bugs. — Tip 66
 
 **Source:** *The Pragmatic Programmer*, Topic 41 (Tips 66–70).
 
 ### What it means in practice
 
-Hunt & Thomas say most of the value of testing comes from *thinking about* the test, not from running it. A test is **the first user of your code** (Tip 67). When writing one is painful, because you need a database, a clock, three mocks and a global, the code is telling you it's too coupled. So:
+Hunt & Thomas say most of the value of testing comes from *thinking about* the test, not from running it. A test is **your code's first caller** (Tip 67). When writing one is painful, because you need a database, a clock, three mocks and a global, the code is telling you it's too coupled. So:
 
 - **Design to test** (Tip 69). Think about how you'll test a function before you write it. That pushes you toward clear contracts, injected dependencies, and few side effects.
-- **Build end-to-end, not top-down or bottom-up** (Tip 68). Build small vertical slices, learning about the problem as you go (tracer bullets).
+- **Build thin end-to-end slices, rather than top-down or bottom-up** (Tip 68). Build small vertical slices, learning about the problem as you go (tracer bullets).
 - **TDD is a tool, not a religion.** Its strength is the test-first thinking, and its danger is spending ages on tiny unit tests without looking at the big picture.
 - **Test your software, or your users will** (Tip 70). Also make the software testable in production: logging, a hot-key debug view, a health endpoint.
 
@@ -99,13 +97,12 @@ class ReminderJob {
 
 ## The Three Laws of TDD
 
-> First Law: You may not write production code until you have written a failing unit test. Second Law: You may not write more of a unit test than is sufficient to fail, and not compiling is failing. Third Law: You may not write more production code than is sufficient to pass the currently failing test.
 
 **Source:** *Clean Code*, Chapter 9.
 
 ### What it means in practice
 
-The three laws lock you into a cycle about 30 seconds long: write a little test, write a little code, repeat. Tests and production code are written together, with the tests a few seconds ahead. After a day there are dozens of tests, and after a year thousands. Together they cover nearly all the production code. That suite is what makes refactoring safe: without it, every change is a possible bug, so people stop changing things and the code rots.
+The three laws are: write no production code without a failing test, write only enough of a test to fail, and write only enough code to pass it. They lock you into a cycle about 30 seconds long: write a little test, write a little code, repeat. Tests come a few seconds before the code they cover. After a day there are dozens of tests, and after a year thousands. Together they cover nearly all the production code. That suite is what makes refactoring safe: without it, every change is a possible bug, so people stop changing things and the code rots.
 
 Martin also says **tests enable the "-ilities"**. Flexibility, maintainability and reusability all depend on being able to change code without fear, and tests give you that.
 
@@ -133,7 +130,6 @@ public Money costFor(Cart cart) { return Money.ZERO; }                   // 2. j
 
 ## Property-Based Testing
 
-> Use Property-Based Tests to Validate Your Assumptions. — Tip 71
 
 **Source:** *The Pragmatic Programmer*, Topic 42.
 

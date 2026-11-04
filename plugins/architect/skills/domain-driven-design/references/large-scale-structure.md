@@ -13,7 +13,6 @@ Chapters 16–17: shared structures that help a very large model stay understand
 
 ## Strategic Design Decisions
 
-> Make the objects into specialists; let the developers be generalists.
 
 **Source:** *Domain-Driven Design*, Chapter 17 and Conclusion.
 
@@ -36,7 +35,7 @@ The three principles of strategic design are **context**, **distillation** and *
 1. **Decisions must reach the entire team.** Real influence counts more than official authority.
 2. **The decision process must absorb feedback.** Only application developers have the depth of knowledge needed, so architects must stay close to them.
 3. **The plan must allow for evolution** (Evolving Order).
-4. **Architecture teams must not siphon off all the best and brightest.** Applications need strong designers, and strategy needs domain knowledge.
+4. **Architecture teams must not take all the strongest people.** Applications need strong designers, and strategy needs domain knowledge.
 5. **Strategic design requires minimalism and humility.** Every element gets in someone's way, so each one has to earn its place.
 6. **Objects are specialists; developers are generalists.** Don't split people into "designers" and "coders" the way you split responsibilities.
 
@@ -61,18 +60,17 @@ A 120-engineer company sets up a four-person "domain architecture guild" instead
 
 ## Evolving Order (Large-Scale Structure)
 
-> Let this conceptual large-scale structure evolve with the application, possibly changing to a completely different type of structure along the way. Don't overconstrain the detailed design and model decisions that must be made with detailed knowledge.
 
 **Source:** *Domain-Driven Design*, Chapter 16.
 
 ### What it means in practice
 
-In a big system, people stop seeing the forest for the trees. Neither Modules (`building-blocks.md`), Bounded Contexts (`context-mapping.md`) nor distillation (`distillation.md`) explains how all the parts fit together, and without coordination each team solves the same problems in its own idiosyncratic way. A **large-scale structure** is a set of high-level concepts or rules that establishes a pattern of design for the whole system. It acts as a language for discussing the system in broad strokes and lets independent work stay consistent. It usually doesn't appear in UML: it shapes and explains the model rather than being part of it.
+In a big system, people stop seeing the forest for the trees. Neither Modules (`building-blocks.md`), Bounded Contexts (`context-mapping.md`) nor distillation (`distillation.md`) explains how all the parts fit together, and without coordination each team solves the same problems in its own idiosyncratic way. A **large-scale structure** is a set of shared concepts or rules that shapes the design of the whole system. It acts as a language for discussing the system in broad strokes and lets independent work stay consistent. It usually doesn't appear in UML: it shapes and explains the model rather than being part of it.
 
 The danger is that up-front architectures venturing into the domain constrain developers in ways that don't fit the details. Hence **Evolving Order**:
 - Let the structure emerge and change as understanding grows, even into a completely different kind of structure.
 - Using a structure trades optimal design of individual parts for manageability of the whole, so keep the trade small.
-- A small team with a modest model may need **no** large-scale structure. Well-named modules and some distillation can be enough. An ill-fitting structure is worse than none.
+- A small team with a modest model may need **no** large-scale structure. Well-named modules and some distillation can be enough. A structure that doesn't fit does more harm than having none.
 
 **How restrictive should it be?** Minimally. Tight structures like a Pluggable Component Framework pay off only in specific situations. Keep the structure ferociously distilled, rely on communication and self-discipline rather than enforcement, and expect restructuring to *yield* a supple design (`supple-design.md`), since each structure change makes the next one easier. Distillation lightens the load too: a structure is easier to apply to a well-distilled model.
 
@@ -97,7 +95,6 @@ A logistics SaaS starts with no explicit structure. At around 40 developers, tea
 
 ## System Metaphor
 
-> When a concrete analogy to the system emerges that captures the imagination of team members and seems to lead thinking in a useful direction, adopt it as a large-scale structure.
 
 **Source:** *Domain-Driven Design*, Chapter 16 (from Extreme Programming).
 
@@ -125,7 +122,6 @@ A CI/CD platform adopts the **assembly line** metaphor: builds are workpieces mo
 
 ## Responsibility Layers
 
-> Look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. If you identify natural strata in the domain, cast them as broad abstract responsibilities.
 
 **Source:** *Domain-Driven Design*, Chapter 16.
 
@@ -178,7 +174,6 @@ The `Vehicle` class has no idea trips exist. That's why the same fleet model ser
 
 ## Knowledge Level
 
-> Create a distinct set of objects that can be used to describe and constrain the structure and behavior of the basic model. Keep these concerns separate as two "levels," one very concrete, the other reflecting rules and knowledge that a user or superuser is able to customize.
 
 **Source:** *Domain-Driven Design*, Chapter 16 (from Fowler, *Analysis Patterns*).
 
@@ -239,7 +234,6 @@ Sales can introduce a "Healthcare Premium" tier with a 1-hour target and phone a
 
 ## Pluggable Component Framework
 
-> Distill an ABSTRACT CORE of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted.
 
 **Source:** *Domain-Driven Design*, Chapter 16.
 

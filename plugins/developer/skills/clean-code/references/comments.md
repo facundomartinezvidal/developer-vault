@@ -10,7 +10,6 @@ Where the sources disagree most: when a comment is a failure and when it carries
 
 ## Good and Bad Comments (Clean Code's view)
 
-> The proper use of comments is to compensate for our failure to express ourself in code.
 
 **Source:** *Clean Code*, Chapter 4 (heuristics C1–C5).
 
@@ -54,7 +53,6 @@ A Philosophy of Software Design disagrees on purpose. Ousterhout calls "good cod
 
 ## Comments Should Describe What Isn't Obvious
 
-> Comments should describe things that aren't obvious from the code.
 
 **Source:** *A Philosophy of Software Design*, Chapters 12–13.
 
@@ -104,7 +102,6 @@ Martin's Good and Bad Comments (Clean Code's view) treats every comment as a fai
 
 ## Write the Comments First
 
-> Use comments as part of the design process.
 
 **Source:** *A Philosophy of Software Design*, Chapter 15.
 

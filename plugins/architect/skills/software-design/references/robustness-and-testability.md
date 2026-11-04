@@ -14,7 +14,6 @@ Contracts, failure handling, resource ownership, and what tests say about a desi
 
 ## Design by Contract
 
-> Design with Contracts. — Tip 37
 
 **Source:** *The Pragmatic Programmer*, Topic 23 (DBC from Bertrand Meyer, Eiffel). Also Tip 36: "You Can't Write Perfect Software".
 
@@ -26,7 +25,7 @@ Every routine has a contract with its callers:
 - **Postconditions** say what the routine guarantees when it finishes.
 - **Class invariants** must always hold from the caller's point of view.
 
-If the caller meets the preconditions, the routine promises the postconditions and invariants, and it makes no promises otherwise. This leads to Hunt & Thomas's **lazy code**: be strict about what you accept, and promise as little as possible in return. The contract also tells you where the bug is. A broken precondition is a bug in the caller, and a broken postcondition is a bug in the routine.
+If the caller meets the preconditions, the routine promises the postconditions and invariants, and it makes no promises otherwise. This leads to Hunt & Thomas's **lazy code**: accept strictly and promise little. The contract also tells you where the bug is. A broken precondition is a bug in the caller, and a broken postcondition is a bug in the routine.
 
 Most languages don't support contracts directly, so they're expressed through assertions, guard clauses, types, documentation, and tests (Property-Based Testing fits them well). When a contract is violated, Crash Early (Dead Programs Tell No Lies) instead of continuing in an unknown state. DBC also helps with concurrency (`concurrency.md`), because an invariant tells you exactly what a lock has to protect.
 
@@ -61,7 +60,6 @@ public void withdraw(Money amount) {
 
 ## Crash Early (Dead Programs Tell No Lies)
 
-> Crash Early. — Tip 38
 
 **Source:** *The Pragmatic Programmer*, Topic 24.
 
@@ -98,7 +96,6 @@ public void importAll(List<Row> rows) { rows.forEach(this::importRow); }   // an
 
 ## Assertive Programming
 
-> Use Assertions to Prevent the Impossible. — Tip 39
 
 **Source:** *The Pragmatic Programmer*, Topic 25.
 
@@ -133,7 +130,6 @@ public Money refund(Order order, Money amount) {
 
 ## Define Errors Out of Existence
 
-> The best way to eliminate exception handling complexity is to define your APIs so that there are no exceptions to handle.
 
 **Source:** *A Philosophy of Software Design*, Chapter 10.
 
@@ -174,13 +170,12 @@ void ensureCancelled(SubId id);   // no-op if already cancelled or never existed
 
 ## Finish What You Start (Balancing Resources)
 
-> Finish What You Start. — Tip 40
 
-**Source:** *The Pragmatic Programmer*, Topic 26 (also Tip 41, "Act Locally").
+**Source:** *The Pragmatic Programmer*, Topic 26 (also Tip 41).
 
 ### What it means in practice
 
-Memory, files, sockets, locks, transactions and DB connections all have to be released. The rule: **the function or object that allocates a resource is responsible for deallocating it.** If a resource is opened in one function and closed in another, sooner or later some code path skips the close.
+Memory, files, sockets, locks, transactions and DB connections all have to be released. The rule: **whoever allocates a resource releases it.** If a resource is opened in one function and closed in another, sooner or later some code path skips the close.
 
 Related habits:
 - **Act locally.** Keep the resource's lifetime inside one scope.
@@ -212,16 +207,15 @@ try (Connection c = pool.getConnection();
 
 ## Test to Code
 
-> Testing Is Not About Finding Bugs. — Tip 66
 
 **Source:** *The Pragmatic Programmer*, Topic 41 (Tips 66–70).
 
 ### What it means in practice
 
-Hunt & Thomas say most of the value of testing comes from *thinking about* the test, not from running it. A test is **the first user of your code** (Tip 67). When writing one is painful, because you need a database, a clock, three mocks and a global, the code is telling you it's too coupled (`coupling.md`). So:
+Hunt & Thomas say most of the value of testing comes from *thinking about* the test, not from running it. A test is **your code's first caller** (Tip 67). When writing one is painful, because you need a database, a clock, three mocks and a global, the code is telling you it's too coupled (`coupling.md`). So:
 
 - **Design to test** (Tip 69). Think about how you'll test a function before you write it. That pushes you toward clear contracts, injected dependencies, and few side effects.
-- **Build end-to-end, not top-down or bottom-up** (Tip 68). Build small vertical slices, learning about the problem as you go (tracer bullets).
+- **Build thin end-to-end slices, rather than top-down or bottom-up** (Tip 68). Build small vertical slices, learning about the problem as you go (tracer bullets).
 - **TDD is a tool, not a religion.** Its strength is the test-first thinking, and its danger is spending ages on tiny unit tests without looking at the big picture.
 - **Test your software, or your users will** (Tip 70). Also make the software testable in production: logging, a hot-key debug view, a health endpoint.
 
@@ -251,7 +245,6 @@ class ReminderJob {
 
 ## Property-Based Testing
 
-> Use Property-Based Tests to Validate Your Assumptions. — Tip 71
 
 **Source:** *The Pragmatic Programmer*, Topic 42.
 

@@ -8,7 +8,6 @@ Patterns built from other patterns.
 
 ## Model-View-Controller (Compound Pattern)
 
-> A compound pattern combines two or more patterns into a solution that solves a recurring or general problem.
 
 **Source:** *Head First Design Patterns*, Chapter 12 — "Compound Patterns" (read it). Summary below, book as bibliography — short quotes only where the exact wording matters.
 

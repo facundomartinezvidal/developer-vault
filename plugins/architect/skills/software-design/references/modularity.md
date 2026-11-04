@@ -15,7 +15,6 @@ How deep a module should be, what it should hide, and whether two things belong 
 
 ## Deep Modules
 
-> The best modules are those that provide powerful functionality yet have simple interfaces.
 
 **Source:** *A Philosophy of Software Design*, Chapter 4.
 
@@ -63,7 +62,6 @@ Martin's small functions and class cohesion push toward many small units. Ouster
 
 ## Information Hiding (and Leakage)
 
-> Each module should encapsulate a few pieces of knowledge, which represent design decisions. The knowledge is embedded in the module's implementation but does not appear in its interface.
 
 **Source:** *A Philosophy of Software Design*, Chapter 5 (idea from David Parnas, 1971).
 
@@ -111,7 +109,6 @@ class SalesCsvFormat {
 
 ## General-Purpose Modules Are Deeper
 
-> The sweet spot is to implement new modules in a somewhat general-purpose fashion.
 
 **Source:** *A Philosophy of Software Design*, Chapter 6.
 
@@ -152,7 +149,6 @@ void send(Recipient to, Channel channel, Template template, Map<String, Object> 
 
 ## Pull Complexity Downwards
 
-> It is more important for a module to have a simple interface than a simple implementation.
 
 **Source:** *A Philosophy of Software Design*, Chapter 8.
 
@@ -187,13 +183,12 @@ client.charge(amount, card);   // retries 429/503 with jittered backoff using an
 
 ## Different Layer, Different Abstraction
 
-> If a system contains adjacent layers with similar abstractions, this is a red flag that suggests a problem with the class decomposition.
 
 **Source:** *A Philosophy of Software Design*, Chapter 7.
 
 ### What it means in practice
 
-In a well-designed layered system, each layer gives a *different* abstraction from the layers above and below it. A file system's layers go from files to blocks to disk sectors, and each one transforms the concept. When adjacent layers have the same abstraction, that's a sign of a bad split:
+In a well-designed layered system, each layer offers its own abstraction, distinct from its neighbors. A file system's layers go from files to blocks to disk sectors, and each one transforms the concept. When adjacent layers have the same abstraction, that's a sign of a bad split:
 
 - **Pass-through methods.** A method that just calls a method with the same signature on another class. It adds interface without adding functionality. Fix it by exposing the lower class directly, redistributing the work, or merging the classes.
 - **When duplicate interfaces are OK.** A **dispatcher** (same signature, different implementations chosen at runtime) or multiple implementations of the same interface each add real functionality.
@@ -224,11 +219,10 @@ class CustomerOnboarding {
 ### Related
 
 - Deep Modules
-- Decoupling (`coupling.md`) — a context object is "if it's important enough to be global, wrap it in an API".
+- Decoupling (`coupling.md`) — a context object is if it must be global, put it behind an API.
 
 ## Better Together or Better Apart?
 
-> The goal is to reduce the complexity of the system as a whole and improve its modularity.
 
 **Source:** *A Philosophy of Software Design*, Chapter 9.
 
@@ -272,7 +266,6 @@ Martin's small functions says "extract till you drop". Ousterhout says length is
 
 ## Orthogonality
 
-> Eliminate Effects Between Unrelated Things. — Tip 17
 
 **Source:** *The Pragmatic Programmer*, Topic 10.
 
@@ -321,7 +314,6 @@ class InvoiceService { InvoiceService(AuditLog audit) {...} void issue(Invoice i
 
 ## DRY — Don't Repeat Yourself
 
-> Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
 
 **Source:** *The Pragmatic Programmer*, Topic 9 (Tips 15–16); also *Clean Code* Chapters 3 and 12 and heuristic G5.
 
@@ -335,7 +327,7 @@ DRY is about **knowledge and intent, not text**. Two identical-looking lines tha
 - **Between systems:** an API spec, server code and client code each describing the same contract. Generate one from another.
 - **Between developers:** two people building the same utility. Fix this with communication, a project librarian, and reuse that's easy (Tip 16).
 
-Martin's version in Clean Code is more about code: duplication is "the root of all evil in software", and every `switch` repeated across the code is duplicated knowledge.
+Martin's version in Clean Code is more about code: duplication is the worst of the problems, and every `switch` repeated across the code is duplicated knowledge.
 
 ### Example
 

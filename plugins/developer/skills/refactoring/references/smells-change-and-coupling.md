@@ -19,7 +19,7 @@ Refactoring, Chapter 3: code where one change spreads, or where parts know too m
 
 ### What it looks like
 
-One module that gets changed in different ways for different, unrelated reasons: "I have to change these three functions every time I get a new database; I have to change these four functions every time there's a new financial instrument." Two separate contexts (database interaction, financial processing) are tangled into one module, so touching one forces you to understand both. This is exactly what SRP names as a class answering to more than one actor.
+One module that gets changed in different ways for different, unrelated reasons: some functions change for each new database, and others for each new financial instrument. Two separate contexts (database interaction, financial processing) are tangled into one module, so touching one forces you to understand both. This is exactly what SRP names as a class answering to more than one actor.
 
 ### Example
 
@@ -52,7 +52,7 @@ Splitting `Payment` and `TaxCalculator` into separate classes means a new paymen
 
 ### What it looks like
 
-The mirror image of Divergent Change: instead of one module changing for many reasons, *one reason to change* forces small edits scattered across many different classes. The edits are "hard to find, and it's easy to miss an important change" — exactly the failure mode the Common Closure Principle exists to prevent by co-locating things that change together.
+The mirror image of Divergent Change: instead of one module changing for many reasons, *one reason to change* forces small edits scattered across many different classes. The edits are easy to overlook, including important ones — exactly the failure mode the Common Closure Principle exists to prevent by co-locating things that change together.
 
 ### Example
 
@@ -70,7 +70,7 @@ Gathering the notification logic into one `NotificationDispatcher` component mea
 
 - Move Function, Move Field — pull the scattered pieces into a single module.
 - Combine Functions into Class / Combine Functions into Transform — for functions that operate on the same data.
-- Split Phase — if the common functions can combine their output for a later phase.
+- Split Phase — when their output can feed a later phase.
 - Inlining first (Inline Function, Inline Class) is a legitimate intermediate step — pull everything together into one Large Class (`smells-readability-and-size.md`), then re-extract sensibly.
 
 ### Related
@@ -85,7 +85,7 @@ Gathering the notification logic into one `NotificationDispatcher` component mea
 
 ### What it looks like
 
-A function that spends more time reaching into another object's data (via getters) than working with its own module's data — "we've lost count of the times we've seen a function invoking half-a-dozen getter methods on another object to calculate some value." The fix is usually obvious once you see it: the function clearly wants to live where the data lives. The heuristic when a function touches several objects: put it with whichever one has most of the data it needs.
+A function that spends more time reaching into another object's data (via getters) than working with its own module's data, typically by calling many getters on another object to compute a value. The fix is usually obvious once you see it: the function clearly wants to live where the data lives. The heuristic when a function touches several objects: put it with whichever one has most of the data it needs.
 
 Fowler explicitly calls out that Strategy and Visitor (Strategy Pattern among them) intentionally break this rule — sometimes you *want* behavior to live away from its data, to keep it swappable. Feature Envy is a smell, not an absolute law.
 
@@ -125,7 +125,7 @@ class Invoice {
 
 ### What it looks like
 
-Modules reaching into each other's internals more than their public boundary should allow — "modules that whisper to each other by the coffee machine," trading data in ways that increase coupling without going through a clean, visible interface. Inheritance makes this especially easy: a subclass always knows more about its parent's internals than the parent would like.
+Modules reaching into each other's internals more than their public boundary should allow — modules informally sharing private knowledge, trading data in ways that increase coupling without going through a clean, visible interface. Inheritance makes this especially easy: a subclass always knows more about its parent's internals than the parent would like.
 
 ### Example
 
@@ -228,7 +228,7 @@ If `WarehouseFacade` never adds behavior of its own, callers should talk to `War
 
 ### What it looks like
 
-Data — a global variable, a class variable, a singleton's mutable state — that any part of the codebase can read and modify, with no way to trace which code touched it. "The problem with global data is that it can be modified from anywhere in the code base, and there's no mechanism to discover which bit of code touched it" — leading to "spooky action at a distance" bugs that are hard to trace back to their source. Small amounts are tolerable (Fowler's Paracelsus reference: "the difference between a poison and something benign is the dose"), but the cost grows exponentially with how much of it there is.
+Data — a global variable, a class variable, a singleton's mutable state — that any part of the codebase can read and modify, with no way to trace which code touched it. Anything can change it and nothing records who did, which leads to bugs that are hard to trace back to their source. Small amounts are tolerable (Fowler's Paracelsus reference: how harmful it is depends on how much there is), but the cost grows exponentially with how much of it there is.
 
 ### Example
 
@@ -263,7 +263,7 @@ public class UserCache {
 
 ### What it looks like
 
-Data that gets updated in place, where one part of the system changes it without realizing another part expected it to stay the same — a failure "that's particularly hard to spot if it only happens under rare conditions." This is the whole reason functional programming treats variables as never varying: an update always returns a new copy instead of mutating in place. Most of us still work in languages that allow mutation, but the same risk-reduction ideas apply at a smaller scale: narrow the surface that's allowed to update a value, and separate the code that reads/computes from the code that actually performs the update.
+Data that gets updated in place, where one part of the system changes it without realizing another part expected it to stay the same — a failure that's hard to notice when it occurs only in rare conditions. This is the whole reason functional programming treats variables as never varying: an update always returns a new copy instead of mutating in place. Most of us still work in languages that allow mutation, but the same risk-reduction ideas apply at a smaller scale: narrow the surface that's allowed to update a value, and separate the code that reads/computes from the code that actually performs the update.
 
 ### Example
 

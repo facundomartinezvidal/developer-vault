@@ -11,7 +11,6 @@ How to separate what is hard to test, how to keep tests from being fragile, and 
 
 ## The Test Boundary
 
-> Tests are not outside the system; rather, they are parts of the system that must be well designed if they are to provide the desired benefits of stability and regression.
 
 **Source:** *Clean Architecture*, Chapter 28.
 
@@ -51,7 +50,6 @@ A checkout redesign breaks zero tests in the second style, and the pricing class
 
 ## Humble Object
 
-> At each architectural boundary, we are likely to find the Humble Object pattern lurking somewhere nearby.
 
 **Source:** *Clean Architecture*, Chapter 23 (pattern originally from Meszaros, *xUnit Test Patterns*).
 
@@ -66,7 +64,7 @@ Split a behavior that's hard to test into two parts: a **humble** object that ke
 | ORM | — | **Data mapper** (ORM) — lives in the database layer, between gateway interfaces and the DB |
 | Services | Application code passes plain data structures | **Service listeners / senders** — translate to/from the wire format |
 
-Martin's aside on ORMs: there's no such thing as an "object-relational mapper", because objects aren't data structures (from the outside they're just operations). ORMs are *data mappers* — they load tables into data structures — and they belong in the outer database layer.
+Martin's aside on ORMs: the name object-relational mapper misleads, because objects aren't data structures (from the outside they're just operations). ORMs are *data mappers* — they load tables into data structures — and they belong in the outer database layer.
 
 ### Example: an invoice screen
 
@@ -105,7 +103,6 @@ The presenter gets fast unit tests (`present(overdueInvoice)` → assert the str
 
 ## Separate Constructing a System from Using It
 
-> Software systems should separate the startup process, when the application objects are constructed and the dependencies are "wired" together, from the runtime logic that takes over after startup.
 
 **Source:** *Clean Code*, Chapter 11 (Kevin Dean Wampler).
 
@@ -154,7 +151,6 @@ var checkout = new CheckoutService(new StripeGateway(config.stripeKey()));
 
 ## Pragmatic Starter Kit
 
-> Test Early, Test Often, Test Automatically. — Tip 90 &nbsp;·&nbsp; Don't Use Manual Procedures. — Tip 95
 
 **Source:** *The Pragmatic Programmer*, Topic 51 (Tips 89–95).
 
@@ -165,7 +161,7 @@ Every project needs three basics before anything else:
 1. **Version control** drives builds, tests and releases (Tip 89). A push triggers everything, and a tag deploys.
 2. **Ruthless, continuous testing:**
    - Test early, often, and automatically.
-   - "Coding ain't done 'til all the tests run" (Tip 91).
+   - Coding isn't finished until all the tests pass (Tip 91).
    - Test at every level: unit, integration, validation and verification, performance and stress, usability.
    - **Use saboteurs to test your testing** (Tip 92). Deliberately introduce bugs (mutation testing) to make sure the tests notice.
    - **Test state coverage, not code coverage** (Tip 93).

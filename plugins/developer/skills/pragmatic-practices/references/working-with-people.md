@@ -12,7 +12,6 @@ Communicating, taking responsibility, reviewing and building together, and movin
 
 ## Take Responsibility
 
-> Provide Options, Don't Make Lame Excuses. — Tip 4
 
 **Source:** *The Pragmatic Programmer*, Topics 1, 2 and 53 (Tips 1–4, 97–99).
 
@@ -26,9 +25,6 @@ The book opens and closes on ownership:
 
 ### Example
 
-> "The nightly export failed because the vendor changed their CSV format."
-> vs.
-> "The nightly export broke on a vendor format change. I've patched the parser and backfilled last night's data. To stop this recurring, I'd add a schema check that alerts us before the import runs — about half a day."
 
 ### Related
 
@@ -40,7 +36,6 @@ The book opens and closes on ownership:
 
 ## Communicate!
 
-> It's Both What You Say and the Way You Say It. — Tip 12
 
 **Source:** *The Pragmatic Programmer*, Topic 7 (Tips 11–13).
 
@@ -66,7 +61,6 @@ A pull request description with this structure: **what changed** (one line), **w
 
 ## Working Together
 
-> Don't Go into the Code Alone. — Tip 82
 
 **Source:** *The Pragmatic Programmer*, Topic 47.
 
@@ -89,11 +83,10 @@ A tricky migration of billing data across three services is done as a mob sessio
 - Pragmatic Teams
 - Communicate!
 - The Essence of Agility (`approaching-work.md`)
-- The Requirements Pit (`approaching-work.md`) — "work with a user to think like a user".
+- The Requirements Pit (`approaching-work.md`) — "work alongside users to see things as they do".
 
 ## Pragmatic Teams
 
-> Maintain Small, Stable Teams. — Tip 84 &nbsp;·&nbsp; Organize Fully Functional Teams. — Tip 86
 
 **Source:** *The Pragmatic Programmer*, Topic 49 (Tips 84–86).
 
@@ -121,7 +114,6 @@ Instead of a frontend team, a backend team and a QA team, a "Payments" team owns
 
 ## Stone Soup and Boiled Frogs
 
-> Be a Catalyst for Change. — Tip 6 &nbsp;·&nbsp; Remember the Big Picture. — Tip 7
 
 **Source:** *The Pragmatic Programmer*, Topic 4.
 

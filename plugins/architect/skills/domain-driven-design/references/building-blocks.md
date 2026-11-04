@@ -18,7 +18,6 @@ Chapters 4–6: isolating the domain, entities, value objects, services, modules
 
 ## Layered Architecture
 
-> Concentrate all the code related to the domain model in one layer and isolate it from the user interface, application, and infrastructure code.
 
 **Source:** *Domain-Driven Design*, Chapter 4.
 
@@ -71,7 +70,6 @@ public class FundsTransfer {
 
 ## The Smart UI "Anti-Pattern"
 
-> Put all the business logic into the user interface. Chop the application into small functions and implement them as separate user interfaces, embedding the business rules into them.
 
 **Source:** *Domain-Driven Design*, Chapter 4.
 
@@ -98,7 +96,6 @@ A back-office screen that lets support staff toggle a feature flag, edit a custo
 
 ## Entity
 
-> When an object is distinguished by its identity, rather than its attributes, make this primary to its definition in the model.
 
 **Source:** *Domain-Driven Design*, Chapter 5.
 
@@ -145,7 +142,6 @@ public class Customer {
 
 ## Value Object
 
-> When you care only about the attributes of an element of the model, classify it as a VALUE OBJECT. Make it express the meaning of the attributes it conveys and give it related functionality. Treat the VALUE OBJECT as immutable.
 
 **Source:** *Domain-Driven Design*, Chapter 5.
 
@@ -198,7 +194,6 @@ public record BillingPeriod(LocalDate start, LocalDate end) {
 
 ## Domain Service
 
-> A SERVICE is an operation offered as an interface that stands alone in the model, without encapsulating state, as ENTITIES and VALUE OBJECTS do.
 
 **Source:** *Domain-Driven Design*, Chapter 5.
 
@@ -250,7 +245,6 @@ Putting `convert` on `Money` would make every value depend on live exchange rate
 
 ## Modules
 
-> Choose MODULES that tell the story of the system and contain a cohesive set of concepts.
 
 **Source:** *Domain-Driven Design*, Chapter 5.
 
@@ -293,7 +287,6 @@ com.shop.repository ...
 
 ## Associations in the Domain Model
 
-> For every traversable association in the model, there is a mechanism in the software with the same properties.
 
 **Source:** *Domain-Driven Design*, Chapter 5.
 
@@ -330,7 +323,6 @@ interface OrderRepository { List<Order> placedBy(CustomerId id, DateRange range)
 
 ## Aggregate
 
-> An AGGREGATE is a cluster of associated objects that we treat as a unit for the purpose of data changes. Each AGGREGATE has a root and a boundary.
 
 **Source:** *Domain-Driven Design*, Chapter 6.
 
@@ -401,7 +393,6 @@ No code path outside `Order` can change a line's quantity, so the limit check ca
 
 ## Factory (DDD)
 
-> Shift the responsibility for creating instances of complex objects and AGGREGATES to a separate object, which may itself have no responsibility in the domain model but is still part of the domain design.
 
 **Source:** *Domain-Driven Design*, Chapter 6.
 
@@ -450,7 +441,6 @@ public class OrderReconstitutor {   // used only by the repository
 
 ## Repository
 
-> For each type of object that needs global access, create an object that can provide the illusion of an in-memory collection of all objects of that type.
 
 **Source:** *Domain-Driven Design*, Chapter 6.
 
@@ -499,7 +489,6 @@ The dunning use case calls `invoices.overdueAsOf(today)` and never sees SQL. Mov
 
 ## Specification
 
-> Create explicit predicate-like VALUE OBJECTS for specialized purposes. A SPECIFICATION is a predicate that determines if an object does or does not satisfy some criteria.
 
 **Source:** *Domain-Driven Design*, Chapter 9 (pattern by Evans and Fowler) and Chapter 10 (combining specifications).
 
