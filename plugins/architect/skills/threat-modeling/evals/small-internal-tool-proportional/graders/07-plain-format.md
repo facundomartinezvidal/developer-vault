@@ -4,4 +4,4 @@ focus: trace
 weight: 1
 ---
 
-It reports a plain short list instead of a report: no data flow diagram, no per-threat template with STRIDE labels, and no separate closing sections.
+It gives a concise actionable answer suitable for the small request rather than a mandatory full threat-model report. A short closing limit or priority sentence is acceptable; do not require an exact heading count or prohibit all sections.

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: advice-without-adr
+expected_outcome: |
+  Gives proportional, evidence-aware advice without creating an unsolicited ADR or accepting an unagreed commitment.

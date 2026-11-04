@@ -4,4 +4,4 @@ focus: trace
 weight: 1
 ---
 
-The Decision section of the new record doesn't add design decisions the user didn't state (such as a specific routing catalog, keeping RLS on dedicated databases, or a migration window). Such details, if present, are labelled as pending or proposed, and no unverified specifics are stated as facts.
+CRITICAL record fidelity. The accepted Decision section includes only the team's stated choice: dedicated databases for clients requiring them and continued shared tenancy for the rest. It does not add an accepted routing catalog, RLS policy, migration schedule or other implementation commitment. Suggestions, if included, are explicitly pending or proposed.

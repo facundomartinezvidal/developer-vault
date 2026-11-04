@@ -1,6 +1,6 @@
 ---
 name: architecture-documentation
-description: Documents and diagrams software architecture with the C4 model — system context, container, component and supplementary (deployment, dynamic, landscape) views in Mermaid or Structurizr, chosen for a specific audience and derived from the real system. Use it whenever someone wants an architecture diagram or overview, needs to explain how a system or its services fit together, is onboarding people, preparing a design doc or a presentation for management, or wants the architecture section of a README, even if they don't mention C4. Also covers Spanish requests like "diagrama de arquitectura", "documentá la arquitectura", "explicar cómo está armado el sistema", "armar un diagrama para gerencia", "mapa de servicios". Not for class diagrams of one module, ER diagrams alone, or API reference documentation.
+description: Documents software architecture for a specific audience using C4 context/container/component views, flow or deployment diagrams, and focused class diagrams when type relationships explain the design. Use for architecture overviews, onboarding, stakeholder presentations, "diagrama de arquitectura", "documentá cómo está armado" or a requested view of an established domain model. Derive diagrams from evidence and distinguish current design from proposals. Not for inventing business rules, API reference docs or ER diagrams alone.
 ---
 
 # Architecture Documentation
@@ -19,40 +19,43 @@ Ask who will read it if you can't tell, because that picks the level. If you hav
 | How a specific flow works across pieces | **Dynamic** or sequence diagram, for that one flow |
 | Where it runs, for operators and security | **Deployment** |
 | How several systems relate across the organization | **System landscape** |
+| How a few types collaborate or express an established domain model | **Focused class diagram**, with only the relevant relationships |
 
-Only draw levels that add value. Skip code-level diagrams: they go stale immediately and IDEs generate them on demand. Skip component diagrams unless the container is complex enough that a reader would otherwise be lost.
+Choose the smallest set of views that answers the question; the table is a default, not a requirement to produce every view. Reuse a supplied view if it is sufficient and correct it only where evidence requires. Code-level diagrams usually add maintenance cost; use them when explicitly useful to the request. Skip component diagrams unless a reader needs that internal detail.
 
 ## 2. Get the abstractions right
 
 The vocabulary is what makes C4 useful, and misuse is its most common error.
 
 - **Person:** a user role.
-- **Software system:** the highest level of what delivers value, usually owned by one team. Things you don't own (Stripe, the corporate ERP) are external systems.
-- **Container:** something that must be running, or that stores data, for the system to work: a web app, API, worker, database, queue, bucket. It's a deployable or runtime boundary and has nothing to do with Docker: a serverless function counts, and a sidecar may just be infrastructure detail.
+- **Software system:** a unit that delivers value to users. Choose and state the system of interest; external means outside that boundary, not necessarily outside the company. Team ownership is a useful clue, not a rule that every team or bounded context is a system.
+- **Container:** an application or data store: a web app, API, worker, database schema, queue or bucket. It is a logical runtime boundary, not a Docker container or a physical server. A team-controlled schema on managed RDS or a bucket on S3 can be inside the system even though a provider operates the infrastructure. Keep runtime instances and physical hosting in the deployment view.
 - **Component:** a grouping of related code behind an interface, inside one container. It isn't separately deployable.
 
-Frequent mistakes to avoid: drawing a library or framework as a container; showing a shared Postgres server as one box when two systems own separate schemas (or as two when it really is shared, which is itself worth showing); treating each microservice's internals as part of one big diagram.
+Avoid drawing a library as a running application, or deriving logical data ownership solely from a shared physical server. Separate schemas can represent distinct logical stores; shared access to the same data is a dependency worth showing. Declare which logical stores and responsibilities the view represents. Do not mix every microservice's internals into one container view.
 
 ## 3. Derive it from reality
 
-When there is a repository, build the picture from evidence, in roughly this order: deployment manifests (`docker-compose`, Kubernetes, Terraform, serverless config), then environment variables and client SDKs for external dependencies, then entrypoints and routes, then message topics and queue consumers. Read how things are actually connected. A README describing the intended design may be out of date.
+First establish whether the requested view describes the current system, a proposal, or a particular environment. Build it from deployment/runtime evidence, configuration, entrypoints, clients and message consumers; compare these with documentation and its date. A development compose file establishes local topology, not production. Source code shows supported paths, not which feature flag or transport is enabled there. Resolve conflicting evidence by scope, provenance and recency; do not silently choose one source as universally authoritative.
 
-Report what doesn't add up instead of smoothing it over: a service nothing calls, a dependency used in code but absent from the manifests, two services writing to the same tables, or a docs-versus-code mismatch. These findings are often worth more than the diagram.
+Report contradictions and missing evidence rather than smoothing them over: a configured dependency absent from manifests, shared writes, or a docs-versus-code mismatch. No inbound call found in the inspected files means an unknown invocation path, not proof that a service is unused; batch schedules, external callers and deployments may live elsewhere. Distinguish observed coupling from a design defect and describe the practical consequence before recommending change.
 
-Keep inference honest. If the code doesn't tell you what a relationship carries or who a user is, mark it as an assumption in the text or leave the detail out. A precise-looking diagram with invented facts is worse than none. Cite the file that supports each non-obvious element.
+Keep known facts, inferences and unknowns distinct in both diagram and accompanying text. Do not draw an assumed relationship with the same certainty as a verified one. If protocol, identity, deployment or ownership is unknown, label it unknown or omit the detail and ask the question that would resolve it. Cite `file:line` or the supplied source for non-obvious elements and contradictions. Produce the useful verified portion rather than refusing the whole task because one edge is uncertain.
 
 ## 4. Draw it clearly
 
 - **Title** stating type and scope: "Container diagram: Billing Platform".
-- **Each element** shows its name, its type, a short responsibility, and for containers and components its technology.
-- **Each line** is one-way, labeled with its intent ("publishes invoice events to"), never just "uses". Between containers, add the protocol or technology.
+- **Each element** shows its name, type and a short responsibility. Add technology for containers/components when verified; mark unknown details rather than guessing.
+- **Each line** is one-way and labeled with its intent ("publishes invoice events to"), not just "uses". Between containers, add the verified protocol or technology; label missing evidence explicitly when the relationship itself is known.
 - **A key or legend** whenever shapes or colors carry meaning, and acronyms spelled out for the audience.
 - **The system boundary** is drawn so it is clear what is inside and what is external.
 - **Aim for about 20 elements or fewer.** If it doesn't fit, split by flow or by subsystem rather than shrinking the text.
 
 For a non-technical reader, drop protocols and technologies and describe relationships in business terms.
 
-Use Mermaid by default, since it renders in GitHub and is reviewable as text; match whatever the repo already uses (Structurizr DSL, PlantUML). `references/c4-mermaid.md` has ready patterns. Check that every diagram is valid before handing it over: quoted labels, unique ids.
+Use Mermaid by default as reviewable text; match the repository's established format and the target renderer. `references/c4-mermaid.md` has patterns and validation guidance. Check labels, IDs, boundaries and correspondence with the evidence. When a renderer is available, render the exact artifact and inspect it for parsing errors, clipped labels and ambiguous edges. Record the tool/result; a syntax review or a successful parse alone is not a successful visual inspection. If rendering is unavailable, state that limitation without claiming the diagram was rendered or is validated everywhere.
+
+A class diagram is a supplementary code/model view, not another name for a C4 component view. Use one when the request or an important relationship warrants it. Show the relevant types, responsibilities, cardinalities and ownership using `classDiagram` (or the repository's notation). Distinguish composition, references and inheritance; do not infer lifecycle ownership from a foreign key or draw inheritance merely because types share fields. Avoid dumping every member from an ORM. If the business meaning is disputed, document the hypothesis and use domain modeling to settle it rather than making the diagram look authoritative.
 
 ## 5. Package and keep it alive
 

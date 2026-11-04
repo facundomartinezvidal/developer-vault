@@ -7,7 +7,7 @@
 
 ## Context
 
-The forces at play, stated as facts: the problem that forces a decision now, the ranked quality attributes, and the constraints (technical, team, budget, deadlines, compliance). Mark anything unverified as an assumption.
+The problem that forces a decision now, ranked quality attributes and constraints. Separate supplied/verified facts, assumptions and proposed targets. Omit unknown details rather than guessing them.
 
 ## Options considered
 
@@ -21,8 +21,12 @@ Only what was actually decided. If you are recording a decision someone else mad
 
 ## Consequences
 
-What becomes true after this decision: what gets easier, what gets harder, new risks and operational costs, and any follow-up work.
+Logical implications, expected benefits, costs, risks and uncertainty. Distinguish what follows from the decision from what still needs validation. Do not present proposed mechanisms, estimates, staffing or compliance outcomes as facts. Put implementation suggestions under Pending.
 
 ## Revisit when
 
 The signal or threshold that should reopen this decision.
+
+## Pending (omit if none)
+
+Unresolved questions, implementation suggestions and checks. These are not accepted commitments.

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: context-boundary-evidence
+expected_outcome: |
+  Context boundaries justified by business rules and ownership rather than nouns, with semantic translation and a proportional implementation path.

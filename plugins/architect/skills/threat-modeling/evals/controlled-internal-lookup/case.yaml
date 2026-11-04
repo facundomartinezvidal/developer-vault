@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: controlled-internal-lookup
+expected_outcome: |
+  Recognize existing controls without inventing vulnerabilities, distinguish design claims from verification, and give a proportionate scoped conclusion and checks.

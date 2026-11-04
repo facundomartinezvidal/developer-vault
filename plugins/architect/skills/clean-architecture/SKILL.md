@@ -12,12 +12,12 @@ This skill carries a personal, chapter-by-chapter study of *Clean Architecture* 
 Keep these in mind on every request; the reference files hold the detail.
 
 - **The goal is cheap change.** Architecture exists to minimize the people-cost of building and maintaining a system. Judge every structural choice by *which future change it makes cheaper or more expensive*. This is also the language to use with the user: "this makes swapping the payment provider a one-file change" lands better than "this violates DIP".
-- **Policy vs. details.** Business rules are where the value lives; the database, web, frameworks, devices and delivery mechanism are details. Keep policy ignorant of details so those decisions can be deferred or reversed.
+- **Policy vs. details.** Keep business policy ignorant of database, framework and delivery details. Domain code owns the business decision (for example price calculation or whether a suspended customer may order); a use case coordinates fetching facts, invoking that decision and persisting or delivering its result. Do not move a business rule into a use case merely because it needs data loaded there. A pure policy function is sufficient when an entity method would add no value.
 - **The Dependency Rule.** Source-code dependencies point only inward, toward higher-level policy (level = distance from inputs and outputs). When control must flow outward, the inner layer owns an interface and the outer one implements it (DIP).
-- **Data crossing a boundary is plain and shaped for the inner side.** Request/response records in, view models out. Never pass Entities outward, never pass ORM rows or framework request objects inward.
+- **Data crossing an architectural boundary is plain and shaped for its consumer.** Use dedicated request/response records where isolation is needed; do not expose inner entities as public transport contracts or pass ORM rows/framework request objects into business policy. An internal call between domain objects does not need a DTO just to satisfy a diagram.
 - **Actors are the axis of change.** SRP means "answerable to one actor", not "does one thing". Boundaries go where two sides change for different reasons at different rates. Code that looks duplicated but serves different actors is *accidental* duplication — leave it.
 - **Boundaries cost money.** A full boundary (interfaces both ways, DTOs, separate deployment) is expensive; partial boundaries and no boundary are legitimate choices. Implement a boundary at the point where ignoring it starts costing more than building it, and say explicitly which ones are being deferred.
-- **Main is the dirtiest component.** All concrete wiring (and any DI framework) lives in a composition root at the edge, so the rest of the code never names a concrete class.
+- **Main is the dirtiest component.** Concrete infrastructure wiring and any DI framework belong at the composition root. Inner policy must not name outer implementations; ordinary concrete domain types and value objects are fine.
 
 ## Choosing the mode
 
@@ -27,7 +27,9 @@ Read the request and pick one; mixed requests (e.g. "review this and tell me how
 
 First understand what is there before judging it: identify the components or packages, what each one is for (which actor), and which way the dependencies actually point — read the imports, constructor parameters, annotations and return types, since that is where violations hide. A use case that returns an ORM entity or accepts an `HttpServletRequest` looks innocent in a quick skim.
 
-Then report findings, most expensive first. For each:
+Before reporting findings, inventory the business decisions in the inspected operation: guards that permit/reject an action, calculations and state transitions. Map each to its current and proposed owner, including rules that are already correct and should be preserved. A short rule-to-owner table can expose omissions. Structural import changes do not justify silently dropping an existing rule or leaving its ownership implicit.
+
+Then report findings, most expensive first. Use the smallest code sketch that makes the correction reviewable rather than a full implementation that crowds out other rules. For each:
 
 - **What and where** — the concrete dependency or construct, with `file:line` when there is code.
 - **Principle** — the one that names it (Dependency Rule, SRP, SDP, …), in a few words.
@@ -47,7 +49,7 @@ Work from the business inward-out, not from the stack:
 5. **Packaging** — the folder/module layout, choosing between by-layer, by-feature, ports-and-adapters and by-component with the trade-off stated, and how the compiler or module system will enforce it (visibility, separate modules). An unenforced layout decays.
 6. **Main** — where wiring happens, and how tests get a fake-backed composition.
 
-Include a dependency diagram (mermaid or ASCII) where every arrow crossing a boundary points inward. Name the boundaries that are full, partial, or deliberately absent. The top-level structure should scream the domain, not the framework.
+For a structural design where a diagram helps, include a source-dependency diagram (Mermaid or ASCII) and label it as such; do not confuse dependencies with runtime calls, which can flow outward through ports. A small local question may need neither a diagram nor new layers. In the source-dependency diagram, arrows crossing policy/detail boundaries point inward. Name the boundaries that are full, partial, or deliberately absent. The top-level structure should scream the domain, not the framework.
 
 ### Explain — the user asks what something means
 

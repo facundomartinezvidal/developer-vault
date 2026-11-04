@@ -4,4 +4,4 @@ focus: trace
 weight: 1
 ---
 
-It identifies, as a concrete scenario, that tenantId from the request and/or lookup of documents by id allows cross-tenant access, ranked high.
+CRITICAL security criterion. It identifies, as a concrete scenario, that tenantId from the request and/or lookup of documents by id allows cross-tenant access, ranked high.

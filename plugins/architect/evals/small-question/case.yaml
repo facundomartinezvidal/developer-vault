@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: small-question
+expected_outcome: |
+  Select only useful skills and deliver the requested architecture advice or artifact.
