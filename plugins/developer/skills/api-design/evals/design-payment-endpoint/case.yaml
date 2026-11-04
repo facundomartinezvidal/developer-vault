@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: design-payment-endpoint
+expected_outcome: |
+  Design an endpoint for what callers experience, including retries, errors and compatibility.

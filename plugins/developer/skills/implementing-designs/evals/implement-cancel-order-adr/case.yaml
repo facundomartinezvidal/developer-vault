@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: implement-cancel-order-adr
+expected_outcome: |
+  Implement only the accepted decisions, keeping the rule in the domain, flagging the gap, and not implementing a proposal.

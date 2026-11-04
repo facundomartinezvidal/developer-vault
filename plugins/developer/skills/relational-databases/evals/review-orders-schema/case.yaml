@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: review-orders-schema
+expected_outcome: |
+  Review a schema and query for lost integrity, wrong results and injection before performance, without inventing measurements.

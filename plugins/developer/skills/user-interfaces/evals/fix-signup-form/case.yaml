@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: fix-signup-form
+expected_outcome: |
+  Improve a form for all its states and accessibility, and be honest about what was exercised.

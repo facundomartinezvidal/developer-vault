@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: estimate-unknown-provider
+expected_outcome: |
+  Give a useful estimate under real uncertainty without inventing facts, with a range, assumptions and a way to reduce the risk.

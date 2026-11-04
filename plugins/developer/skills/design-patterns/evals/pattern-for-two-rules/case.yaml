@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: pattern-for-two-rules
+expected_outcome: |
+  Decide from what actually varies, resisting a full pattern for a stable two-branch rule, and name the signal that would change the answer.

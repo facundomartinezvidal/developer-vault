@@ -1,0 +1,14 @@
+<form id="f">
+  <input id="email" placeholder="Email">
+  <input id="password" placeholder="Password">
+  <div id="go" onclick="send()">Sign up</div>
+</form>
+<script>
+async function send() {
+  const res = await fetch("/signup", {
+    method: "POST",
+    body: JSON.stringify({ email: email.value, password: password.value }),
+  });
+  if (res.status === 201) location.href = "/welcome";
+}
+</script>

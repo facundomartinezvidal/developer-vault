@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: review-documents-api
+expected_outcome: |
+  Find demonstrated vulnerabilities in TypeScript code by tracing untrusted data and access checks, with concrete fixes and no padding.
