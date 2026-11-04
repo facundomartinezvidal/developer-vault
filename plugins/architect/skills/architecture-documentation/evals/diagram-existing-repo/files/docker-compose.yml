@@ -1,0 +1,35 @@
+services:
+  web:
+    build: ./apps/web
+    ports: ["3000:3000"]
+    environment:
+      API_URL: http://api:8080
+    depends_on: [api]
+  api:
+    build: ./apps/api
+    ports: ["8080:8080"]
+    environment:
+      DATABASE_URL: postgres://app:app@postgres:5432/shop
+      RABBITMQ_URL: amqp://rabbitmq:5672
+      REDIS_URL: redis://redis:6379
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      LEGACY_REPORTS_URL: ""
+    depends_on: [postgres, rabbitmq, redis]
+  notifications:
+    build: ./apps/notifications
+    environment:
+      RABBITMQ_URL: amqp://rabbitmq:5672
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      DATABASE_URL: postgres://app:app@postgres:5432/shop
+    depends_on: [rabbitmq, postgres]
+  legacy-reports:
+    build: ./apps/legacy-reports
+    ports: ["9000:9000"]
+    environment:
+      DATABASE_URL: postgres://app:app@postgres:5432/shop
+  postgres:
+    image: postgres:16
+  rabbitmq:
+    image: rabbitmq:3.13
+  redis:
+    image: redis:7

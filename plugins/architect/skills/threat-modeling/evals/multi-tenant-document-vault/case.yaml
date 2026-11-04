@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: multi-tenant-document-vault
+expected_outcome: |
+  A prioritized threat model with trust boundaries, concrete scenarios and mitigations, led by the top risks.
+context:
+  scaffold_script: place-files.sh

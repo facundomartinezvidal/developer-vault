@@ -1,0 +1,14 @@
+{
+  "name": "developer-vault",
+  "description": "Plugins for software developers.",
+  "owner": {
+    "name": "Facundo Martinez Vidal"
+  },
+  "plugins": [
+    {
+      "name": "architect",
+      "source": "./plugins/architect",
+      "description": "Software architecture agent and skills: decisions and ADRs, C4 documentation, threat modeling, Clean Architecture, Domain-Driven Design and software design."
+    }
+  ]
+}

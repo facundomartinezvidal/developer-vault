@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: supersede-existing-adr
+expected_outcome: |
+  Writes ADR 0006 in the repo's Spanish format, reflecting the team's agreed decision, and correctly handles its relationship with ADR 3 without rewriting history.
+context:
+  scaffold_script: place-files.sh
