@@ -1,0 +1,122 @@
+{
+  "runs": [
+    {
+      "id": "collaborative-review-1",
+      "case": "collaborative-review",
+      "trial": 1,
+      "passed": true,
+      "criteria_passed": 8,
+      "criteria_total": 8,
+      "critical_failures": [],
+      "failed": [],
+      "words": 469
+    },
+    {
+      "id": "collaborative-review-2",
+      "case": "collaborative-review",
+      "trial": 2,
+      "passed": true,
+      "criteria_passed": 8,
+      "criteria_total": 8,
+      "critical_failures": [],
+      "failed": [],
+      "words": 477
+    },
+    {
+      "id": "collaborative-review-3",
+      "case": "collaborative-review",
+      "trial": 3,
+      "passed": true,
+      "criteria_passed": 8,
+      "criteria_total": 8,
+      "critical_failures": [],
+      "failed": [],
+      "words": 480
+    },
+    {
+      "id": "sound-change-1",
+      "case": "sound-change",
+      "trial": 1,
+      "passed": true,
+      "criteria_passed": 5,
+      "criteria_total": 5,
+      "critical_failures": [],
+      "failed": [],
+      "words": 140
+    },
+    {
+      "id": "partial-new-head-1",
+      "case": "partial-new-head",
+      "trial": 1,
+      "passed": true,
+      "criteria_passed": 4,
+      "criteria_total": 4,
+      "critical_failures": [],
+      "failed": [],
+      "words": 122
+    },
+    {
+      "id": "trace-guard-1",
+      "case": "trace-guard",
+      "trial": 1,
+      "passed": false,
+      "criteria_passed": 2,
+      "criteria_total": 3,
+      "critical_failures": [
+        "scope"
+      ],
+      "failed": [
+        "scope"
+      ],
+      "words": 192
+    },
+    {
+      "id": "developer-consult-1",
+      "case": "developer-consult",
+      "trial": 1,
+      "passed": true,
+      "criteria_passed": 4,
+      "criteria_total": 4,
+      "critical_failures": [],
+      "failed": [],
+      "words": 201
+    },
+    {
+      "id": "architect-consult-1",
+      "case": "architect-consult",
+      "trial": 1,
+      "passed": true,
+      "criteria_passed": 4,
+      "criteria_total": 4,
+      "critical_failures": [],
+      "failed": [],
+      "words": 166
+    },
+    {
+      "id": "delegated-coordination-1",
+      "case": "delegated-coordination",
+      "trial": 1,
+      "passed": true,
+      "criteria_passed": 5,
+      "criteria_total": 5,
+      "critical_failures": [],
+      "failed": [],
+      "words": 249
+    }
+  ],
+  "sessions_passed": 8,
+  "sessions_total": 9,
+  "first_trial_cases_passed": 6,
+  "first_trial_cases_total": 7,
+  "criteria_passed": 48,
+  "criteria_total": 49,
+  "critical_failures": 1,
+  "collaborative_pass_all_3_observed": true,
+  "pass_at_3_suite": null,
+  "limits": [
+    "First-trial fraction is descriptive for these fixtures, not a population estimate.",
+    "pass@3 for suite unavailable: most cases have one trial.",
+    "No baseline comparison or client installation verification.",
+    "Independent model grading still needs human security/communication review."
+  ]
+}

@@ -73,3 +73,7 @@ For a single session from a clone: `claude --plugin-dir plugins/developer --agen
 - Static validation: create a virtual environment, install `requirements-dev.txt`, then run `python scripts/eval_suite.py validate` from this folder. Run `python -m unittest discover -s scripts/tests -v` for evaluation-accounting checks.
 - Behavioral evaluation: `python scripts/eval_suite.py prepare --output /tmp/developer-evaluation`, then `blind` and `report`. The procedure is the same as in the architect plugin, and is described in `AGENTS.md`.
 - The scripts do not invoke or bill models. Add `--check` to the build and sync scripts in CI to catch stale output.
+
+## Consultas durante una review
+
+El agente puede responder preguntas acotadas del plugin [reviewer](../reviewer/README.md) en modo consulta: devuelve conclusión, evidencia, supuestos, contraejemplos y una recomendación proporcionada, indicando si corresponde a la PR o a un seguimiento. No edita ni publica durante esa consulta. `reviewer` integra las respuestas y acuerda con la persona todo el contenido de la review.

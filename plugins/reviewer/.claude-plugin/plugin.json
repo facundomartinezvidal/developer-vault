@@ -1,0 +1,15 @@
+{
+  "name": "reviewer",
+  "version": "0.1.0",
+  "description": "Collaborative pull request review assistant: understand intent and code, investigate evidence, consult developer or architect, and build useful peer feedback with the human reviewer.",
+  "author": {
+    "name": "Facundo Martinez Vidal"
+  },
+  "repository": "https://github.com/facundomartinezvidal/developer-vault",
+  "keywords": [
+    "code-review",
+    "pull-request",
+    "collaboration",
+    "reviewer"
+  ]
+}

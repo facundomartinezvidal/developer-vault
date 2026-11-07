@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "reviewer",
+  "version": "0.1.0",
+  "description": "Collaborative pull request review assistant: understand intent and code, investigate evidence, consult developer or architect, and build useful peer feedback with the human reviewer.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Reviewer",
+        "shortDescription": "Understand a PR and build useful feedback together",
+        "developerName": "Facundo Martinez Vidal",
+        "category": "Coding",
+        "defaultPrompt": "Help me understand this PR and build the review with me."
+      }
+    }
+  }
+}
