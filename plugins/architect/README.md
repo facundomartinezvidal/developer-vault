@@ -67,3 +67,8 @@ For a single session from a clone: `claude --plugin-dir plugins/architect --agen
 - Diagram rendering: `python scripts/render_mermaid.py <markdown-file-or-folder> --mmdc <path-to-mmdc> --output /tmp/architect-diagrams` renders the exact Mermaid fences to SVG and PNG and records tool failures. Supply `--puppeteer-config <file>` when a local browser is needed. It downloads nothing. Inspect the rendered images separately; rendering is not visual review.
 - The scripts do not invoke or bill models. `claude plugin eval` is a separate billed workflow, not required for these checks. Evaluation status, known limits and maintenance rules are in `AGENTS.md`.
 - Add `--check` to either script in CI to catch stale output.
+
+
+## Consultas durante una review
+
+El agente puede responder preguntas acotadas del plugin [reviewer](../reviewer/README.md) en modo consulta: devuelve conclusión, evidencia, supuestos, contraejemplos y una recomendación proporcionada, indicando si corresponde a la PR o a un seguimiento. No edita ni publica durante esa consulta. `reviewer` integra las respuestas y acuerda con la persona todo el contenido de la review.

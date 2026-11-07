@@ -1,0 +1,154 @@
+{
+  "completed_at": "2026-11-07T03:55:23.757653+00:00",
+  "artifacts": "/tmp/reviewer-product-eval-v1",
+  "base": {
+    "created_at": "2026-11-07T03:47:37.525287+00:00",
+    "git_head": "15e0e74e186c762a0913a468f0b7a9ab5d93626a",
+    "dirty_worktree": true,
+    "harness": "product-text-v1",
+    "model": "inherited, no override; exact provider snapshot unavailable",
+    "rubric_sha256": "89e243b46ff39fe6d9b23e528c979bee1f753c76e85abf8cb2e8228e3a17c6d0",
+    "source_sha256": {
+      "reviewer": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "code-investigator": "9ff99172a154a0c32511453fe11a45a38ca8f42d7cef67695b5e62b12ee96da0",
+      "developer": "7ca36276c3d07a82e2f23511b86ccd2e33669a19874b8ea3a33453e5c2450b28",
+      "architect": "67cd4d2a8e66fb5c5c2d7252117580dddf5e7e1febf02471393f73b517f9e859"
+    },
+    "runs": [
+      {
+        "id": "collaborative-review-1",
+        "case": "collaborative-review",
+        "trial": 1,
+        "role": "reviewer",
+        "turns": 3,
+        "response_sha256": "98ab16282bc0c644b2f0acc4f84de3762f3370639e55c330fee88f06dfb42af1",
+        "words": 469
+      },
+      {
+        "id": "collaborative-review-2",
+        "case": "collaborative-review",
+        "trial": 2,
+        "role": "reviewer",
+        "turns": 3,
+        "response_sha256": "a2ccb6ff8fc17c912d514175346f9d132ca5db275757c7d2e84c33cdff7f4272",
+        "words": 477
+      },
+      {
+        "id": "collaborative-review-3",
+        "case": "collaborative-review",
+        "trial": 3,
+        "role": "reviewer",
+        "turns": 3,
+        "response_sha256": "4995461507f7ce425d50ea9bb025f2082a5ba318cec169f7edd5877dc99cc2a8",
+        "words": 480
+      },
+      {
+        "id": "sound-change-1",
+        "case": "sound-change",
+        "trial": 1,
+        "role": "reviewer",
+        "turns": 1,
+        "response_sha256": "0e1cbd12cd740e749614031d6288f37bd2e984696045059987266407cb475a79",
+        "words": 140
+      },
+      {
+        "id": "partial-new-head-1",
+        "case": "partial-new-head",
+        "trial": 1,
+        "role": "reviewer",
+        "turns": 1,
+        "response_sha256": "142c1c9743a28924cab38161c4a2cac44c0fb758b5f4d959a1efbe801217476d",
+        "words": 122
+      },
+      {
+        "id": "trace-guard-1",
+        "case": "trace-guard",
+        "trial": 1,
+        "role": "code-investigator",
+        "turns": 1,
+        "response_sha256": "59e5be83729fd7e1634bda5ac9d94ea63eb321d9c528fd4b7f7c61fb5347b6fd",
+        "words": 192
+      },
+      {
+        "id": "developer-consult-1",
+        "case": "developer-consult",
+        "trial": 1,
+        "role": "developer",
+        "turns": 1,
+        "response_sha256": "7b4eb81188e5e9354ae581d187efa0d9d599b2d2e144dd55f6688be654ba0266",
+        "words": 201
+      },
+      {
+        "id": "architect-consult-1",
+        "case": "architect-consult",
+        "trial": 1,
+        "role": "architect",
+        "turns": 1,
+        "response_sha256": "1abd8dddead5cc57773e2f0bb21c294d0a72e4ee6e420014d2a92e5064ce824c",
+        "words": 166
+      }
+    ],
+    "artifact_recording": "After scored turns, each respondent exported its verbatim previous responses in a separate administrative turn; root compared observable messages. Export turns are excluded from scoring and word counts.",
+    "isolation": "Independent fork_turns=none contexts; instruction-based file scope, no verified OS containment. No PR code execution or live connectors.",
+    "fixture_sha256": {
+      "collaborative-review-1/user-3.md": "a24ed48bc75d8097e6dcc098f82eb9422e68283a540b6153cbd6ad89f5dde6f3",
+      "collaborative-review-1/user-2.md": "1d16d6ab4786a4078eb65c8e37c40cb3ade921d5c2750d35afb1b7f86ac306d6",
+      "collaborative-review-1/user-1.md": "bf48e92a3b76c0de00fd2ac6a6ded157862959b0747fdbe15e22be7b3139fd46",
+      "collaborative-review-1/packet.md": "ac008dba7173e7c56a983e738dae25215abef30009f3c068113f540628f77bda",
+      "collaborative-review-1/role.md": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "collaborative-review-2/user-3.md": "a24ed48bc75d8097e6dcc098f82eb9422e68283a540b6153cbd6ad89f5dde6f3",
+      "collaborative-review-2/user-2.md": "1d16d6ab4786a4078eb65c8e37c40cb3ade921d5c2750d35afb1b7f86ac306d6",
+      "collaborative-review-2/user-1.md": "bf48e92a3b76c0de00fd2ac6a6ded157862959b0747fdbe15e22be7b3139fd46",
+      "collaborative-review-2/packet.md": "ac008dba7173e7c56a983e738dae25215abef30009f3c068113f540628f77bda",
+      "collaborative-review-2/role.md": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "collaborative-review-3/user-3.md": "a24ed48bc75d8097e6dcc098f82eb9422e68283a540b6153cbd6ad89f5dde6f3",
+      "collaborative-review-3/user-2.md": "1d16d6ab4786a4078eb65c8e37c40cb3ade921d5c2750d35afb1b7f86ac306d6",
+      "collaborative-review-3/user-1.md": "bf48e92a3b76c0de00fd2ac6a6ded157862959b0747fdbe15e22be7b3139fd46",
+      "collaborative-review-3/packet.md": "ac008dba7173e7c56a983e738dae25215abef30009f3c068113f540628f77bda",
+      "collaborative-review-3/role.md": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "sound-change-1/user-1.md": "1441f4cc61730668cbb759d57d564d836fcc6af17b0530444bb240ba39b274b6",
+      "sound-change-1/packet.md": "f250cccfe7e587f6a714c88eb0fb4217491caf51df44a3a73b2bafb01c729cc9",
+      "sound-change-1/role.md": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "partial-new-head-1/user-1.md": "ff68691cb694bf3b2b97b157680e8000eb302fd0cb792af2a8dafccb0c894082",
+      "partial-new-head-1/packet.md": "d452c6f8c7c38acd5086c068dad4074a3a07d53a1d127c04c22c1b6e801e86d8",
+      "partial-new-head-1/role.md": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "trace-guard-1/user-1.md": "fb75ecb3210ae931837079af36c0cc58c0b7dcb2a76570dd0ea7759a206cf23c",
+      "trace-guard-1/packet.md": "f250cccfe7e587f6a714c88eb0fb4217491caf51df44a3a73b2bafb01c729cc9",
+      "trace-guard-1/role.md": "9ff99172a154a0c32511453fe11a45a38ca8f42d7cef67695b5e62b12ee96da0",
+      "developer-consult-1/user-1.md": "3db80e8aaff0cd1b7b9f55190c73359c02fcca0f553b253e5863da359255dd26",
+      "developer-consult-1/packet.md": "ac008dba7173e7c56a983e738dae25215abef30009f3c068113f540628f77bda",
+      "developer-consult-1/role.md": "7ca36276c3d07a82e2f23511b86ccd2e33669a19874b8ea3a33453e5c2450b28",
+      "architect-consult-1/user-1.md": "f73b65f1bd5bb5ba16cb7ec5c903a61f117251186558bc2c754bb3c601404bdc",
+      "architect-consult-1/packet.md": "f250cccfe7e587f6a714c88eb0fb4217491caf51df44a3a73b2bafb01c729cc9",
+      "architect-consult-1/role.md": "67cd4d2a8e66fb5c5c2d7252117580dddf5e7e1febf02471393f73b517f9e859"
+    }
+  },
+  "integration": {
+    "created_at": "2026-11-07T03:54:04.564205+00:00",
+    "rubric_sha256": "4463a17a349142b534a1e4aae3b787485421546d0525598e9f4f4c14aa8d86b4",
+    "runs": [
+      {
+        "id": "delegated-coordination-1",
+        "case": "delegated-coordination",
+        "trial": 1,
+        "role": "reviewer",
+        "turns": 1,
+        "response_sha256": "83ae22a638aebef4b904988bd1cc058632f67d9739c80cfd419c2fffd5ff061d",
+        "words": 249
+      }
+    ],
+    "fixture_sha256": {
+      "specialist-investigator.md": "9ff99172a154a0c32511453fe11a45a38ca8f42d7cef67695b5e62b12ee96da0",
+      "specialist-architect.md": "67cd4d2a8e66fb5c5c2d7252117580dddf5e7e1febf02471393f73b517f9e859",
+      "specialist-developer.md": "7ca36276c3d07a82e2f23511b86ccd2e33669a19874b8ea3a33453e5c2450b28",
+      "role.md": "1647ed09cd2fd7bfda005454903b9717e0f47c756bf9d08ece502b694b229ce2",
+      "user-1.md": "ab2d90c3056253f10e4fcbc8ab0510128e5402eff07316cc8b5399b8a3f19cca",
+      "packet.md": "4d33d0b422da66043cdb52428edc9e85c5e3828fd2db34190878588d772358e0"
+    },
+    "delegation_sha256": "56138821530cc836f75a0113ff9c742dc6b6a5ec2b09f7759c2868c05d31a561",
+    "delegation_observation": "Root observed investigator running, later developer and architect completed via collaboration.list_agents; response/question records exported separately by the coordinator."
+  },
+  "grader": "independent same inherited model, no forked parent history; no model override; exact provider snapshot unavailable",
+  "adjudication": "Root checked grader evidence against observed responses; no scores changed and no candidate instructions modified. Composite critical scope criterion needs separation in a future rubric; original failure retained.",
+  "cost_latency": "Token cost and per-run latency unavailable; not inferred from response length."
+}

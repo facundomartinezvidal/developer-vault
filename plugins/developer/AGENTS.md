@@ -172,3 +172,7 @@ Límites: una sola corrida por caso. Spring se evaluó solo por lectura, sin Mav
 
 - **Citas de libros:** resuelto el 2026-11-04: el repo es público y no publica citas. `sync_vault.py` descarta las citas en bloque y reescribe los pasajes de `scripts/quote_rewrites.py`, igual que en `architect`. Quedan frases cortas y títulos que coinciden con los libros, sin formato de cita. El historial de git anterior aún las tiene.
 - **Nombre del agente en Copilot:** con `--plugin-dir`, el agente se llama `developer:developer`.
+
+## Consultas de reviewer (2026-11-07)
+
+Se agregó a `src/developer.md` un modo acotado para consultas delegadas por `reviewer`: conclusión, evidencia, supuestos/contraevidencia y recomendación con costo y alcance PR/seguimiento. Sin editar ni publicar, sin decidir la review final ni iniciar cadenas de delegación. `reviewer` conserva la coordinación y la conversación con la persona. Esta integración requiere evaluación conductual; no altera los resultados históricos ni el rol normal fuera de esa consulta.

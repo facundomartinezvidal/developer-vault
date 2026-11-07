@@ -14,6 +14,11 @@
       "name": "developer",
       "source": "./plugins/developer",
       "description": "Software developer agent and skills for any language: implementing and reviewing code, framework practices for ASP.NET Core and Spring Boot, implementing architecture designs, clean code, refactoring, testing, debugging, secure coding, APIs, production readiness, user interfaces, design patterns, algorithms, relational databases and pragmatic practices."
+    },
+    {
+      "name": "reviewer",
+      "source": "./plugins/reviewer",
+      "description": "Collaborative pull request review assistant: understand intent and code, investigate evidence, consult developer or architect, and build useful peer feedback with the human reviewer."
     }
   ]
 }

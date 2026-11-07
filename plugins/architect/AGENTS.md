@@ -223,3 +223,8 @@ Se usa el procedimiento de subagentes independientes descrito en la reevaluació
 - **Dos copias de `clean-architecture`:** también existe en `skillswap/.claude/skills/clean-architecture`. La del plugin es la que se mantiene. Falta decidir si skillswap pasa a usar la del plugin.
 - **Codex:** falta probar una sesión real con modelo y el agente TOML. Solo se verificó la instalación y la carga de skills. Si Codex permite incluir agentes en plugins, reemplazar el archivo suelto.
 - **Nombre del agente en Copilot:** con `--plugin-dir`, el agente se llama `architect:architect`, no `architect`.
+
+
+## Consultas de reviewer (2026-11-07)
+
+Se agregó a `src/architect.md` un modo acotado para consultas delegadas por `reviewer`: conclusión, evidencia, supuestos/contraevidencia y recomendación con costo y alcance PR/seguimiento. Sin editar ni publicar, sin decidir la review final ni iniciar cadenas de delegación. `reviewer` conserva la coordinación y la conversación con la persona. Esta integración requiere evaluación conductual; no altera los resultados históricos ni el rol normal fuera de esa consulta.
