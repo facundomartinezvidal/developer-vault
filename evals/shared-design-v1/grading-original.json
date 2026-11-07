@@ -1,0 +1,14 @@
+{
+  "method": "Independent judge, original rubric; one textual response per case",
+  "cases": [
+    {"id":"pattern-choice","pass":true,"reason":"Compares concrete alternatives, asks before implementation, no claim of code writes."},
+    {"id":"approved-choice","pass":true,"reason":"Keeps approved State/API without reapproval; asks only for missing source."},
+    {"id":"business-gap","pass":true,"reason":"Identifies unresolved refund rules and asks before implementing a proposal."},
+    {"id":"local-detail","pass":false,"reason":"Original expectation requires performing work, but response only proposes rename and says it was not applied. Evaluation instruction had prohibited writes and execution; preserve this mismatch rather than treating it as implementation evidence."},
+    {"id":"missing-guidance","pass":true,"reason":"Compares alternatives using packaged guidance according to response; no installation prerequisite. Actual reading is not independently traced."},
+    {"id":"coordinator","pass":true,"reason":"Agent agreement remains a proposal; user choice precedes implementation."},
+    {"id":"review-scope","pass":true,"reason":"Private scoped advice, no edits or approval requirement for analysis; fixture-only evidence."},
+    {"id":"changed-plan","pass":true,"reason":"Retains approved State and rejects unapproved substitution; no redundant approval needed."}
+  ],
+  "limitations": ["Normalized evaluator transcriptions, not raw tool traces", "Text-only cases, no implementation or runtime containment proof", "One response per case; no stability estimate", "Initial judge package lacked additional fixture/context given to solvers"]
+}

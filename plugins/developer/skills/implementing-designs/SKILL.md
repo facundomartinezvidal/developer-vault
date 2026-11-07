@@ -14,7 +14,7 @@ Find the sources: ADRs, diagrams, threat models, the architect's answer, and pro
 | Kind | How to treat it |
 |---|---|
 | Accepted decision | Binding. Implement it. |
-| Plan from the architect that the person asks you to implement | Binding for its goal, scope, what to preserve, structure and acceptance checks. Its steps are a suggested order. Its open questions remain open. |
+| Plan from the architect that the person asks you to implement | Follow its approved choices, scope and acceptance checks. Verify the approval source; the architect authoring a plan does not approve unseen new choices for the user. Pending design and business decisions remain pending. |
 | Proposed or draft ADR | Not a commitment. Don't implement it unless the person says so. |
 | Superseded or deprecated | Follow the newer record, including what a partial supersession leaves in force. |
 | "Pending" or suggested in an ADR | Options, not requirements. |
@@ -27,7 +27,7 @@ Then look for what it leaves open. For each rule or operation, ask what happens 
 ## 2. Handle gaps and conflicts honestly
 
 - **A technical detail is left open:** choose the simplest option consistent with the design and the project, and say so. Small implementation choices are yours to make.
-- **A behavior is left open:** keeping what the code does today is a reasonable default, but it's still a decision that the design didn't make, and without being told, the person will assume that the design covers it. Name it as a gap: what the design doesn't define, what the code does for now, and who should confirm it. For example: "the ADR doesn't say what happens when a coupon is redeemed after it expires during checkout; the code still accepts it, please confirm."
+- **A behavior is left open:** keeping what the code does today is a reasonable default, but it's still a decision that the design didn't make, and without being told, the person will assume that the design covers it. Name it as a gap and ask the user before implementing a new business or design choice. Preserve existing behavior where that does not decide the open question; continue independent work while waiting. Explain what the design does not define and who must decide. For example: "the ADR doesn't say what happens when a coupon is redeemed after it expires during checkout; accepting an expired coupon is unspecified; should checkout reject it or honor the earlier price?"
 - **The design can't work as written,** or conflicts with the code, the framework, another decision or the request: stop on that point and show the concrete conflict. Propose the smallest deviation as a proposal. Don't silently reinterpret it, and keep working on what isn't affected.
 - **A new structural decision appears:** return it to the architect agent if available, or mark it as a proposal for the person. Don't write an ADR as accepted on your own.
 - **Business rules:** don't invent them. Ask, or mark as an assumption that needs confirming.

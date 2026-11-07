@@ -77,3 +77,28 @@ For a single session from a clone: `claude --plugin-dir plugins/developer --agen
 ## Consultas durante una review
 
 El agente puede responder preguntas acotadas del plugin [reviewer](../reviewer/README.md) en modo consulta: devuelve conclusión, evidencia, supuestos, contraejemplos y una recomendación proporcionada, indicando si corresponde a la PR o a un seguimiento. No edita ni publica durante esa consulta. `reviewer` integra las respuestas y acuerda con la persona todo el contenido de la review.
+
+## Shared knowledge and design approval
+
+New decisions about applicable patterns, boundaries, contracts, business rules,
+consistency and failure behavior are proposed to the user before dependent
+implementation. Existing approvals are reused; local coding details remain
+within the implementer's discretion. Read-only review remains analysis only.
+The coordinating agent checks approval evidence before handing off implementation;
+agreement between agents is not user approval. Pending decisions do not block
+independent authorized work.
+
+The role includes selected guidance owned by the other plugin as generated,
+private references under `skills/developer/references/shared/`. This works without
+installing that plugin and does not grant its role or write permissions. Read
+only relevant references, rather than loading the entire collection.
+
+Maintenance requires a full repository checkout. Edit the owning specialist's
+source, `src/developer.md`, or `shared/decision-protocol.md`, then regenerate **both**
+plugins. `scripts/shared_guidance.py` defines ownership and packaging;
+`build_agents.py --check` detects source drift. Do not edit generated copies.
+Run `python3 -m unittest discover -s scripts/tests -v` from the repository root
+for shared-package and client-format checks. Behavioral evaluation and its
+limits are recorded in `evals/shared-design-v1/summary.md` at the repository root.
+
+These rules are instructions, not a runtime permission or approval mechanism.

@@ -14,10 +14,12 @@ Tools disagree on agent formats, so the one source becomes:
 """
 
 import re
+import runpy
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+SHARED = runpy.run_path(str(ROOT.parent.parent / "scripts/shared_guidance.py"))
 NOTICE = "<!-- Generated from src/developer.md by scripts/build_agents.py. Do not edit. -->\n"
 
 
@@ -26,7 +28,8 @@ def read_source():
     match = re.match(r"---\nname: (.+)\ndescription: (.+)\n---\n\n(.*)\Z", text, re.S)
     if not match:
         sys.exit("src/developer.md: expected frontmatter with name and description")
-    return match.groups()
+    name, description, body = match.groups()
+    return name, description, SHARED["expand_protocol"](body)
 
 
 def yaml_string(value):
@@ -49,6 +52,7 @@ def outputs():
     frontmatter = f"---\nname: {name}\ndescription: {yaml_string(description)}\n---\n\n"
     markdown = frontmatter + NOTICE + "\n" + body
     return {
+        **SHARED["shared_outputs"]("developer"),
         "agents/developer.md": markdown,
         "com.github.copilot/agents/developer.agent.md": markdown,
         "skills/developer/SKILL.md": markdown,
@@ -58,8 +62,11 @@ def outputs():
 
 def main():
     check = "--check" in sys.argv[1:]
-    stale = []
-    for rel, content in outputs().items():
+    generated = outputs()
+    stale = SHARED["unexpected_shared_files"](ROOT, generated)
+    if stale:
+        sys.exit("Unexpected shared files; review and remove obsolete generated copies:\n" + "\n".join(stale))
+    for rel, content in generated.items():
         path = ROOT / rel
         if check:
             if not path.is_file() or path.read_text(encoding="utf-8") != content:

@@ -47,3 +47,17 @@ Usar la skill `eval-harness` para evaluar cada agente nuevo y los cambios de com
 - **Medir sin exagerar:** registrar intentos, fallos, extensión y costo/latencia cuando se puedan medir. Informar `pass@k` y `pass^k` solo con intentos comparables suficientes y explicar qué se contó como éxito. Una corrida no demuestra estabilidad ni una ventaja frente a otra variante no evaluada.
 - **Registrar y mantener:** conservar definiciones y resumen durable de resultados en el plugin, con ubicación de artefactos crudos, límites y pendientes. Repetir las pruebas afectadas después de cambios respaldados por fallos observados; conservar los resultados previos. No ajustar instrucciones solo para satisfacer ejemplos conocidos.
 - **Respetar ejecución y permisos:** usar el procedimiento de sesiones independientes del repo, sin scripts que invoquen modelos pagos. No sortear negativas del harness ni confundir aislamiento por instrucciones con aislamiento del sistema. Si una herramienta impide ejecutar candidatos por falta de contención, respetar ese límite y declarar qué modalidades de evaluación sí se realizaron.
+
+## Fuentes compartidas y coordinación
+
+`shared/decision-protocol.md` es la fuente del protocolo de decisiones de architect
+y developer; los generadores la insertan en sus cuatro formatos. El coordinador
+debe comprobar decisiones aprobadas antes de delegar implementación, reunir
+preguntas pendientes y no sustituir la aprobación humana por consenso de agentes.
+Respetar decisiones ya aprobadas y resolver detalles locales dentro de ese alcance.
+
+`scripts/shared_guidance.py` empaqueta guías del plugin propietario como referencias
+privadas del otro rol, sin material de evaluación. Una sola fuente mantenida por
+tema; las copias de distribución son generadas. Regenerar **ambos** plugins y correr
+sus `--check`, más `python3 -m unittest discover -s scripts/tests -v` desde la raíz.
+Estos tests comprueban empaquetado y equivalencia, no confiabilidad del agente.

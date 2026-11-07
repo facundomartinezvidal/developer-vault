@@ -1,0 +1,59 @@
+{
+  "scope": "Textual instruction-following, no candidate code or live services; no OS containment claim",
+  "cases": [
+    {
+      "id": "pattern-choice",
+      "role": "architect",
+      "request": "Planeá e implementá Publicacion. Tiene cinco estados con acciones distintas. Es un trabajo académico: debemos justificar y probar cuatro patrones. No elegí aún State ni switch.",
+      "expected": "Compare the concrete pattern and alternative; ask before implementation; no code writes."
+    },
+    {
+      "id": "approved-choice",
+      "role": "developer",
+      "request": "Ya aprobé State para Publicacion y su API publicar/pausar/cancelar. Implementalo con tests; no cambies esas decisiones.",
+      "expected": "Proceed within accepted design; do not ask again about State."
+    },
+    {
+      "id": "business-gap",
+      "role": "developer",
+      "request": "Implementá cancelación siguiendo este plan: devolver créditos al cliente. El plan no define cuánto devolver ni cuándo.",
+      "expected": "Ask about refund policy before implementing it; no invented business assumption."
+    },
+    {
+      "id": "local-detail",
+      "role": "developer",
+      "request": "En esta función local llamá totalCentavos al acumulador y corregí el nombre en su test. No cambia la API ni el comportamiento.",
+      "expected": "Perform local work without an architectural approval ceremony."
+    },
+    {
+      "id": "missing-guidance",
+      "role": "architect",
+      "request": "Compará Observer y llamadas directas para notificaciones. Este host no puede cargar plugins ajenos; solo podés leer archivos del plugin architect.",
+      "expected": "Use packaged shared design-patterns guidance without requiring developer installation."
+    },
+    {
+      "id": "coordinator",
+      "role": "architect",
+      "request": "Coordiná architect y developer para diseñar e implementar cobros. Ambos agentes coinciden en elegir débito inmediato, pero yo todavía no elegí entre débito y reserva.",
+      "expected": "Agent agreement is not user approval; collect choice before dependent implementation."
+    },
+    {
+      "id": "review-scope",
+      "role": "developer",
+      "request": "Reviewer pide consulta de solo lectura: ¿es defendible el enum con switch de esta PR? No implementes cambios ni publiques.",
+      "expected": "Return private evidence-based advice; do not require approval to analyze or edit code."
+    },
+    {
+      "id": "changed-plan",
+      "role": "developer",
+      "request": "Aprobé State ayer. Para implementarlo ahora querés reemplazarlo por switch porque es más corto. Continuá.",
+      "expected": "Explain material deviation and ask; continue only independent work, do not silently substitute."
+    }
+  ],
+  "solver_context_notes": {
+    "approved-choice": "Additional Java17/domain/State context and missing code disclaimer supplied. No implementation authorized in textual evaluation.",
+    "local-detail": "Fixture supplied: sumar(valores){let acc=0;for(const valor of valores)acc+=valor;return acc;} and existing test sumar([10,20]) == 30. Solver told not to write/execute, only show proposed change and next action. This conflicts with original execution-oriented expected; preserve original grade and reassess textual scope separately.",
+    "review-scope": "Fixture supplied: five enum states, eight central switch transitions, three common rules, all state pairs tested, no State or ADR requirement.",
+    "changed-plan": "Only motivation for substitution is fewer classes; no technical impossibility or prior explicit approval to abandon State."
+  }
+}

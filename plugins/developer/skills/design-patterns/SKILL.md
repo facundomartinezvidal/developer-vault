@@ -10,9 +10,11 @@ This skill carries a personal study of the classic patterns as reference files. 
 ## Choosing
 
 1. **Name the concrete problem.** What varies? What change is expensive today, and is it actually happening? Read the current code and its callers.
-2. **Try the simplest option first.** A function, a lookup table, a first-class function or a language feature is often enough. Many patterns collapse in languages with closures, modules, algebraic data types or decorators. Say so when that's the case.
+2. **Compare with the simplest option.** A function, a lookup table, a first-class function or a language feature is often enough. Many patterns collapse in languages with closures, modules, algebraic data types or decorators. Say so when that's the case.
 3. **Compare the candidates.** Patterns with the same structure can differ in intent: Strategy and State, Decorator and Proxy, Adapter and Facade. Decide by what the code is trying to do, using the table below.
 4. **State the cost.** Extra types, indirection and harder navigation. Say what would make it worth it, and what would mean you should leave it out for now.
+
+Prioritize applicable project requirements, including academic goals. When deciding to apply or discard a concrete relevant pattern, present the recommendation, alternative and costs to the user before implementation unless that choice is already approved. A request for analysis alone needs no approval to compare options. Do not force a pattern without a real variation.
 
 Refactor toward a pattern when the need has appeared, rather than building for it up front. If an existing pattern is unused flexibility, such as a factory with one product or a strategy with one implementation, recommending its removal is a valid answer.
 

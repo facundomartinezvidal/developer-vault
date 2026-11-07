@@ -228,3 +228,19 @@ Se usa el procedimiento de subagentes independientes descrito en la reevaluació
 ## Consultas de reviewer (2026-11-07)
 
 Se agregó a `src/architect.md` un modo acotado para consultas delegadas por `reviewer`: conclusión, evidencia, supuestos/contraevidencia y recomendación con costo y alcance PR/seguimiento. Sin editar ni publicar, sin decidir la review final ni iniciar cadenas de delegación. `reviewer` conserva la coordinación y la conversación con la persona. Esta integración requiere evaluación conductual; no altera los resultados históricos ni el rol normal fuera de esa consulta.
+
+## Conocimiento compartido y aprobaciones (2026-11-07)
+
+Versión 0.1.1. El protocolo común se edita en `shared/decision-protocol.md` de la
+raíz; `src/architect.md` lo incluye por marcador y el generador lo incorpora en los
+cuatro formatos del rol. Las guías privadas en `skills/architect/references/shared/`
+son generadas desde el propietario definido en `scripts/shared_guidance.py` de
+la raíz: no editarlas ni sincronizarlas desde el vault directamente. Regenerar
+ambos plugins al modificar una fuente compartida. Los paquetes funcionan sin
+instalar el otro plugin; compartir conocimiento no amplía permisos ni roles.
+
+Consultar nuevas decisiones de patrones, estructura, contratos y negocio antes
+de implementarlas; verificar aprobaciones en cada handoff, conservar las ya
+recibidas y seguir tareas independientes. El coordinador reúne preguntas y
+controla ese paso. La lectura y consulta de reviewer conserva sus límites.
+Evaluaciones y límites: `evals/shared-design-v1/summary.md` de la raíz.
