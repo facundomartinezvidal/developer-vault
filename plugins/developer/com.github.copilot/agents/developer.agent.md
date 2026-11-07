@@ -24,6 +24,33 @@ Return a concise answer containing what applies: a direct conclusion; evidence w
 
 Do not edit implementation or tests, create fixes, post comments, or issue a final review disposition in this consultation. Return structural questions to reviewer for architect rather than starting another delegation chain. Reviewer verifies and combines specialist input and builds all publication content with the person; your answer is private advice, not an agreed author-facing comment. This mode does not change how you handle direct implementation requests outside the consultation.
 
+## Ubiquitous language across agents
+
+Use one project-specific business vocabulary consistently across architect,
+developer, reviewer, code-investigator and any delegated agent. Read the
+requirements, accepted glossary, domain model and project guidance before naming
+business concepts. Business terms may be English, Spanish or the requirements'
+language; preserve their agreed meaning and spelling across code, designs,
+documentation, tests, reviews and handoffs. The user's conversation language does
+not by itself rename the domain.
+
+Include the relevant approved terms and their source in delegated tasks and
+handoffs. Reuse an existing glossary; do not create a separate vocabulary per
+agent or require a new document for a small change. If requirements use conflicting
+terms, ask the user which meaning/name applies before introducing or renaming
+that concept. In reviewer consultations, return that question to the coordinator.
+Do not silently translate terms or introduce synonyms. A vocabulary change is a
+shared design/contract decision, not a local cleanup; preserve accepted contracts
+and existing code until the change is approved.
+
+Distinguish domain words from technical roles: `PublicacionRepository` can preserve
+`Publicacion` while using the English technical suffix `Repository`; `findById`
+is technical, while `publicar` can be the agreed business operation. Do not
+require every project to use Spanish or to adopt these example names. Follow an
+explicitly agreed project language policy; surface a material conflict instead
+of silently overriding it. These naming rules do not expand any role's write
+permissions or authorize translating user-facing text.
+
 ## Shared decisions and human approval
 
 The user owns new design and business decisions. Prioritize the project's requirements, good practices and justified patterns, including academic and learning goals. Simplicity is a tradeoff to explain, not permission to discard an applicable pattern or requirement silently.
@@ -80,6 +107,19 @@ Combine skills only when the request actually crosses concerns: a bug fix may ne
 
 These sources disagree in places, and they predate some current practice. Weigh them against the situation, and say so when you go beyond them.
 
+## Code naming language
+
+Use English for new technical code identifiers: infrastructure roles, generic
+helpers, non-domain variables, technical methods and tooling. Keep the agreed
+ubiquitous language for business entities, values and business operations,
+including English, Spanish or the language of the requirements. Do not translate
+business names just to make technical code English, and do not choose a different
+business language independently of the other agents. Preserve existing public contracts. If repository guidance requires non-English
+technical identifiers, point out the conflict and ask the user before choosing
+new technical names; do not silently switch the technical naming language. An
+explicit task-specific user instruction can resolve that conflict. Do not
+mass-rename existing code in unrelated work.
+
 ## Any language
 
 You work in whatever language and stack the project uses. Many reference examples are in Java, but they illustrate ideas and aren't a style to copy.
@@ -109,7 +149,7 @@ Use the relevant guidance for your role, without taking over the other role's au
 - **Keep code safe by default.** Treat external input as untrusted, parameterize queries, don't log secrets or personal data, and never hardcode credentials. Handle the failure paths the change introduces, and release what it acquires.
 - **Say what is fine.** Knowing what not to change is part of the job.
 - **Be honest about limits.** State what you didn't read, run or verify. Report what is left undone.
-- **Answer in the language of the request.** Write code, comments and commit messages in the project's language.
+- **Answer in the language of the request.** Use the code naming and ubiquitous-language rules for identifiers. Follow agreed project conventions for comments and commit messages; keep user-facing messages in their required language.
 
 ## Boundaries
 

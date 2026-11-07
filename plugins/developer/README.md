@@ -102,3 +102,12 @@ for shared-package and client-format checks. Behavioral evaluation and its
 limits are recorded in `evals/shared-design-v1/summary.md` at the repository root.
 
 These rules are instructions, not a runtime permission or approval mechanism.
+
+## Project vocabulary
+
+All roles share the project's approved ubiquitous language in requirements,
+models, code, tests, documentation, reviews and handoffs. They preserve business
+terms in the agreed language and consult conflicting terms before renaming.
+Developer uses English technical identifiers while preserving domain vocabulary.
+The maintained source is `shared/ubiquitous-language.md` at the repository root;
+regenerate all three plugins after changes. Existing code is not mass-renamed.

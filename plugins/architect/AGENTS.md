@@ -244,3 +244,13 @@ de implementarlas; verificar aprobaciones en cada handoff, conservar las ya
 recibidas y seguir tareas independientes. El coordinador reúne preguntas y
 controla ese paso. La lectura y consulta de reviewer conserva sus límites.
 Evaluaciones y límites: `evals/shared-design-v1/summary.md` de la raíz.
+
+## Lenguaje ubicuo compartido (2026-11-07)
+
+`shared/ubiquitous-language.md` de la raíz se inserta en las instrucciones de los
+cuatro roles. Mantener los términos acordados del negocio en requisitos, modelos,
+código, tests, documentación, reviews y delegaciones; consultar ambigüedades antes
+de introducir traducciones o sinónimos. Developer usa inglés para nombres técnicos,
+con términos de dominio en el idioma acordado. No renombrar código existente fuera
+del alcance ni traducir textos de usuario. Regenerar los tres plugins al cambiar
+esa fuente; no editar las salidas. Evaluación: `evals/code-language-v1/` de la raíz.

@@ -1,0 +1,12 @@
+{
+  "shared/ubiquitous-language.md": "804d91b35934c628ad2e2dafc318bce9a2053334103d00b5fed7a34d98cd391a",
+  "scripts/shared_guidance.py": "067fd5a2a90d9541cfc5ff584675d088886731697cdfb41bfbb40da5b1016f0c",
+  "plugins/architect/src/architect.md": "4608803c3e5d9b2c0d0f5db2a0c902db1ee8e4419981bc2e461380e1012679b9",
+  "plugins/architect/skills/architect/SKILL.md": "d4b4866a4c1aeadd334d83e0867fb91a02199d375612b003ac3c6ae8ed66007c",
+  "plugins/developer/src/developer.md": "452768057504805449c996f1608752b329344ed92c1f23389cb7ce8386bd23f4",
+  "plugins/developer/skills/developer/SKILL.md": "d82a1138af4ef4a099470485e32f953fea5a62e4f931d8f8291fcc398fe13b6a",
+  "plugins/reviewer/src/reviewer.md": "0935fd77233c4b81dd3fbac3a14d4a3ddb1a4874525c1e539a3df251845b6b90",
+  "plugins/reviewer/skills/reviewer/SKILL.md": "69f0e6ee3e196aea61f2fa9ca093c31a80c62230e194ce94c74116f8f1795268",
+  "plugins/reviewer/src/code-investigator.md": "4e336b9768d0c0d85c7900e74046cc4973e1f72a20495ee2bdf60bd038ea7be4",
+  "plugins/reviewer/skills/code-investigator/SKILL.md": "ed4d431d385764ba70facb18b9d5cb09182dace6658d4aa8af87dc308d164707"
+}

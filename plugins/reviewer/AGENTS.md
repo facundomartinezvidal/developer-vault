@@ -34,3 +34,13 @@ Validación estática inicial: `build_agents.py --check`, `quick_validate.py`, J
 Nueve ejecuciones puntuadas en siete escenarios: 8/9 completas, 48/49 criterios. Colaboración de tres turnos: 3/3 repeticiones. Coordinación con investigador y ambos especialistas: 1/1. Un fallo según rúbrica original: el investigador enumera incertidumbres sin proponer explícitamente cómo verificarlas; el criterio compuesto `scope` mezcla esa cobertura con límites de actuación y debe separarse antes de usarlo como gate. Se preserva la calificación original, sin cambios de prompts ni retries correctivos. Fracción de primer intento por escenario: 6/7; no hay pass@3 de suite ni comparación con una variante sin instrucciones.
 
 Fuentes y fixtures congelados por hash, candidatos sin rúbricas, juez independiente y revisión de evidencia. Resumen durable en `evals/behavior-v1/summary.md`, resultados y metadata al lado; crudos en `/tmp/reviewer-product-eval-v1/` (temporales). La prueba usa snapshots sintéticos, sin ejecutar código de PRs ni conectores; no demuestra contención del SO ni instalación en clientes. Queda juicio humano sobre seguridad/utilidad y ampliar casos antes de afirmar confiabilidad. Los scripts de esta evaluación no invocan modelos.
+
+## Lenguaje ubicuo compartido (2026-11-07)
+
+`shared/ubiquitous-language.md` de la raíz se inserta en las instrucciones de los
+cuatro roles. Mantener los términos acordados del negocio en requisitos, modelos,
+código, tests, documentación, reviews y delegaciones; consultar ambigüedades antes
+de introducir traducciones o sinónimos. Developer usa inglés para nombres técnicos,
+con términos de dominio en el idioma acordado. No renombrar código existente fuera
+del alcance ni traducir textos de usuario. Regenerar los tres plugins al cambiar
+esa fuente; no editar las salidas. Evaluación: `evals/code-language-v1/` de la raíz.

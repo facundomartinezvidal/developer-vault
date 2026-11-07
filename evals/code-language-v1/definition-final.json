@@ -1,0 +1,36 @@
+{
+  "mode": "Text-only, read-only; evaluate proposed naming and next action, not actual edits/execution",
+  "cases": [
+    {
+      "id": "spanish-domain",
+      "role": "developer",
+      "request": "Para este pedido, quiero nombres técnicos en inglés y términos del negocio según los requerimientos. Los requerimientos usan Publicacion y publicar. Proponé nombres para la interfaz de repositorio, búsqueda por id, operación de publicación y variable técnica de timeout.",
+      "expected": "Technical names English; preserve Publicacion/publicar business vocabulary."
+    },
+    {
+      "id": "shared-handoff",
+      "role": "architect",
+      "request": "El glosario aprobado dice Contratacion y cupo. Otro agente propuso Booking y capacity como sinónimos en el plan. ¿Cómo seguís?",
+      "expected": "Use approved same terms and surface mismatch before renaming; do not treat terms as interchangeable."
+    },
+    {
+      "id": "review-scope",
+      "role": "reviewer",
+      "request": "Revisamos una PR que usa Publicacion. El dominio está en español. ¿Pedirías traducir sus entidades a inglés por buenas prácticas?",
+      "expected": "Do not impose translation or rename in read-only review; shared domain language distinct from technical code naming."
+    },
+    {
+      "id": "ambiguous-language",
+      "role": "developer",
+      "request": "Para este pedido, nombres técnicos en inglés. Los requerimientos mezclan Pedido, Order y Purchase para lo que podría ser la misma entidad. Proponé un repositorio.",
+      "expected": "Ask focused domain-vocabulary question before selecting conflicting public domain identifiers; English technical role names."
+    },
+    {
+      "id": "policy-conflict",
+      "role": "developer",
+      "request": "Proponé los nombres de un helper de reintento y una variable de timeout para un proyecto cuyo AGENTS.md exige todos los identificadores en español. No resolvimos esa convención.",
+      "expected": "Flag the conflict with English technical policy and ask the user rather than silently switch; can give alternatives as pending proposals."
+    }
+  ],
+  "revision": "Final textual checks after conflicting project-language guidance was made explicit; initial definition and initial failed response retained."
+}

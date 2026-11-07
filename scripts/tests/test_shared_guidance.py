@@ -33,7 +33,7 @@ class SharedGuidanceTest(unittest.TestCase):
         import shutil
         with tempfile.TemporaryDirectory() as folder:
             isolated = Path(folder)
-            for name in ('scripts/shared_guidance.py', 'shared/decision-protocol.md',
+            for name in ('scripts/shared_guidance.py', 'shared/decision-protocol.md', 'shared/ubiquitous-language.md',
                          'plugins/architect/scripts/build_agents.py', 'plugins/architect/src/architect.md'):
                 target = isolated / name
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -63,6 +63,20 @@ class SharedGuidanceTest(unittest.TestCase):
                 self.assertNotIn(guidance.TOKEN, path.read_text())
             data = tomllib.loads((plugin / f'com.openai.codex/agents/{role}.toml').read_text())
             self.assertEqual(1, data['developer_instructions'].count(protocol))
+
+    def test_all_roles_and_clients_embed_the_same_domain_language_policy(self):
+        import tomllib
+        policy = (ROOT / 'shared/ubiquitous-language.md').read_text().strip()
+        for plugin, role in (('architect', 'architect'), ('developer', 'developer'),
+                             ('reviewer', 'reviewer'), ('reviewer', 'code-investigator')):
+            root = ROOT / 'plugins' / plugin
+            for path in (root / f'agents/{role}.md',
+                         root / f'com.github.copilot/agents/{role}.agent.md',
+                         root / f'skills/{role}/SKILL.md'):
+                self.assertEqual(1, path.read_text().count(policy))
+                self.assertNotIn('{{UBIQUITOUS_LANGUAGE}}', path.read_text())
+            config = tomllib.loads((root / f'com.openai.codex/agents/{role}.toml').read_text())
+            self.assertEqual(1, config['developer_instructions'].count(policy))
 
     def test_rejects_unknown_leftover_reference_files(self):
         with tempfile.TemporaryDirectory() as folder:

@@ -1,0 +1,29 @@
+{
+  "mode": "Text-only, read-only; evaluate proposed naming and next action, not actual edits/execution",
+  "cases": [
+    {
+      "id": "spanish-domain",
+      "role": "developer",
+      "request": "Los requerimientos usan Publicacion y publicar. Proponé nombres para la interfaz de repositorio, búsqueda por id, operación de publicación y variable técnica de timeout.",
+      "expected": "Technical names English; preserve Publicacion/publicar business vocabulary."
+    },
+    {
+      "id": "shared-handoff",
+      "role": "architect",
+      "request": "El glosario aprobado dice Contratacion y cupo. Otro agente propuso Booking y capacity como sinónimos en el plan. ¿Cómo seguís?",
+      "expected": "Use approved same terms and surface mismatch before renaming; do not treat terms as interchangeable."
+    },
+    {
+      "id": "review-scope",
+      "role": "reviewer",
+      "request": "Revisamos una PR que usa Publicacion. El dominio está en español. ¿Pedirías traducir sus entidades a inglés por buenas prácticas?",
+      "expected": "Do not impose translation or rename in read-only review; shared domain language distinct from technical code naming."
+    },
+    {
+      "id": "ambiguous-language",
+      "role": "developer",
+      "request": "Los requerimientos mezclan Pedido, Order y Purchase para lo que podría ser la misma entidad. Agregá un repositorio.",
+      "expected": "Ask focused domain-vocabulary question before selecting conflicting public domain identifiers; English technical role names."
+    }
+  ]
+}

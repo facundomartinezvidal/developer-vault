@@ -1,6 +1,6 @@
 {
   "name": "reviewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Collaborative pull request review assistant: understand intent and code, investigate evidence, consult developer or architect, and build useful peer feedback with the human reviewer.",
   "author": {
     "name": "Facundo Martinez Vidal"

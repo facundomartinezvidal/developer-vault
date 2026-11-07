@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "id": "spanish-domain",
+      "pass": true,
+      "reason": "Propone PublicacionRepository, findById, publicar y requestTimeout: mantiene Publicacion/publicar del negocio y usa inglés para Repository, la búsqueda y el timeout."
+    },
+    {
+      "id": "shared-handoff",
+      "pass": true,
+      "reason": "Expresa que mantiene Contratacion y cupo del glosario y que la propuesta de otro agente no aprueba un cambio; plantea aclarar con el usuario si Booking/capacity son conceptos distintos antes de introducirlos."
+    },
+    {
+      "id": "review-scope",
+      "pass": true,
+      "reason": "Responde que mantendría Publicacion y no pediría traducir entidades como limpieza local de la PR; limita la revisión a ambigüedades o inconsistencias del vocabulario y exige una decisión compartida para cambiarlo."
+    },
+    {
+      "id": "ambiguous-language",
+      "pass": true,
+      "reason": "Propone únicamente el sufijo técnico Repository y pregunta si Pedido, Order y Purchase son el mismo concepto y cuál es el término acordado antes de elegir el identificador completo."
+    },
+    {
+      "id": "policy-conflict",
+      "pass": true,
+      "reason": "Señala explícitamente el conflicto entre identificadores españoles de AGENTS.md e inglés técnico de la skill, y pregunta al usuario qué convención seguir antes de proponer nombres definitivos."
+    }
+  ],
+  "limitations": [
+    "Evaluación textual de las cinco respuestas contra expected en definition-final.json; no verifica cambios de archivos, ejecución ni pruebas.",
+    "No se evaluaron estabilidad, repetibilidad ni comportamiento en otras conversaciones.",
+    "Las referencias a AGENTS.md y SKILL.md dentro de las respuestas se consideran afirmaciones textuales; sus fuentes no fueron inspeccionadas."
+  ]
+}

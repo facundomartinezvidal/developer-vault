@@ -61,3 +61,7 @@ privadas del otro rol, sin material de evaluación. Una sola fuente mantenida po
 tema; las copias de distribución son generadas. Regenerar **ambos** plugins y correr
 sus `--check`, más `python3 -m unittest discover -s scripts/tests -v` desde la raíz.
 Estos tests comprueban empaquetado y equivalencia, no confiabilidad del agente.
+
+`shared/ubiquitous-language.md` es la fuente de vocabulario común de los cuatro
+roles. Se inserta en sus formatos por los generadores; los paquetes instalados
+no dependen del checkout para leerla. Regenerar los tres plugins al modificarla.

@@ -22,6 +22,13 @@ def expand_protocol(body, repo=REPO):
     return body.replace(TOKEN, (repo / 'shared/decision-protocol.md').read_text().strip())
 
 
+def expand_language(body, repo=REPO):
+    token = '{{UBIQUITOUS_LANGUAGE}}'
+    if body.count(token) != 1:
+        raise ValueError('Each role source must include the language guidance exactly once')
+    return body.replace(token, (repo / 'shared/ubiquitous-language.md').read_text().strip())
+
+
 def shared_outputs(role, repo=REPO):
     owner, names = SHARED[role]
     outputs = {}

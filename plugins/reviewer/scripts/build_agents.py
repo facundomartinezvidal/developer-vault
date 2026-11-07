@@ -14,10 +14,12 @@ Tools disagree on agent formats, so each source becomes:
 """
 
 import re
+import runpy
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+SHARED = runpy.run_path(str(ROOT.parent.parent / "scripts/shared_guidance.py"))
 NOTICE = "<!-- Generated from src/{name}.md by scripts/build_agents.py. Do not edit. -->\n"
 
 
@@ -28,7 +30,8 @@ def read_source(path):
         sys.exit(f"{path}: expected frontmatter with name and description")
     if match.group(1) != path.stem:
         sys.exit(f"{path}: name must match source filename")
-    return match.groups()
+    name, description, body = match.groups()
+    return name, description, SHARED["expand_language"](body)
 
 
 def yaml_string(value):

@@ -1,0 +1,5 @@
+{
+  "case": "spanish-domain-initial",
+  "pass": false,
+  "reason": "Read-only solver followed SkillSwap AGENTS.md all-Spanish convention and proposed technical names in Spanish instead of flagging conflict. Role instructions clarified to require consultation on this conflict. Original response preserved; no implementation was requested or performed."
+}

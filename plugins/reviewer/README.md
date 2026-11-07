@@ -68,3 +68,12 @@ La investigación y sus límites están en [docs/research.md](docs/research.md).
 En PRs que requieren recorrer varios módulos, `reviewer` puede usar el subagente `code-investigator` para seguir diff, callers, invariantes y tests. Recibe una pregunta abierta y devuelve evidencia y dudas; no ejecuta código, modifica archivos ni redacta la review. Para cambios pequeños, `reviewer` investiga directamente. La delegación depende del cliente; el agente también se genera como skill de rol y TOML opcional, igual que `reviewer`.
 
 `reviewer` consulta directamente a `developer` y `architect`: pregunta y contexto; conclusión y evidencia; supuestos y contraejemplos; recomendación, costo y si corresponde a esta PR o a un trabajo posterior. Reúne y verifica las respuestas, distinguiendo defectos demostrados de propuestas de diseño. No hay un subagente recolector. Los especialistas mantienen el modo consulta y devuelven sus dudas al coordinador.
+
+## Project vocabulary
+
+All roles share the project's approved ubiquitous language in requirements,
+models, code, tests, documentation, reviews and handoffs. They preserve business
+terms in the agreed language and consult conflicting terms before renaming.
+Developer uses English technical identifiers while preserving domain vocabulary.
+The maintained source is `shared/ubiquitous-language.md` at the repository root;
+regenerate all three plugins after changes. Existing code is not mass-renamed.

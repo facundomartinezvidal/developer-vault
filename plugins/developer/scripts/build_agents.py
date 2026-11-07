@@ -29,7 +29,7 @@ def read_source():
     if not match:
         sys.exit("src/developer.md: expected frontmatter with name and description")
     name, description, body = match.groups()
-    return name, description, SHARED["expand_protocol"](body)
+    return name, description, SHARED["expand_language"](SHARED["expand_protocol"](body))
 
 
 def yaml_string(value):
