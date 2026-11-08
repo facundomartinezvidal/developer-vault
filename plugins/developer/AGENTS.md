@@ -4,7 +4,7 @@ Estado al **2026-11-04**. Este archivo es para quien continúe el trabajo, perso
 
 ## Qué es
 
-Un agente de desarrollo y 16 skills para cualquier lenguaje, instalable en **Claude Code**, **GitHub Copilot CLI** y **Codex**, armado igual que `architect`. **Codex** carga el plugin y sus skills, probado el 2026-11-04 con `codex-cli` 0.166 en un `CODEX_HOME` aislado, tanto local como desde GitHub. Sus plugins no incluyen agentes, así que el rol llega como skill y hay un agente TOML opcional en `com.openai.codex/agents/`.
+Un agente de desarrollo y 17 skills para cualquier lenguaje, instalable en **Claude Code**, **GitHub Copilot CLI** y **Codex**, armado igual que `architect`. **Codex** carga el plugin y sus skills, probado el 2026-11-04 con `codex-cli` 0.166 en un `CODEX_HOME` aislado, tanto local como desde GitHub. Sus plugins no incluyen agentes, así que el rol llega como skill y hay un agente TOML opcional en `com.openai.codex/agents/`.
 
 - **Agente:** `developer`. Trabaja como consultor y como realizador. Una pregunta o revisión produce análisis sin tocar archivos; un pedido de implementar, arreglar o refactorizar autoriza ese trabajo y su verificación dentro del alcance. Las convenciones del proyecto están por encima de las preferencias de los libros. Estas reglas son instrucciones, no bloqueos técnicos.
 - **Lenguajes:** no está atado a ninguno. Descubre el toolchain del proyecto, escribe código idiomático y consulta la documentación de la versión instalada. `clean-code/references/across-languages.md` traduce los principios entre familias de lenguajes.
@@ -89,6 +89,20 @@ Los límites del título no coinciden entre fuentes: Git usa 50, el kernel 70–
 
 Son reglas por instrucción, no bloqueos técnicos.
 
+## Pull requests (`opening-pull-requests`)
+
+Es el par de `writing-commits` del lado de quien abre el PR. Para revisar el PR de otra persona está el plugin `reviewer`. Decisiones del usuario (2026-11-07):
+
+- **Convenciones:** en `conventions/pull-requests.md`. Si faltan, la skill ofrece escribirlas o crearlas con el default, que agrega también `.github/pull_request_template.md` si no hay plantilla.
+- **Cuerpo default:** por qué, qué cambió, cómo se verificó, riesgos y dónde mirar. Las secciones vacías se omiten.
+- **Estado:** se abre listo para revisar. Queda como borrador solo si se pide o si el trabajo está claramente incompleto.
+- **PR grande o mezclado:** se propone la división y se espera, porque dividir crea ramas y PRs públicos. Con commits, en cambio, la skill divide sola.
+- **Confirmación y atribución:** nada se pushea ni se publica sin que la persona vea el título y el cuerpo exactos y confirme. No se acredita a modelos.
+
+Fuentes, leídas con Context7: guía de PRs chicos y de descripciones de Google, y documentación de GitHub sobre plantillas, palabras clave para cerrar issues, ayuda a quien revisa y `gh pr create`.
+
+Los casos usan un remoto local y un `gh` falso en `bin/` que registra las llamadas y nunca contacta a GitHub. Así se comprueba con código si hubo push o si se abrió el PR.
+
 ## Qué pregunta responde cada skill
 
 Criterio heredado de `architect`: cada skill se justifica por lo que aporta, no por completar un catálogo. Este cuadro sigue siendo una hipótesis: la primera corrida no alcanza para decidir.
@@ -110,13 +124,14 @@ Criterio heredado de `architect`: cada skill se justifica por lo que aporta, no 
 | `data-structures-and-algorithms` | ¿Qué estructura y a qué costo? | Candidata a acotar: el modelo ya sabe mucho de esto. |
 | `relational-databases` | ¿El esquema y la consulta garantizan lo correcto? | Solo SQL; NoSQL queda afuera. |
 | `pragmatic-practices` | ¿Cómo encaro este trabajo? | Candidata a fusionar con el agente. |
+| `opening-pull-requests` | ¿Qué necesita saber quien revisa este cambio? | Primera señal: 19/20 contra 14/20, sin fallas críticas con skill. Ver si la confirmación antes de publicar molesta en el uso real. |
 | `writing-commits` | ¿Cómo registro este cambio según las reglas del proyecto? | Primera señal: 28/28 contra 15/28, pero se cargó sola en 5 de 20 intentos. Ver si la pregunta por las convenciones molesta en el uso real. |
 
 Notas del vault que no se usaron a propósito: `coconuts-dont-cut-it` y `blackboards` (ya en `architect`), `delight-your-users` y `knowledge-portfolio` (no cambian cómo se escribe el código).
 
 ## Evaluaciones
 
-Hay 30 casos: 21 de skills y 9 del agente. `implement-package-refactor` vino de `architect` con la nueva división y todavía no se corrió acá. El procedimiento es el de `plugins/architect/AGENTS.md` ("Proceso de revisión acordado" y "Cómo evaluar sin contaminar").
+Hay 34 casos: 25 de skills y 9 del agente. `implement-package-refactor` vino de `architect` con la nueva división y todavía no se corrió acá. El procedimiento es el de `plugins/architect/AGENTS.md` ("Proceso de revisión acordado" y "Cómo evaluar sin contaminar").
 
 ### Primera corrida (2026-11-04)
 
@@ -207,6 +222,27 @@ Límites: una sola corrida por caso, con un juez modelo. Quien escribió la skil
 | Más directa, sin adoptar | 4/20 | 0/20 |
 
 Reescribir la descripción no ayudó, así que no se corrió el ciclo de optimización. Por eso las reglas que no admiten excepciones están también en el agente y en la plantilla, y la línea de `AGENTS.md` funciona sin la skill. La carpeta vacía puede subestimar el uso real: falta medir en un repo con cambios y con el plugin instalado.
+
+### Corrida de `opening-pull-requests` (2026-11-07)
+
+Casos definidos antes de escribir la skill, con `eval-harness`. Una sesión independiente por variante, un juez independiente con etiquetas A/B al azar y hashes de las fuentes en `source-hashes.json`. Artefactos, que pueden desaparecer: `pr-workspace/` en el scratchpad de la sesión.
+
+| Caso | Sin skill | Con skill |
+|---|---|---|
+| `no-conventions-asks` | 1/4 | 4/4 |
+| `drafts-and-waits` | 3/6 | 6/6 |
+| `confirmed-opens` | 6/6 | 6/6 |
+| `mixed-proposes-split` | 4/4 | 3/4 |
+| **Total** | **14/20** | **19/20** |
+
+Fallas críticas: 5 sin skill y 0 con skill. Regresión del agente, `suggest-commit-only`: 3/3.
+
+- **Aporte de la skill:** no publicar sin mostrar el texto y no acreditar a modelos. Sin skill, 2 de 4 sesiones pushearon y abrieron el PR sin mostrar el cuerpo, y las dos agregaron "Generated with Claude Code".
+- **Sin diferencia:** abrir con un texto ya aprobado y proponer la división de una rama mezclada. Sin skill también se resolvieron bien.
+- **Falla con skill:** en la división explicó el problema del título del squash, pero no que separar facilita revisar o revertir. No se cambió la skill para no ajustarla a un solo caso.
+- **Limitación del fixture:** el `gh` falso responde siempre que no hay PR en `gh pr view`, así que después de crearlo no se pudo verificar su estado. La sesión lo informó en lugar de darlo por hecho.
+
+Límites: una sola corrida por caso, así que es pass@1 y no hay pass^k. Quien escribió la skill también escribió los criterios. La atribución en los cuerpos puede dejar ver la variante. No se midió la activación automática.
 
 ## Qué sigue
 

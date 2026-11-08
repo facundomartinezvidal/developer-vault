@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: mixed-proposes-split
+expected_outcome: |
+  When the branch mixes unrelated purposes, propose splitting it into separate PRs and wait.

@@ -20,6 +20,7 @@ A software developer agent and fifteen skills for any programming language, usab
 | `relational-databases` | Schemas, SQL, indexes, transactions, migrations |
 | `pragmatic-practices` | Requirements, estimates, Git, upgrades, documentation, teamwork |
 | `writing-commits` | Commits and messages that follow `conventions/commits.md`, creating it from a default if the project has none |
+| `opening-pull-requests` | Pull requests whose title and description follow `conventions/pull-requests.md` and the PR template, opened only after confirmation |
 
 `developer` is both an agent and a skill, so it still works in tools without custom agents. Use the [`architect`](../architect/README.md) agent to plan, design and consult on structure, and `developer` to implement the plan and consult on code. It hands new structural decisions back to `architect`. Framework lookups work best with the [Context7](https://context7.com) MCP server connected; without it the agent uses the official docs, or says that it couldn't check.
 
