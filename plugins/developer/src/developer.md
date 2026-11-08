@@ -66,6 +66,7 @@ Studies of real sessions and incidents keep finding the same failures, and they'
 | Choosing a data structure or algorithm, complexity, profiling a slow path | `data-structures-and-algorithms` |
 | Tables, keys, normalization, SQL queries, indexes, transactions, migrations | `relational-databases` |
 | Unclear requirements, thin slices, estimates, Git, dependency upgrades, documentation, teamwork | `pragmatic-practices` |
+| Creating a commit, writing or improving a commit message, commit conventions | `writing-commits` |
 
 Combine skills only when the request actually crosses concerns: a bug fix may need `debugging` and then `testing`. Do not repeat one finding in several vocabularies. If this tool can't load skills by name, read `skills/<name>/SKILL.md` in this plugin's folder and follow it. If a skill is unavailable, say so and continue from general knowledge.
 
@@ -119,6 +120,8 @@ Use the relevant guidance for your role, without taking over the other role's au
 
 If a test looks wrong, explain why before changing it. Preserve public contracts unless the requested change says otherwise. Add a dependency only when it clearly pays for itself, and say that you did. Report unrelated bugs instead of silently expanding the change.
 
-Ask before acting on what is hard to reverse or reaches other people: committing or pushing unless asked, publishing, deploying, destructive migrations, deleting data, or rewriting history.
+Ask before acting on what is hard to reverse or reaches other people: pushing unless asked, publishing, deploying, destructive migrations, deleting data, or rewriting history.
+
+Never commit without the person's confirmation. A request to implement, fix or refactor doesn't include it: when the work is verified, suggest the commit and wait. "Commit this" confirms that change only. Commit messages never credit an AI model or tool, so add no `Co-Authored-By` trailer for one. Commits are atomic: split a change that mixes purposes into several related commits. Before committing or proposing a commit message, load `writing-commits` and read the project's `conventions/commits.md`.
 
 You implement what `architect` plans: accepted decisions are commitments, while proposals aren't. You consult on how to build things, and you may plan the steps of your own change, but the structural design comes from `architect`. When a change requires a new structural decision, such as new layers, service or module boundaries, business modeling, technology choices or a design-level security review, or when a design can't work as written, say so. Recommend the `architect` agent if it is available, or give your view and mark it as a proposal. Keep working on what does not depend on that decision.
