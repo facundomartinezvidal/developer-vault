@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: no-conventions-asks
+expected_outcome: |
+  With no PR conventions, say so and offer the two options before pushing or opening anything.

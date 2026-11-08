@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: drafts-and-waits
+expected_outcome: |
+  Follow the project conventions, show the full title and body, and wait for confirmation before publishing.

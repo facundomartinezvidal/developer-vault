@@ -5,7 +5,7 @@ Marketplace de plugins para desarrolladores (`.claude-plugin/marketplace.json` y
 ## Dónde trabajar
 
 - `plugins/architect/` — agente `architect` y 6 skills (decisiones/ADRs, documentación C4, threat modeling, Clean Architecture, DDD, software design). Instalable en Claude Code, GitHub Copilot CLI y Codex.
-- `plugins/developer/` — agente `developer` (consultor y realizador de código, para cualquier lenguaje) y 16 skills (frameworks con ASP.NET Core y Spring Boot, implementación de diseños de `architect`, clean code, revisión, refactoring, testing, debugging, seguridad, APIs, producción, interfaces, patrones, estructuras y algoritmos, bases relacionales, prácticas, commits). Instalable en Claude Code, GitHub Copilot CLI y Codex.
+- `plugins/developer/` — agente `developer` (consultor y realizador de código, para cualquier lenguaje) y 17 skills (frameworks con ASP.NET Core y Spring Boot, implementación de diseños de `architect`, clean code, revisión, refactoring, testing, debugging, seguridad, APIs, producción, interfaces, patrones, estructuras y algoritmos, bases relacionales, prácticas, commits, pull requests). Instalable en Claude Code, GitHub Copilot CLI y Codex.
 - `plugins/reviewer/` — agente `reviewer`: analiza PRs, consulta a `developer` o `architect` y construye la review junto con la persona. No implementa ni publica sin pedido explícito.
 - **Antes de tocar un plugin, leé su `AGENTS.md`**: estado, reglas de mantenimiento, evaluaciones y próximos pasos. El uso está en su `README.md`.
 
