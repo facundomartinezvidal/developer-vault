@@ -9,7 +9,7 @@ Use this skill to **implement** a design, **explain** how to turn it into code, 
 
 ## 1. Read the design as a commitment
 
-Find the sources: ADRs, diagrams, threat models, the architect's answer, and project guidance. Then separate them:
+Find the sources: a plan saved by the architect (usually under `docs/plans/`, starting with its decisions table), ADRs, diagrams, threat models, the architect's answer, and project guidance. Then separate them:
 
 | Kind | How to treat it |
 |---|---|
