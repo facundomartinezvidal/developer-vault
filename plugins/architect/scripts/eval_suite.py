@@ -18,6 +18,9 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 SPECIALISTS = sorted(p.name for p in (ROOT / 'skills').iterdir() if (p / 'SKILL.md').exists() and p.name != 'architect')
+RUN_FILES = {'request.txt', 'answer.md', 'trace.json'}
+DESIGN_DOCUMENTS = {'.md', '.mmd'}
+CACHE_FOLDERS = {'__pycache__', '.pytest_cache'}
 
 
 def digest(path):
@@ -55,6 +58,7 @@ def validate():
         for case in cases(skill):
             metadata = yaml.safe_load((case / 'case.yaml').read_text())
             assert metadata['name'] == case.name and metadata['schema_version'] == '1.1', f'{case}: metadata'
+            assert isinstance(metadata.get('fixtures_immutable', False), bool), f'{case}: fixtures_immutable'
             _, prompt = frontmatter(case / 'prompt.md')
             assert prompt, f'{case}: empty prompt'
             inputs = re.search(r'^Input files: (.+)$', prompt, re.M)
@@ -76,13 +80,14 @@ def copy_context(src, dest):
     shutil.copytree(src, dest, ignore=shutil.ignore_patterns('evals', '__pycache__'))
 
 
-def prepare(output):
+def prepare(output, selected_skill=None):
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     records = []
-    for skill in SPECIALISTS + ['architect']:
+    for skill in [selected_skill] if selected_skill else SPECIALISTS + ['architect']:
         for case in cases(skill):
             _, prompt = frontmatter(case / 'prompt.md')
+            metadata = yaml.safe_load((case / 'case.yaml').read_text())
             criteria = []
             for path in sorted((case / 'graders').glob('*.md')):
                 _, body = frontmatter(path)
@@ -110,6 +115,7 @@ def prepare(output):
                                 'skill_sha256': digest(ROOT / 'skills' / skill / 'SKILL.md'),
                                 'context_files': {str(p.relative_to(output / 'contexts' / run_id)): digest(p) for p in (output / 'contexts' / run_id).rglob('*') if p.is_file()} if context else {},
                                 'request_sha256': digest(work / 'request.txt'), 'criteria': criteria,
+                                'fixtures_immutable': metadata.get('fixtures_immutable', False),
                                 'fixtures': {str(p.relative_to(work)): digest(p) for p in work.rglob('*') if p.is_file() and p.name != 'request.txt'}})
     (output / 'manifest.json').write_text(json.dumps({'isolation': 'instruction-scoped independent sessions, not OS enforcement', 'runs': records}, indent=2))
     print(f'{output}: {len(records)} runs prepared; no models called')
@@ -119,6 +125,41 @@ def load(output):
     return json.loads((output / 'manifest.json').read_text())['runs']
 
 
+def trace(output, run_id, transcript):
+    """Record what a solver actually did, from a transcript of JSON lines, so judges need not trust its answer."""
+    assert run_id in {r['id'] for r in load(output)}, f'unknown run: {run_id}'
+    calls = []
+    for line in transcript.read_text(encoding='utf-8').splitlines():
+        event = json.loads(line)
+        content = (event.get('message') or {}).get('content')
+        if event.get('type') == 'assistant' and isinstance(content, list):
+            calls += [item for item in content if item.get('type') == 'tool_use']
+    data = {
+        'tool_counts': {name: sum(c['name'] == name for c in calls) for name in sorted({c['name'] for c in calls})},
+        'skills_loaded': [c['input'].get('skill') for c in calls if c['name'] == 'Skill'],
+        'files_read': [c['input'].get('file_path') for c in calls if c['name'] == 'Read'],
+        'file_writes_attempted': [c['input'].get('file_path') or c['input'].get('notebook_path') for c in calls if c['name'] in {'Edit', 'Write', 'NotebookEdit'}],
+        'commands': [c['input'].get('command') for c in calls if c['name'] == 'Bash'],
+    }
+    # A solver given skill files instead of the Skill tool loads them with Read or a shell command.
+    sources = data['files_read'] + data['commands']
+    data['skill_files_read'] = sorted({name for text in sources if text for name in re.findall(r'([\w-]+)/SKILL\.md', text)})
+    (output / 'runs' / run_id / 'trace.json').write_text(json.dumps(data, ensure_ascii=False, indent=2))
+
+
+def fixture_violations(work, run):
+    """Fixtures changed or removed, and non-document files added, in a run that had to leave them alone."""
+    if not run.get('fixtures_immutable'):
+        return []
+    fixtures = run['fixtures']
+    found = [f'changed: {name}' for name, expected in fixtures.items() if not (work / name).is_file() or digest(work / name) != expected]
+    for path in work.rglob('*'):
+        name = str(path.relative_to(work))
+        if path.is_file() and name not in fixtures and name not in RUN_FILES and path.suffix.lower() not in DESIGN_DOCUMENTS and not CACHE_FOLDERS & set(path.parts):
+            found.append(f'added: {name}')
+    return sorted(found)
+
+
 def blind(output, selected_skill=None):
     records = load(output)
     selected = [r for r in records if selected_skill is None or r['skill'] == selected_skill]
@@ -126,6 +167,7 @@ def blind(output, selected_skill=None):
         work = output / 'runs' / run['id']
         assert (work / 'answer.md').is_file(), f'missing answer: {work}'
         assert digest(work / 'request.txt') == run['request_sha256'], f'request mutated: {work}'
+        assert run['skill'] != 'architect' or (work / 'trace.json').is_file(), f'missing trace: {work}'
     mapping_path = output / 'mapping.json'
     mapping = json.loads(mapping_path.read_text()) if mapping_path.exists() else {}
     for skill in ([selected_skill] if selected_skill else SPECIALISTS + ['architect']):
@@ -146,7 +188,9 @@ def blind(output, selected_skill=None):
                 work = output / 'runs' / run['id']
                 assert (work / 'answer.md').is_file(), f'missing answer: {work}'
                 assert digest(work / 'request.txt') == run['request_sha256'], f'request mutated: {work}'
-                shutil.copytree(work, case_dir / label, ignore=shutil.ignore_patterns('request.txt'))
+                # A trace would reveal which variant loaded the skill, so only single-variant agent cases get it.
+                hidden = ['request.txt'] if skill == 'architect' else ['request.txt', 'trace.json']
+                shutil.copytree(work, case_dir / label, ignore=shutil.ignore_patterns(*hidden))
                 mapping[f'{skill}/{case}'][label] = run['id']
     (output / 'mapping.json').write_text(json.dumps(mapping, indent=2))
     print('Blind artifacts prepared; judges receive only one grading/<skill> directory')
@@ -183,7 +227,7 @@ def report(output):
                 assert digest(output / 'contexts' / run_id / name) == expected_hash, f'{run_id}: context mutated: {name}'
             answer_words = len((work / 'answer.md').read_text().split())
             artifact_words = sum(len(p.read_text().split()) for p in work.rglob('*.md') if p.name not in {'answer.md'} and str(p.relative_to(work)) not in run['fixtures'])
-            result['runs'].append({**run, 'label': label, 'score': total, 'out_of': len(items), 'critical_failures': critical_failures, 'grades': items, 'words': answer_words + artifact_words, 'answer_sha256': digest(work / 'answer.md')})
+            result['runs'].append({**run, 'label': label, 'score': total, 'out_of': len(items), 'critical_failures': critical_failures, 'fixture_violations': fixture_violations(work, run), 'grades': items, 'words': answer_words + artifact_words, 'answer_sha256': digest(work / 'answer.md')})
     result['all_with_skill_critical_pass'] = all(not r['critical_failures'] for r in result['runs'] if r['variant'] == 'with-skill')
     (output / 'summary.json').write_text(json.dumps(result, ensure_ascii=False, indent=2))
     for skill in SPECIALISTS + ['architect']:
@@ -191,27 +235,38 @@ def report(output):
             group = [r for r in result['runs'] if r['skill'] == skill and r['variant'] == variant]
             if group:
                 print(skill, variant, f"{sum(r['score'] for r in group)}/{sum(r['out_of'] for r in group)}", 'critical failures:', sum(len(r['critical_failures']) for r in group))
+    violations = {r['id']: r['fixture_violations'] for r in result['runs'] if r['fixture_violations']}
+    if violations:
+        raise SystemExit(f'Fixtures changed in runs that had to leave them alone: {violations}')
     if not result['all_with_skill_critical_pass']:
         raise SystemExit('Critical with-skill failures remain')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['validate', 'prepare', 'blind', 'report'])
+    parser.add_argument('command', choices=['validate', 'prepare', 'trace', 'blind', 'report'])
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--skill', choices=SPECIALISTS + ['architect'], help='Limit blind preparation to one completed skill')
+    parser.add_argument('--skill', choices=SPECIALISTS + ['architect'], help='Limit prepare or blind to one skill')
+    parser.add_argument('--run', help='Run id, for trace')
+    parser.add_argument('--transcript', type=Path, help='JSON lines from the solver session, for trace')
     args = parser.parse_args()
     if args.command == 'validate':
         validate()
     else:
         if args.output is None:
             parser.error('--output is required')
-        if args.command == 'blind':
+        if args.command == 'prepare':
+            prepare(args.output, args.skill)
+        elif args.command == 'trace':
+            if not args.run or not args.transcript:
+                parser.error('trace requires --run and --transcript')
+            trace(args.output, args.run, args.transcript)
+        elif args.command == 'blind':
             blind(args.output, args.skill)
         else:
             if args.skill:
-                parser.error('--skill applies only to blind')
-            {'prepare': prepare, 'report': report}[args.command](args.output)
+                parser.error('--skill does not apply to report')
+            report(args.output)
 
 
 if __name__ == '__main__':

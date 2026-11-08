@@ -38,7 +38,27 @@ class EvaluationAccounting(unittest.TestCase):
         suite.prepare(self.output)
         for run in suite.load(self.output):
             (self.output / 'runs' / run['id'] / 'answer.md').write_text('An answer.\n')
+            if run['skill'] == 'architect':
+                self.write_trace(run['id'])
         suite.blind(self.output)
+
+    def write_trace(self, run_id):
+        transcript = Path(self.tmp.name) / f'{run_id}.jsonl'
+        calls = [{'type': 'tool_use', 'name': 'Skill', 'input': {'skill': 'architect:sample'}},
+                 {'type': 'tool_use', 'name': 'Write', 'input': {'file_path': 'plan.md'}},
+                 {'type': 'tool_use', 'name': 'Bash', 'input': {'command': 'cd bundle/skills; cat software-design/SKILL.md'}},
+                 {'type': 'tool_use', 'name': 'Read', 'input': {'file_path': '/b/skills/threat-modeling/SKILL.md'}}]
+        transcript.write_text(json.dumps({'type': 'assistant', 'message': {'content': calls}}) + '\n')
+        suite.trace(self.output, run_id, transcript)
+
+    def add_fixture(self, immutable=True):
+        case = self.root / 'evals/case-one'
+        (case / 'files').mkdir()
+        (case / 'files/service.py').write_text('x = 1\n')
+        (case / 'case.yaml').write_text(f'schema_version: "1.1"\nname: case-one\nfixtures_immutable: {str(immutable).lower()}\n')
+
+    def architect_run(self):
+        return next(r for r in suite.load(self.output) if r['skill'] == 'architect')
 
     def grade(self, passed=True):
         mapping = json.loads((self.output / 'mapping.json').read_text())
@@ -95,6 +115,60 @@ class EvaluationAccounting(unittest.TestCase):
         (self.output / 'runs/001/request.txt').write_text('A different request')
         with self.assertRaisesRegex(AssertionError, 'request changed'):
             suite.report(self.output)
+
+    def test_trace_records_skills_and_write_attempts(self):
+        suite.prepare(self.output)
+        run_id = self.architect_run()['id']
+        self.write_trace(run_id)
+        data = json.loads((self.output / 'runs' / run_id / 'trace.json').read_text())
+        self.assertEqual(['architect:sample'], data['skills_loaded'])
+        self.assertEqual(['plan.md'], data['file_writes_attempted'])
+        self.assertEqual(['software-design', 'threat-modeling'], data['skill_files_read'])
+
+    def test_blind_requires_trace_for_agent_cases(self):
+        suite.prepare(self.output)
+        for run in suite.load(self.output):
+            (self.output / 'runs' / run['id'] / 'answer.md').write_text('An answer.\n')
+        with self.assertRaisesRegex(AssertionError, 'missing trace'):
+            suite.blind(self.output)
+
+    def test_blind_hides_trace_from_comparisons_but_not_agent_cases(self):
+        self.prepare_answers()
+        self.assertFalse(list((self.output / 'grading/sample').rglob('trace.json')))
+        self.assertTrue(list((self.output / 'grading/architect').rglob('trace.json')))
+
+    def test_report_rejects_changed_immutable_fixture(self):
+        self.add_fixture()
+        self.prepare_answers()
+        self.grade()
+        (self.output / 'runs' / self.architect_run()['id'] / 'service.py').write_text('x = 2\n')
+        with self.assertRaisesRegex(SystemExit, 'changed: service.py'):
+            suite.report(self.output)
+
+    def test_report_rejects_added_code_in_immutable_run(self):
+        self.add_fixture()
+        self.prepare_answers()
+        self.grade()
+        (self.output / 'runs' / self.architect_run()['id'] / 'pricing.py').write_text('y = 1\n')
+        with self.assertRaisesRegex(SystemExit, 'added: pricing.py'):
+            suite.report(self.output)
+
+    def test_report_allows_documents_and_caches_in_immutable_run(self):
+        self.add_fixture()
+        self.prepare_answers()
+        self.grade()
+        work = self.output / 'runs' / self.architect_run()['id']
+        (work / 'plan.md').write_text('# Plan\n')
+        (work / '__pycache__').mkdir()
+        (work / '__pycache__/service.pyc').write_text('cache')
+        suite.report(self.output)
+
+    def test_report_allows_edits_when_fixtures_may_change(self):
+        self.add_fixture(immutable=False)
+        self.prepare_answers()
+        self.grade()
+        (self.output / 'runs' / self.architect_run()['id'] / 'service.py').write_text('x = 2\n')
+        suite.report(self.output)
 
     def test_report_accepts_complete_evidence(self):
         self.prepare_answers()
