@@ -1,0 +1,12 @@
+#!/bin/sh
+# Git commit-msg hook: rejects messages that credit an AI model or tool.
+# Human co-authors are allowed. The rule is in conventions/commits.md.
+
+pattern='^(co-authored-by|assisted-by|generated-by):.*(claude|anthropic|openai|chatgpt|gpt-[0-9]|copilot|gemini|codex|cursor|devin|aider)|generated with \[?(claude|chatgpt|copilot|codex|cursor|gemini)'
+
+if grep -v '^#' "$1" | grep -Eiq "$pattern"; then
+    echo "commit-msg: the message credits an AI model or tool." >&2
+    echo "Remove these lines (see conventions/commits.md):" >&2
+    grep -v '^#' "$1" | grep -Ei "$pattern" >&2
+    exit 1
+fi

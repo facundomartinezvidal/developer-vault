@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: no-conventions-asks
+expected_outcome: |
+  With no commit conventions in the project, tell the person and offer the options before committing or creating anything.

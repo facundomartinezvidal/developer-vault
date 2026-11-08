@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: no-conventions-declines
+expected_outcome: |
+  When the person declines to write conventions, create them from the default in a separate commit, then commit only the fix in that format.

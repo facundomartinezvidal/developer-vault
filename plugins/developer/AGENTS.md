@@ -4,7 +4,7 @@ Estado al **2026-11-04**. Este archivo es para quien continúe el trabajo, perso
 
 ## Qué es
 
-Un agente de desarrollo y 15 skills para cualquier lenguaje, instalable en **Claude Code**, **GitHub Copilot CLI** y **Codex**, armado igual que `architect`. **Codex** carga el plugin y sus skills, probado el 2026-11-04 con `codex-cli` 0.166 en un `CODEX_HOME` aislado, tanto local como desde GitHub. Sus plugins no incluyen agentes, así que el rol llega como skill y hay un agente TOML opcional en `com.openai.codex/agents/`.
+Un agente de desarrollo y 16 skills para cualquier lenguaje, instalable en **Claude Code**, **GitHub Copilot CLI** y **Codex**, armado igual que `architect`. **Codex** carga el plugin y sus skills, probado el 2026-11-04 con `codex-cli` 0.166 en un `CODEX_HOME` aislado, tanto local como desde GitHub. Sus plugins no incluyen agentes, así que el rol llega como skill y hay un agente TOML opcional en `com.openai.codex/agents/`.
 
 - **Agente:** `developer`. Trabaja como consultor y como realizador. Una pregunta o revisión produce análisis sin tocar archivos; un pedido de implementar, arreglar o refactorizar autoriza ese trabajo y su verificación dentro del alcance. Las convenciones del proyecto están por encima de las preferencias de los libros. Estas reglas son instrucciones, no bloqueos técnicos.
 - **Lenguajes:** no está atado a ninguno. Descubre el toolchain del proyecto, escribe código idiomático y consulta la documentación de la versión instalada. `clean-code/references/across-languages.md` traduce los principios entre familias de lenguajes.
@@ -72,6 +72,23 @@ Ninguna nota del vault se modificó; si el usuario estudia estos temas, las nota
 
 Límites: son fuentes de distinta calidad, y los porcentajes salen de estudios con métodos distintos, con etiquetado apoyado en modelos. Sirven para priorizar, no como medida exacta. Las referencias técnicas salen sobre todo de práctica común y deben contrastarse con la documentación vigente.
 
+## Commits (`writing-commits`)
+
+Decisiones del usuario (2026-11-07):
+
+- **Dónde viven las convenciones:** en `conventions/commits.md` de cada proyecto, con una línea en `AGENTS.md` que apunta ahí. Si faltan, la skill lo avisa y ofrece dos caminos: que las escriba la persona o crearlas con el default.
+- **Default:** títulos de Conventional Commits 1.0 y cuerpos al estilo del proyecto Git. Está en `assets/default-commit-conventions.md`, que se copia al proyecto y por eso no empieza con "Hand-written".
+- **Sin coautoría de modelos:** ningún commit acredita a un modelo o herramienta de IA, aunque la herramienta anfitriona lo pida.
+- **Confirmación:** `developer` sugiere el commit y lo hace solo si la persona confirma. Un pedido de implementar no alcanza.
+- **Hook opcional:** al crear las convenciones, la skill ofrece instalar `assets/commit-msg`, que rechaza mensajes que acreditan a un modelo o herramienta y deja pasar coautores humanos. Se probó con 8 mensajes y commits reales en un repo descartable; ninguna evaluación cubre todavía la oferta ni la instalación.
+- **Commits atómicos:** cada commit agrupa lo relacionado. Si un cambio mezcla propósitos, la skill lo divide sin preguntar antes, también dentro de un mismo archivo, y lo informa.
+
+Fuentes, leídas con Context7: especificación de Conventional Commits, `config-conventional` de commitlint, `SubmittingPatches` y `MyFirstContribution` de Git, `submitting-patches` del kernel de Linux, guía de descripciones de Google y Gitmoji. La guía de Angular no apareció en Context7.
+
+Los límites del título no coinciden entre fuentes: Git usa 50, el kernel 70–75 y `config-conventional` 100, mientras que la referencia de reglas de commitlint muestra 72. El default usa 72 para título y cuerpo. Es una elección, no un estándar.
+
+Son reglas por instrucción, no bloqueos técnicos.
+
 ## Qué pregunta responde cada skill
 
 Criterio heredado de `architect`: cada skill se justifica por lo que aporta, no por completar un catálogo. Este cuadro sigue siendo una hipótesis: la primera corrida no alcanza para decidir.
@@ -93,12 +110,13 @@ Criterio heredado de `architect`: cada skill se justifica por lo que aporta, no 
 | `data-structures-and-algorithms` | ¿Qué estructura y a qué costo? | Candidata a acotar: el modelo ya sabe mucho de esto. |
 | `relational-databases` | ¿El esquema y la consulta garantizan lo correcto? | Solo SQL; NoSQL queda afuera. |
 | `pragmatic-practices` | ¿Cómo encaro este trabajo? | Candidata a fusionar con el agente. |
+| `writing-commits` | ¿Cómo registro este cambio según las reglas del proyecto? | Primera señal: 28/28 contra 15/28, pero se cargó sola en 5 de 20 intentos. Ver si la pregunta por las convenciones molesta en el uso real. |
 
 Notas del vault que no se usaron a propósito: `coconuts-dont-cut-it` y `blackboards` (ya en `architect`), `delight-your-users` y `knowledge-portfolio` (no cambian cómo se escribe el código).
 
 ## Evaluaciones
 
-Hay 25 casos: 17 de skills y 8 del agente. `implement-package-refactor` vino de `architect` con la nueva división y todavía no se corrió acá. El procedimiento es el de `plugins/architect/AGENTS.md` ("Proceso de revisión acordado" y "Cómo evaluar sin contaminar").
+Hay 30 casos: 21 de skills y 9 del agente. `implement-package-refactor` vino de `architect` con la nueva división y todavía no se corrió acá. El procedimiento es el de `plugins/architect/AGENTS.md` ("Proceso de revisión acordado" y "Cómo evaluar sin contaminar").
 
 ### Primera corrida (2026-11-04)
 
@@ -159,14 +177,46 @@ Mismo procedimiento, con 6 respuestas y 2 jueces. Las dos variantes podían cons
 
 Límites: una sola corrida por caso. Spring se evaluó solo por lectura, sin Maven ni Gradle en la máquina. No se midió la activación automática ni la selección desde el agente.
 
+### Corrida de `writing-commits` (2026-11-07)
+
+Una sesión independiente por variante, con repos descartables y un juez independiente con etiquetas A/B al azar, que leyó el estado real de cada repo. Artefactos, que pueden desaparecer: `writing-commits-workspace/` en el scratchpad de la sesión; `mapping.json` tiene las etiquetas.
+
+| Caso | Sin skill | Con skill |
+|---|---|---|
+| `no-conventions-asks` | 1/5 | 5/5 |
+| `no-conventions-declines` | 3/8 | 8/8 |
+| `existing-conventions-win` | 5/7 | 7/7 |
+| `atomic-split` | 6/8 | 8/8 |
+| **Total** | **15/28** | **28/28** |
+
+Agente completo, sin comparación: `suggest-commit-only` 3/3. Arregló, probó y sugirió el commit sin hacerlo.
+
+- **Aporte de la skill:** preguntar o crear las convenciones, no acreditar a modelos y no crear ramas que nadie pidió. Sin skill, las 4 sesiones agregaron `Co-Authored-By` y 3 crearon una rama.
+- **Sin aporte demostrado:** la división atómica y seguir un archivo de convenciones existente. Sin skill también se resolvieron bien.
+- **Después de la primera ronda:** se pidió ofrecer solo dos caminos y commitear en la rama actual, y se agregaron criterios para ambos. La línea base sin skill viene de esa primera ronda.
+- **Cambios sin volver a correr:** la línea de `AGENTS.md` ahora es una instrucción y el agente pide cargar la skill antes de commitear. Se hicieron por la medición de abajo.
+- **Incidente:** una sesión sin skill creó `repo/` dentro del worktree y lo movió. Se comprobó que el worktree quedó sin restos.
+
+Límites: una sola corrida por caso, con un juez modelo. Quien escribió la skill también escribió los criterios, y parte de lo que se mide es una preferencia del usuario que el modelo base no puede adivinar. La atribución en los mensajes puede dejar ver la variante. El juez no vio el contenido de `conventions/commits.md` creado.
+
+**Activación.** Con `run_eval` de `skill-creator`, 20 pedidos y 2 intentos por pedido, en una carpeta vacía:
+
+| Descripción | Se cargó cuando correspondía | Se cargó cuando no correspondía |
+|---|---|---|
+| Actual | 5/20 | 0/20 |
+| Más directa, sin adoptar | 4/20 | 0/20 |
+
+Reescribir la descripción no ayudó, así que no se corrió el ciclo de optimización. Por eso las reglas que no admiten excepciones están también en el agente y en la plantilla, y la línea de `AGENTS.md` funciona sin la skill. La carpeta vacía puede subestimar el uso real: falta medir en un repo con cambios y con el plugin instalado.
+
 ## Qué sigue
 
 1. Endurecer casos donde no hubo diferencia, sobre todo `secure-coding`, `reviewing-code` y `testing`, con fallos menos evidentes, y revisar el criterio de `fix-and-verify`. Repetir para ver estabilidad. Recién entonces decidir conservar, acotar, fusionar o retirar.
 2. Medir la activación: una evaluación citada por CircleCI, de un solo proveedor, encontró que las skills pueden no cargarse aunque correspondan. Si pasa acá, optimizar descripciones o mover reglas al agente.
 3. Probar en uso real la distinción entre consultar e implementar, y el límite con `architect`.
-4. Considerar hooks de Claude Code para lo que no admite excepciones, como correr tests antes de terminar. Se configura por proyecto; no está en el plugin.
-5. Convertir en notas del vault lo que el usuario vaya estudiando.
-6. Opcional, solo si aparece en uso real: NoSQL, móvil nativo, sistemas embebidos o guías por framework.
+4. `writing-commits`: medir la activación en un repo con cambios y con el plugin instalado, volver a correr con el agente y la línea de `AGENTS.md` actuales, y sumar un caso para la oferta del hook.
+5. Considerar hooks de Claude Code para lo que no admite excepciones, como correr tests antes de terminar. Se configura por proyecto; no está en el plugin.
+6. Convertir en notas del vault lo que el usuario vaya estudiando.
+7. Opcional, solo si aparece en uso real: NoSQL, móvil nativo, sistemas embebidos o guías por framework.
 
 ## Decisiones abiertas
 
