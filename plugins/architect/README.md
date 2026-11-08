@@ -60,6 +60,7 @@ For a single session from a clone: `claude --plugin-dir plugins/architect --agen
 ## Develop
 
 - Agent: edit `src/architect.md`, then run `python3 scripts/build_agents.py`.
+- Write guard: in Claude Code, `hooks/architect_write_guard.py` stops the agent from editing anything but `.md`/`.mmd` documents and throwaway prototypes in the temporary directory, outside the project. It needs `python3`. Copilot CLI and Codex don't load it, and `Bash` isn't covered: there the boundary is the agent's instructions.
 - Vault-backed references: run `python3 scripts/sync_vault.py <path-to-developer-knowledge>`. `scripts/vault_manifest.py` lists which notes feed which file. Don't edit those references by hand.
 - Static validation: create a virtual environment, install `requirements-dev.txt`, then run `python scripts/eval_suite.py validate` from this folder. It checks all seven skill entrypoints, referenced files, case metadata, fixtures, criteria and generated agent freshness. Run `python -m unittest discover -s scripts/tests -v` for evaluation-accounting checks.
 - Behavioral evaluation: `python scripts/eval_suite.py prepare --output /tmp/architect-evaluation` creates fresh workspaces and snapshots without exposing criteria to solvers. Use independent model sessions with identical requests for each variant. Give each solver only its run directory and optional context path; save its response as `answer.md` and the requested artifacts inside that workspace. This is instruction-based isolation, not an OS access boundary.
