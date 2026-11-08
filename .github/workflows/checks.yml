@@ -1,0 +1,35 @@
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r plugins/architect/requirements-dev.txt
+      - name: Generated files are current
+        run: |
+          for plugin in architect developer reviewer; do
+            (cd "plugins/$plugin" && python scripts/build_agents.py --check)
+          done
+      - name: Skills, cases and fixtures are valid
+        run: |
+          for plugin in architect developer; do
+            (cd "plugins/$plugin" && python scripts/eval_suite.py validate)
+          done
+      - name: Unit tests
+        run: |
+          python -m unittest discover -s scripts/tests -v
+          for plugin in architect developer; do
+            (cd "plugins/$plugin" && python -m unittest discover -s scripts/tests -v)
+          done
