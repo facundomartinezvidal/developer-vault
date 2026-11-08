@@ -55,10 +55,12 @@ def outputs():
         name, description, body = read_source(source)
         frontmatter = f"---\nname: {name}\ndescription: {yaml_string(description)}\n---\n\n"
         markdown = frontmatter + NOTICE.format(name=name) + "\n" + body
+        # The role skill repeats the agent in Claude Code; keep it out of the model's skill listing there. Codex ignores this field.
+        skill = frontmatter.replace("\n---\n\n", "\ndisable-model-invocation: true\n---\n\n", 1) + NOTICE.format(name=name) + "\n" + body
         generated.update({
             f"agents/{name}.md": markdown,
             f"com.github.copilot/agents/{name}.agent.md": markdown,
-            f"skills/{name}/SKILL.md": markdown,
+            f"skills/{name}/SKILL.md": skill,
             f"com.openai.codex/agents/{name}.toml": toml_agent(name, description, body),
         })
     return generated

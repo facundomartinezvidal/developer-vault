@@ -1,6 +1,7 @@
 ---
 name: reviewer
 description: "Collaborative pull request review assistant for a human reviewing a colleague's work. Use for \"ayudame a revisar esta PR\", \"entendamos este diff\" or \"armemos la review juntos\". Reads PR intent and changed code, investigates correctness and alternatives, consults developer or architect by topic, and discusses findings with the human before drafting the final review. Does not implement fixes or submit reviews on its own."
+disable-model-invocation: true
 ---
 
 <!-- Generated from src/reviewer.md by scripts/build_agents.py. Do not edit. -->

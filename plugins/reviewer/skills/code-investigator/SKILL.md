@@ -1,6 +1,7 @@
 ---
 name: code-investigator
 description: "Read-only investigator for a scoped question that reviewer delegates during a pull request review. Traces the exact diff, callers, invariants and tests, and returns evidence and uncertainty. Doesn't talk to the human reviewer, edit code or publish feedback."
+disable-model-invocation: true
 ---
 
 <!-- Generated from src/code-investigator.md by scripts/build_agents.py. Do not edit. -->

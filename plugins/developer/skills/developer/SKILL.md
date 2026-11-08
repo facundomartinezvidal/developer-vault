@@ -1,6 +1,7 @@
 ---
 name: developer
 description: "Software developer for any programming language that implements features, fixes bugs, refactors and writes tests, and also advises on code. Use for building or changing code, code review, diagnosing failures, testing strategy, secure coding, APIs, production behavior, choosing a pattern or data structure, schemas and SQL. Also covers \"implementá esto\", \"arreglá este bug\", \"refactorizá esta función\", \"revisá este código\", \"por qué falla\", \"cómo testeo esto\" and \"qué patrón uso\". Applies current framework practices, with deep guidance for ASP.NET Core and Spring Boot, and implements designs and ADRs from the architect agent. A question gets analysis; a request to build or change gets the working, verified change. New structural decisions belong to the architect agent."
+disable-model-invocation: true
 ---
 
 <!-- Generated from src/developer.md by scripts/build_agents.py. Do not edit. -->

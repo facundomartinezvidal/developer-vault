@@ -50,6 +50,14 @@ Usar la skill `eval-harness` para evaluar cada agente nuevo y los cambios de com
 - **Registrar y mantener:** conservar definiciones y resumen durable de resultados en el plugin, con ubicación de artefactos crudos, límites y pendientes. Repetir las pruebas afectadas después de cambios respaldados por fallos observados; conservar los resultados previos. No ajustar instrucciones solo para satisfacer ejemplos conocidos.
 - **Respetar ejecución y permisos:** usar el procedimiento de sesiones independientes del repo, sin scripts que invoquen modelos pagos. No sortear negativas del harness ni confundir aislamiento por instrucciones con aislamiento del sistema. Si una herramienta impide ejecutar candidatos por falta de contención, respetar ese límite y declarar qué modalidades de evaluación sí se realizaron.
 
+## Listado de skills
+
+Claude Code muestra nombres y descripciones de todas las skills en un listado con presupuesto fijo, y descarta descripciones cuando no entran. Por eso, desde el 2026-11-07:
+
+- Las descripciones de skills especializadas tienen como máximo 300 caracteres: primero para qué sirve, luego cuándo usarla y una o dos frases típicas en español. `eval_suite.py validate` lo comprueba en architect y developer.
+- La skill de cada rol (`architect`, `developer`, `reviewer`, `code-investigator`) repite al agente en Claude Code, así que se genera con `disable-model-invocation: true`: sigue disponible como `/plugin:rol`. Codex ignora ese campo y la sigue ofreciendo.
+- El enrutamiento se mide con `evals/skill-triggering-v1/`: definición, descripciones anteriores como línea base y, cuando se corra, resultados.
+
 ## Fuentes compartidas y coordinación
 
 `shared/decision-protocol.md` es la fuente del protocolo de decisiones de architect

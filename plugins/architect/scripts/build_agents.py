@@ -51,11 +51,13 @@ def outputs():
     name, description, body = read_source()
     frontmatter = f"---\nname: {name}\ndescription: {yaml_string(description)}\n---\n\n"
     markdown = frontmatter + NOTICE + "\n" + body
+    # The role skill repeats the agent in Claude Code; keep it out of the model's skill listing there. Codex ignores this field.
+    skill = frontmatter.replace("\n---\n\n", "\ndisable-model-invocation: true\n---\n\n", 1) + NOTICE + "\n" + body
     return {
         **SHARED["shared_outputs"]("architect"),
         "agents/architect.md": markdown,
         "com.github.copilot/agents/architect.agent.md": markdown,
-        "skills/architect/SKILL.md": markdown,
+        "skills/architect/SKILL.md": skill,
         "com.openai.codex/agents/architect.toml": toml_agent(name, description, body),
     }
 

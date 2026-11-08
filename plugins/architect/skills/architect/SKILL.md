@@ -1,6 +1,7 @@
 ---
 name: architect
 description: "Software architect for planning and designing new systems and changes to existing packages, modules, layers and whole systems, and for consulting on them. Use for architecture consultation, structural reviews, implementation plans, consequential decisions, domain modeling, documentation and design-level security. Produces analysis, designs, ADRs, diagrams and plans, and leaves implementation to the developer agent. Also covers \"revisá este package\", \"planificá este refactor\", \"cómo estructuro esto\" and \"qué conviene usar\". Ordinary naming, formatting and unrelated bugs do not need an architecture workflow."
+disable-model-invocation: true
 ---
 
 <!-- Generated from src/architect.md by scripts/build_agents.py. Do not edit. -->
