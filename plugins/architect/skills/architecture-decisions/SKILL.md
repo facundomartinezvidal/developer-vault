@@ -58,7 +58,7 @@ Use `assets/adr-template.md` when the repo has no format of its own.
 What makes the record useful:
 
 - **One decision per record**, one or two pages, written for a future developer who wasn't in the room.
-- **Context preserves the evidence,** including constraints such as deadlines or team skills. Distinguish supplied/verified facts, assumptions and proposed targets. Never fill missing team size, infrastructure, cost or approval history with plausible guesses.
+- **Context preserves the evidence,** including constraints such as deadlines or team skills. Distinguish supplied/verified facts, assumptions and proposed targets. Never fill missing team size, infrastructure, cost or approval history with plausible guesses. Facts about technology that change over time (versions, support, limits, pricing, licensing) come from current official sources, cited, or are marked unverified.
 - **Decision uses active voice:** "We will…".
 - **Consequences include costs, risks and uncertainty.** State logical implications as implications, and predictions as expected effects. A dedicated database introduces additional database lifecycle work; it does not establish a particular routing catalog, migration schedule, staffing level, compliance result or measured availability. Put suggested mechanisms under Pending or Proposed details and label estimates with their basis. Apply fact/assumption discipline to every section, including Consequences and Revisit when; moving a guess outside Decision does not make it a fact.
 - **Status is `proposed` unless the user tells you it has been agreed.** Recording a decision as accepted when nobody has accepted it misrepresents the team's position.
