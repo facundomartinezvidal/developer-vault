@@ -1,0 +1,206 @@
+{
+ "A1": {
+  "choices": {
+   "adr-queue-choice": "architect:architecture-decisions",
+   "onboarding-diagram": "architect:architecture-documentation",
+   "orm-in-use-cases": "architect:clean-architecture",
+   "customer-two-meanings": "architect:domain-driven-design",
+   "fragile-call-order": "architect:software-design",
+   "tenant-abuse": "architect:threat-modeling",
+   "status-code": "developer:api-design",
+   "long-function": "developer:clean-code",
+   "slow-dedupe": "developer:data-structures-and-algorithms",
+   "flaky-crash": "developer:debugging",
+   "growing-switch": "developer:design-patterns",
+   "spring-config": "developer:framework-practices",
+   "follow-adr": "developer:implementing-designs",
+   "estimate-vague": "developer:pragmatic-practices",
+   "timeouts-retries": "developer:production-readiness",
+   "smells-before-feature": "developer:refactoring",
+   "stock-race": "developer:relational-databases",
+   "look-at-diff": "developer:reviewing-code",
+   "password-storage": "developer:secure-coding",
+   "what-to-test": "developer:testing",
+   "form-states": "developer:user-interfaces",
+   "layers-vs-interface": "architect:software-design",
+   "threat-vs-code": "developer:secure-coding",
+   "pattern-vs-structure": "architect:clean-architecture",
+   "aggregate-vs-sql": "architect:domain-driven-design",
+   "decide-vs-implement": "architect:architecture-decisions",
+   "diagram-vs-er": "developer:relational-databases",
+   "format-convert": "none",
+   "git-command": "none",
+   "translate-text": "none",
+   "deploy-vercel": "none",
+   "regex-quick": "none",
+   "explain-term": "none"
+  },
+  "by_kind": {
+   "positive": [
+    21,
+    21
+   ],
+   "near-miss": [
+    6,
+    6
+   ],
+   "negative": [
+    6,
+    6
+   ]
+  }
+ },
+ "A2": {
+  "choices": {
+   "adr-queue-choice": "architect:architecture-decisions",
+   "onboarding-diagram": "architect:architecture-documentation",
+   "orm-in-use-cases": "architect:clean-architecture",
+   "customer-two-meanings": "architect:domain-driven-design",
+   "fragile-call-order": "architect:software-design",
+   "tenant-abuse": "architect:threat-modeling",
+   "status-code": "developer:api-design",
+   "long-function": "developer:clean-code",
+   "slow-dedupe": "developer:data-structures-and-algorithms",
+   "flaky-crash": "developer:debugging",
+   "growing-switch": "developer:design-patterns",
+   "spring-config": "developer:framework-practices",
+   "follow-adr": "developer:implementing-designs",
+   "estimate-vague": "developer:pragmatic-practices",
+   "timeouts-retries": "developer:production-readiness",
+   "smells-before-feature": "developer:refactoring",
+   "stock-race": "developer:relational-databases",
+   "look-at-diff": "developer:reviewing-code",
+   "password-storage": "developer:secure-coding",
+   "what-to-test": "developer:testing",
+   "form-states": "developer:user-interfaces",
+   "layers-vs-interface": "architect:software-design",
+   "threat-vs-code": "developer:secure-coding",
+   "pattern-vs-structure": "architect:clean-architecture",
+   "aggregate-vs-sql": "architect:domain-driven-design",
+   "decide-vs-implement": "architect:architecture-decisions",
+   "diagram-vs-er": "developer:relational-databases",
+   "format-convert": "none",
+   "git-command": "none",
+   "translate-text": "none",
+   "deploy-vercel": "none",
+   "regex-quick": "none",
+   "explain-term": "none"
+  },
+  "by_kind": {
+   "positive": [
+    21,
+    21
+   ],
+   "near-miss": [
+    6,
+    6
+   ],
+   "negative": [
+    6,
+    6
+   ]
+  }
+ },
+ "B1": {
+  "choices": {
+   "adr-queue-choice": "architect:architecture-decisions",
+   "onboarding-diagram": "architect:architecture-documentation",
+   "orm-in-use-cases": "architect:clean-architecture",
+   "customer-two-meanings": "architect:domain-driven-design",
+   "fragile-call-order": "architect:software-design",
+   "tenant-abuse": "architect:threat-modeling",
+   "status-code": "developer:api-design",
+   "long-function": "developer:clean-code",
+   "slow-dedupe": "developer:data-structures-and-algorithms",
+   "flaky-crash": "developer:debugging",
+   "growing-switch": "developer:design-patterns",
+   "spring-config": "developer:framework-practices",
+   "follow-adr": "developer:implementing-designs",
+   "estimate-vague": "developer:pragmatic-practices",
+   "timeouts-retries": "developer:production-readiness",
+   "smells-before-feature": "developer:refactoring",
+   "stock-race": "developer:relational-databases",
+   "look-at-diff": "developer:reviewing-code",
+   "password-storage": "developer:secure-coding",
+   "what-to-test": "developer:testing",
+   "form-states": "developer:user-interfaces",
+   "layers-vs-interface": "architect:software-design",
+   "threat-vs-code": "developer:secure-coding",
+   "pattern-vs-structure": "architect:clean-architecture",
+   "aggregate-vs-sql": "architect:domain-driven-design",
+   "decide-vs-implement": "architect:architecture-decisions",
+   "diagram-vs-er": "developer:relational-databases",
+   "format-convert": "none",
+   "git-command": "none",
+   "translate-text": "none",
+   "deploy-vercel": "none",
+   "regex-quick": "none",
+   "explain-term": "none"
+  },
+  "by_kind": {
+   "positive": [
+    21,
+    21
+   ],
+   "near-miss": [
+    6,
+    6
+   ],
+   "negative": [
+    6,
+    6
+   ]
+  }
+ },
+ "B2": {
+  "choices": {
+   "adr-queue-choice": "architect:architecture-decisions",
+   "onboarding-diagram": "architect:architecture-documentation",
+   "orm-in-use-cases": "architect:clean-architecture",
+   "customer-two-meanings": "architect:domain-driven-design",
+   "fragile-call-order": "architect:software-design",
+   "tenant-abuse": "architect:threat-modeling",
+   "status-code": "developer:api-design",
+   "long-function": "developer:clean-code",
+   "slow-dedupe": "developer:data-structures-and-algorithms",
+   "flaky-crash": "developer:debugging",
+   "growing-switch": "developer:design-patterns",
+   "spring-config": "developer:framework-practices",
+   "follow-adr": "developer:implementing-designs",
+   "estimate-vague": "developer:pragmatic-practices",
+   "timeouts-retries": "developer:production-readiness",
+   "smells-before-feature": "developer:refactoring",
+   "stock-race": "developer:relational-databases",
+   "look-at-diff": "developer:reviewing-code",
+   "password-storage": "developer:secure-coding",
+   "what-to-test": "developer:testing",
+   "form-states": "developer:user-interfaces",
+   "layers-vs-interface": "architect:software-design",
+   "threat-vs-code": "developer:secure-coding",
+   "pattern-vs-structure": "architect:clean-architecture",
+   "aggregate-vs-sql": "architect:domain-driven-design",
+   "decide-vs-implement": "architect:architecture-decisions",
+   "diagram-vs-er": "developer:relational-databases",
+   "format-convert": "none",
+   "git-command": "none",
+   "translate-text": "none",
+   "deploy-vercel": "none",
+   "regex-quick": "none",
+   "explain-term": "none"
+  },
+  "by_kind": {
+   "positive": [
+    21,
+    21
+   ],
+   "near-miss": [
+    6,
+    6
+   ],
+   "negative": [
+    6,
+    6
+   ]
+  }
+ }
+}

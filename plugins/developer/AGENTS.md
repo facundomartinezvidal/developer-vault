@@ -288,3 +288,7 @@ de introducir traducciones o sinónimos. Developer usa inglés para nombres téc
 con términos de dominio en el idioma acordado. No renombrar código existente fuera
 del alcance ni traducir textos de usuario. Regenerar los tres plugins al cambiar
 esa fuente; no editar las salidas. Evaluación: `evals/code-language-v1/` de la raíz.
+
+## Listado de skills y planes (2026-11-07)
+
+Las descripciones de skills especializadas tienen como máximo 300 caracteres y la skill de rol se genera con `disable-model-invocation: true`, para que entren en el listado de Claude Code (ver "Listado de skills" en el `AGENTS.md` de la raíz). Medición: `evals/skill-triggering-v1/` de la raíz. `implementing-designs` busca primero el plan guardado por `architect` en `docs/plans/`; ese cambio no tiene evaluación conductual propia.
