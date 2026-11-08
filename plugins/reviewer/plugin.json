@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "reviewer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Collaborative pull request review assistant: understand intent and code, investigate evidence, consult developer or architect, and build useful peer feedback with the human reviewer.",
   "extensions": {
     "com.openai": {

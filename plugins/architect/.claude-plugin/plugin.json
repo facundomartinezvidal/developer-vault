@@ -1,6 +1,6 @@
 {
   "name": "architect",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "description": "Software architecture agent and skills: decisions and ADRs, C4 documentation, threat modeling, Clean Architecture, Domain-Driven Design and software design.",
   "author": { "name": "Facundo Martinez Vidal" },
