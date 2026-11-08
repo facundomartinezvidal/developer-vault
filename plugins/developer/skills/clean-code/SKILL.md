@@ -1,6 +1,6 @@
 ---
 name: clean-code
-description: "Writes and reviews readable, idiomatic code in any language at the level of names, functions, comments, classes, error handling and async or concurrent code, using Clean Code, A Philosophy of Software Design and The Pragmatic Programmer. Use whenever code is hard to follow, a function does too much, a name misleads, errors are handled badly, async code misbehaves, or someone asks whether code is clean or idiomatic, even if they don't say \"clean code\". Covers \"cómo nombro esto\", \"esta función es muy larga\", \"cómo manejo este error\", \"cuándo comento\" and translating advice between languages. For finding and fixing smells step by step use refactoring; to review a full PR use reviewing-code; for module interfaces across callers use the architect's software-design. Not for what a formatter already enforces."
+description: "Makes code readable at the level of names, functions, comments, error handling and async code, in any language. Use when code is hard to follow, a name misleads or errors are swallowed (\"esta función es muy larga\"). Step-by-step restructuring: refactoring; whole PRs: reviewing-code."
 ---
 
 # Clean Code

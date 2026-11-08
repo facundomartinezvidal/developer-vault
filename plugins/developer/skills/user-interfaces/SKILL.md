@@ -1,6 +1,6 @@
 ---
 name: user-interfaces
-description: "Builds and reviews screens and components on any front-end stack, including web, mobile and desktop. Use whenever someone creates or changes a page, component, form, table, modal or client-side state, or a UI bug appears, even if they only say \"armame esta pantalla\" or \"el formulario no anda\". Covers loading, empty and error states, accessibility, responsive layout, forms, front-end performance and checking the result in a real browser or simulator. For endpoints behind the UI use api-design; for visual brand design and mockups use a design tool."
+description: "Builds and reviews screens and components on any front-end stack. Use for pages, forms, tables, modals, client state and UI bugs, including loading, empty and error states, accessibility and responsive layout (\"armame esta pantalla\", \"el formulario no anda\")."
 ---
 
 # User Interfaces

@@ -1,6 +1,6 @@
 ---
 name: threat-modeling
-description: Performs design-level threat modeling with STRIDE — maps assets, data flows and trust boundaries, finds what can go wrong, ranks risks by what actually matters to the system, and proposes mitigations with owners and residual risk. Use it whenever someone is designing or reviewing a system or feature that handles users, money, files, personal data, webhooks, multi-tenancy, external integrations or AI agents, and asks whether the design is secure, what could go wrong, how an attacker could abuse it, or needs a threat model or security design review, even if they never say "STRIDE" or "threat model". Also covers Spanish requests like "es seguro este diseño", "qué riesgos de seguridad tiene", "modelo de amenazas", "cómo lo podrían atacar", "revisión de seguridad de la arquitectura". Not for scanning code for vulnerabilities in a diff, dependency audits, or secret leaks.
+description: "Threat-models a design with STRIDE: assets, data flows, trust boundaries, ranked risks and mitigations. Use when designing or reviewing something with users, money, files, tenants, webhooks or AI agents (\"es seguro este diseño\", \"cómo lo podrían atacar\"). Vulnerable code: secure-coding."
 ---
 
 # Threat Modeling

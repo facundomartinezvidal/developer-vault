@@ -1,6 +1,6 @@
 ---
 name: software-design
-description: Designs and reviews module interfaces, information hiding and behavioral contracts using A Philosophy of Software Design and The Pragmatic Programmer. Use when callers must know too much, one change spreads across modules, an API requires fragile call ordering, failure or retry semantics are unclear, or abstraction layers add complexity. Covers "cómo diseño esta interfaz", "está sobreingeniería" and "lo separo o lo junto". For system-wide dependency direction use clean-architecture; for business meanings and aggregate invariants use domain-driven-design. Not for formatting or line-level style.
+description: "Designs and reviews module interfaces: information hiding, what callers must know, call ordering, and failure or retry contracts. Use when one change spreads across modules, an API is easy to misuse or a layer adds nothing (\"cómo diseño esta interfaz\", \"lo separo o lo junto\")."
 ---
 
 # Software Design

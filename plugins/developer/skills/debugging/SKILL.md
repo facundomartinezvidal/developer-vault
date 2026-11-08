@@ -1,6 +1,6 @@
 ---
 name: debugging
-description: "Finds the root cause of failures in any language with a reproduce, hypothesize and prove method, using The Pragmatic Programmer. Use whenever behavior is wrong and the cause is unknown: a stack trace, a bug report, a crash or hang, an intermittent or flaky failure, something broken only in production, a fix that didn't hold, or someone stuck on an error, even if they only paste the message. Covers \"por qué falla\", \"no entiendo este error\", \"falla a veces\", \"arreglá este bug\" and \"en mi máquina anda\". Not needed when the cause is already evident from the error; for writing regular tests use testing; to add logging or retries use production-readiness."
+description: "Finds the root cause of a failure with a reproduce, hypothesize and prove method, in any language. Use for stack traces, crashes, hangs, flaky or production-only failures and fixes that didn't hold (\"por qué falla\", \"falla a veces\"). Not needed when the error already shows the cause."
 ---
 
 # Debugging

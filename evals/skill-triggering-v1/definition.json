@@ -1,0 +1,260 @@
+{
+  "scope": "Skill routing from the listed names and descriptions only. A judge sees the listing and one request, and names the single skill it would load, or none. No skill bodies, code or tools.",
+  "metric": "A case passes when the chosen skill is in `accept`; an empty `accept` means no skill from these plugins should load. Report positives, near misses and negatives separately, and compare the baseline and trimmed descriptions under identical conditions.",
+  "critical": "A negative that loads a skill, or a near miss that loads a skill outside `accept`, counts against precision; a positive with no skill counts against recall.",
+  "cases": [
+    {
+      "id": "adr-queue-choice",
+      "kind": "positive",
+      "request": "Tenemos que sacar el envío de mails del checkout. ¿Uso una cola de jobs de Rails o montamos RabbitMQ? Dejalo registrado para el equipo.",
+      "accept": [
+        "architect:architecture-decisions"
+      ]
+    },
+    {
+      "id": "onboarding-diagram",
+      "kind": "positive",
+      "request": "Entra gente nueva la semana que viene y nadie entiende cómo se hablan los servicios. Armame algo visual a partir del repo.",
+      "accept": [
+        "architect:architecture-documentation"
+      ]
+    },
+    {
+      "id": "orm-in-use-cases",
+      "kind": "positive",
+      "request": "Mis casos de uso importan directamente los modelos de Mongoose y no puedo probarlos sin levantar Mongo. ¿Cómo lo ordeno?",
+      "accept": [
+        "architect:clean-architecture"
+      ]
+    },
+    {
+      "id": "customer-two-meanings",
+      "kind": "positive",
+      "request": "Para ventas un cliente es un prospecto y para facturación es una cuenta con deuda, y el modelo compartido ya no aguanta. ¿Cómo lo partimos?",
+      "accept": [
+        "architect:domain-driven-design"
+      ]
+    },
+    {
+      "id": "fragile-call-order",
+      "kind": "positive",
+      "request": "Mi módulo obliga a llamar open, configure, run y close en ese orden, y los que lo usan se olvidan pasos. Quiero una interfaz que no se pueda usar mal.",
+      "accept": [
+        "architect:software-design"
+      ]
+    },
+    {
+      "id": "tenant-abuse",
+      "kind": "positive",
+      "request": "Antes de construir el portal multi-cliente, ¿qué podría hacer alguien malintencionado con los IDs de documentos y el worker que procesa archivos?",
+      "accept": [
+        "architect:threat-modeling"
+      ]
+    },
+    {
+      "id": "status-code",
+      "kind": "positive",
+      "request": "Si el pedido ya fue cancelado y lo vuelven a cancelar, ¿qué devuelve el endpoint? ¿Y si cambio el formato de error se rompen los clientes móviles?",
+      "accept": [
+        "developer:api-design"
+      ]
+    },
+    {
+      "id": "long-function",
+      "kind": "positive",
+      "request": "Esta función tiene 120 líneas, nombres como tmp2 y un try/catch que se traga todo. ¿Cómo la dejo legible?",
+      "accept": [
+        "developer:clean-code",
+        "developer:refactoring"
+      ]
+    },
+    {
+      "id": "slow-dedupe",
+      "kind": "positive",
+      "request": "Con 200 mil registros este doble for para encontrar duplicados tarda minutos. ¿Qué uso en vez de esto?",
+      "accept": [
+        "developer:data-structures-and-algorithms"
+      ]
+    },
+    {
+      "id": "flaky-crash",
+      "kind": "positive",
+      "request": "En producción el proceso se cae una vez por día con este stack trace y en local no lo puedo reproducir.",
+      "accept": [
+        "developer:debugging"
+      ]
+    },
+    {
+      "id": "growing-switch",
+      "kind": "positive",
+      "request": "Cada vez que sumamos un medio de pago agregamos otro case a este switch gigante. ¿Hay una forma más prolija de estructurarlo?",
+      "accept": [
+        "developer:design-patterns"
+      ]
+    },
+    {
+      "id": "spring-config",
+      "kind": "positive",
+      "request": "En Spring Boot 3, ¿cuál es la forma correcta de cargar esta configuración por entorno y validarla al arrancar?",
+      "accept": [
+        "developer:framework-practices"
+      ]
+    },
+    {
+      "id": "follow-adr",
+      "kind": "positive",
+      "request": "El arquitecto dejó el ADR 0004 y un plan en docs/plans. Llevalo a código en nuestra API de .NET.",
+      "accept": [
+        "developer:implementing-designs"
+      ]
+    },
+    {
+      "id": "estimate-vague",
+      "kind": "positive",
+      "request": "Me pidieron 'mejorar el onboarding' sin más detalle y quieren una estimación para el viernes. ¿Cómo lo encaro?",
+      "accept": [
+        "developer:pragmatic-practices"
+      ]
+    },
+    {
+      "id": "timeouts-retries",
+      "kind": "positive",
+      "request": "Este consumidor llama a un servicio externo que a veces tarda 30 segundos. Agregale timeouts, reintentos y logs antes de salir a producción.",
+      "accept": [
+        "developer:production-readiness"
+      ]
+    },
+    {
+      "id": "smells-before-feature",
+      "kind": "positive",
+      "request": "Antes de sumar descuentos por volumen quiero limpiar este módulo sin cambiar lo que hace, en pasos chicos.",
+      "accept": [
+        "developer:refactoring"
+      ]
+    },
+    {
+      "id": "stock-race",
+      "kind": "positive",
+      "request": "Dos compras simultáneas dejan el stock en negativo. Tengo la tabla productos con una columna stock en Postgres. ¿Cómo lo resuelvo en la consulta?",
+      "accept": [
+        "developer:relational-databases"
+      ]
+    },
+    {
+      "id": "look-at-diff",
+      "kind": "positive",
+      "request": "¿Le das una mirada a este diff antes de que lo mergee? Son 300 líneas en el servicio de pagos.",
+      "accept": [
+        "developer:reviewing-code"
+      ]
+    },
+    {
+      "id": "password-storage",
+      "kind": "positive",
+      "request": "Estoy guardando las contraseñas con SHA-256 y armando el SQL con concatenación. ¿Está bien?",
+      "accept": [
+        "developer:secure-coding"
+      ]
+    },
+    {
+      "id": "what-to-test",
+      "kind": "positive",
+      "request": "Este servicio no tiene ni un test y cada mock que escribo se rompe con cualquier cambio. ¿Qué pruebo y cómo?",
+      "accept": [
+        "developer:testing"
+      ]
+    },
+    {
+      "id": "form-states",
+      "kind": "positive",
+      "request": "Armame la pantalla de alta de clientes en React con validación, estado de carga y mensajes de error accesibles.",
+      "accept": [
+        "developer:user-interfaces"
+      ]
+    },
+    {
+      "id": "layers-vs-interface",
+      "kind": "near-miss",
+      "request": "El servicio de archivos expone la región de S3, los reintentos y los errores del SDK a cada controller. Las dependencias apuntan bien. ¿Qué cambiarías de su interfaz?",
+      "accept": [
+        "architect:software-design"
+      ]
+    },
+    {
+      "id": "threat-vs-code",
+      "kind": "near-miss",
+      "request": "Revisá este handler: arma una consulta con el id que viene del query string y no chequea el tenant del token.",
+      "accept": [
+        "developer:secure-coding"
+      ]
+    },
+    {
+      "id": "pattern-vs-structure",
+      "kind": "near-miss",
+      "request": "¿Cómo separo en capas este monolito de Express para que la lógica de negocio no dependa del framework?",
+      "accept": [
+        "architect:clean-architecture"
+      ]
+    },
+    {
+      "id": "aggregate-vs-sql",
+      "kind": "near-miss",
+      "request": "El límite de crédito del cliente es una regla de negocio estricta y hoy dos pedidos pueden pasarlo. ¿Qué objeto debería proteger esa regla?",
+      "accept": [
+        "architect:domain-driven-design"
+      ]
+    },
+    {
+      "id": "decide-vs-implement",
+      "kind": "near-miss",
+      "request": "Todavía no decidimos si usar eventos o llamadas síncronas entre pedidos y facturación. Comparalos con nuestros costos.",
+      "accept": [
+        "architect:architecture-decisions"
+      ]
+    },
+    {
+      "id": "diagram-vs-er",
+      "kind": "near-miss",
+      "request": "Necesito el diagrama de tablas con sus claves foráneas para la migración de mañana.",
+      "accept": [
+        "developer:relational-databases"
+      ]
+    },
+    {
+      "id": "format-convert",
+      "kind": "negative",
+      "request": "Convertí este JSON de configuración a YAML.",
+      "accept": []
+    },
+    {
+      "id": "git-command",
+      "kind": "negative",
+      "request": "¿Cómo deshago el último commit sin perder los cambios?",
+      "accept": []
+    },
+    {
+      "id": "translate-text",
+      "kind": "negative",
+      "request": "Traducime este párrafo del README al inglés.",
+      "accept": []
+    },
+    {
+      "id": "deploy-vercel",
+      "kind": "negative",
+      "request": "Desplegá este proyecto de Next.js en Vercel como preview.",
+      "accept": []
+    },
+    {
+      "id": "regex-quick",
+      "kind": "negative",
+      "request": "Dame una regex para validar un código postal argentino de cuatro dígitos.",
+      "accept": []
+    },
+    {
+      "id": "explain-term",
+      "kind": "negative",
+      "request": "¿Qué significa la sigla CRUD?",
+      "accept": []
+    }
+  ]
+}

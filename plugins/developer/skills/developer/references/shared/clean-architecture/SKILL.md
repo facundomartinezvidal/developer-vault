@@ -1,6 +1,6 @@
 ---
 name: clean-architecture
-description: Reviews, designs and explains software structure using Robert C. Martin's Clean Architecture — the Dependency Rule, entities and use cases, ports and adapters (hexagonal), SOLID at the module level, component cohesion and coupling (REP/CCP/CRP, ADP/SDP/SAP, instability and abstractness metrics), boundaries, Humble Object, Main as composition root, and packaging. Use it whenever someone asks where code should live, how to structure or layer a project, whether their framework, ORM or database is leaking into business logic, how to split a monolith or draw service boundaries, how to make code testable without the DB or UI, to review a PR or repo for architecture or dependency problems, or what a SOLID or component principle really means — even if they never say "clean architecture". Also covers Spanish requests like "cómo estructuro el proyecto", "revisá la arquitectura", "dónde va esta lógica", "capas", "casos de uso", "puertos y adaptadores", "acoplamiento".
+description: "Reviews and designs code structure with Clean Architecture: layers, the Dependency Rule, ports and adapters, boundaries and packaging. Use when a framework, ORM or database leaks into business logic, or to decide where code lives (\"cómo estructuro el proyecto\", \"dónde va esta lógica\")."
 ---
 
 # Clean Architecture

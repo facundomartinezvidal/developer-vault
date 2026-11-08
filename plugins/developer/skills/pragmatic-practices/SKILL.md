@@ -1,6 +1,6 @@
 ---
 name: pragmatic-practices
-description: "Advises on how to approach development work, using The Pragmatic Programmer and common practice. Use whenever requirements are unclear, a task needs slicing, the choice is between a prototype and a real implementation, someone needs an estimate, faces a merge conflict, a dependency upgrade or an unfamiliar code base, needs documentation or a README, or asks about version control, automation or working with a team. Covers \"cómo encaro esto\", \"cuánto puede llevar\", \"prototipo o directo\", \"qué automatizo\", \"cómo actualizo esta librería\" and \"alcanza con esto\". For testing or debugging method use those skills; for technology decisions use the architect agent. Not needed for a clearly specified small task."
+description: "Advises on how to approach development work: unclear requirements, slicing, estimates, prototypes, unfamiliar code, dependency upgrades, merge conflicts, docs and automation (\"cómo encaro esto\", \"cuánto puede llevar\"). Not needed for a clearly specified small task."
 ---
 
 # Pragmatic Practices

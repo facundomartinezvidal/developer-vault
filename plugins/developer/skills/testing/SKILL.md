@@ -1,6 +1,6 @@
 ---
 name: testing
-description: "Writes and reviews automated tests in any language and makes code testable, using Clean Code, The Pragmatic Programmer, Refactoring and Clean Architecture plus common practice on test doubles and legacy code. Use whenever someone adds behavior that needs tests, asks what to test, works with mocks or integration tests, has code without tests, a brittle, slow or flaky suite, or asks about TDD or coverage, even if they only say \"probá que esto ande\". Covers \"escribí tests para esto\", \"qué debería testear\", \"este test es frágil\", \"cómo testeo esto\" and \"conviene TDD\". For a failure with an unknown cause use debugging. Not for load testing or test infrastructure setup."
+description: "Writes and reviews automated tests and makes code testable, in any language. Use when behavior needs tests, mocks are brittle, a suite is slow or flaky, code has no tests, or for TDD and coverage (\"qué debería testear\", \"cómo testeo esto\"). An unknown failure: debugging."
 ---
 
 # Testing

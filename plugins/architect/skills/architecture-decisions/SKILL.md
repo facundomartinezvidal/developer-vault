@@ -1,6 +1,6 @@
 ---
 name: architecture-decisions
-description: Compares consequential technical options against explicit constraints and quality attributes, or records an agreed decision in an Architecture Decision Record (ADR). Use for "qué conviene usar", costly technology or deployment choices, build vs. buy, migrations, and creating or superseding ADRs. Distinguish advice from recording what a team already accepted. Not for ordinary naming, formatting or small local design choices.
+description: "Compares technical options against the project's constraints and recommends one, or records an agreed decision as an ADR. Use for costly choices such as technology, deployment, build vs. buy or migrations, and for writing or superseding ADRs (\"qué conviene usar\"). Not for small reversible choices."
 ---
 
 # Architecture Decisions

@@ -1,6 +1,6 @@
 ---
 name: relational-databases
-description: "Designs relational schemas, normalizes tables, writes and reviews SQL, chooses indexes, and handles transactions and migrations on any SQL engine. Use whenever someone models tables, adds a column or migration, writes a non-trivial query, uses an ORM, has a slow query, or handles balances, stock or uniqueness under concurrency, even if they only say \"necesito guardar esto\". Covers \"cómo modelo estas tablas\", \"qué clave uso\", \"está normalizado\", \"armame esta consulta\", \"falta un índice\" and \"cómo hago esta migración sin romper\". For whether the database should be hidden behind a port use the architect's clean-architecture. Not for operating a server, replication or NoSQL selection."
+description: "Designs relational schemas and migrations, writes and reviews SQL, and handles indexes, transactions and concurrency on any SQL engine or ORM. Use for tables, keys, slow queries, balances, stock or uniqueness (\"cómo modelo estas tablas\", \"falta un índice\"). Not for NoSQL."
 ---
 
 # Relational Databases

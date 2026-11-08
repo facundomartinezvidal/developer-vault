@@ -1,6 +1,6 @@
 ---
 name: opening-pull-requests
-description: "Opens pull requests and writes their titles and descriptions following each project's conventions, looking first in conventions/pull-requests.md and the PR template. Use whenever someone asks to open, create or prepare a pull request or merge request, write or improve a PR description, or set up PR conventions, even if they only say \"abrí el PR\" or \"subilo para revisión\". Covers \"armá la PR\", \"escribime la descripción del PR\", \"qué título le pongo al PR\" and \"definamos cómo abrimos PRs\". It shows the exact title and body and publishes nothing until the person confirms. When a project has no conventions, it offers to create them with a default. For reviewing someone else's PR use the reviewer agent or reviewing-code; for commits use writing-commits."
+description: "Opens pull requests and writes their title and description following the project's conventions and PR template. Shows the exact text and publishes nothing until confirmed. Use to open or describe a PR or set up PR conventions (\"abrí el PR\", \"armá la PR\")."
 ---
 
 # Opening Pull Requests

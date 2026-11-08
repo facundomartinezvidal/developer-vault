@@ -1,6 +1,6 @@
 ---
 name: production-readiness
-description: "Makes code behave well in production, in any language, through logging, metrics, tracing, timeouts, retries, graceful failure and safe releases. Use whenever code calls a network or another service, runs as a job or a queue consumer, needs logs or alerts, can fail partially, or is about to ship, even if the user only says \"agregá logs\" or \"esto se cae a veces\". Covers circuit breakers, health checks, feature flags, rollbacks and \"qué logueo\", \"cómo reintento\", \"está listo para producción\" and \"cómo lo despliego sin romper\". For finding the cause of a specific failure use debugging; for designing deployment topology use the architect agent."
+description: "Makes code behave well in production with logging, metrics, tracing, timeouts, retries, graceful failure and safe releases. Use when code calls other services, runs as a job or consumer, or is about to ship (\"agregá logs\", \"está listo para producción\"). A known failure: debugging."
 ---
 
 # Production Readiness

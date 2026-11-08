@@ -1,6 +1,6 @@
 ---
 name: design-patterns
-description: "Recognizes, chooses, applies and removes design patterns and anti-patterns in any language, using Head First Design Patterns, Applying UML and Patterns (GRASP) and Agile Principles, Patterns, and Practices. Use whenever someone asks which pattern fits, whether one is overkill, which class should own a responsibility, or how to explain one, or when growing conditionals, object creation or notification logic might call for one, even if they never name a pattern. Covers Strategy, Factory, Observer, Decorator, Adapter, Command, State, Repository, functional equivalents, and \"qué patrón uso\", \"explicame Observer\", \"quién debería hacer esto\" and \"es sobreingeniería este patrón\". For system-level structure use the architect agent. Not a reason to add a pattern if plain code is enough."
+description: "Chooses, applies and removes design patterns and GRASP responsibilities, in any language. Use when growing conditionals, object creation or notifications might need a pattern, to judge if one is overkill, or to explain one (\"qué patrón uso\", \"quién debería hacer esto\")."
 ---
 
 # Design Patterns

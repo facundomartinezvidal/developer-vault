@@ -46,7 +46,7 @@ def validate():
         folder = ROOT / 'skills' / skill
         data, body = frontmatter(folder / 'SKILL.md')
         assert data['name'] == skill, f'{skill}: name mismatch'
-        assert isinstance(data['description'], str) and 0 < len(data['description']) <= 1024, f'{skill}: description length'
+        assert isinstance(data['description'], str) and 0 < len(data['description']) <= (1024 if skill == 'developer' else 300), f'{skill}: description length (300 max for specialists, to fit the skill listing)'
         assert len((folder / 'SKILL.md').read_text().splitlines()) < 500, f'{skill}: length'
         assert '[TODO:' not in body, f'{skill}: unfinished scaffold'
         assert not re.search(r'!\[\[|\[\[', body), f'{skill}: Obsidian syntax'

@@ -1,6 +1,6 @@
 ---
 name: reviewing-code
-description: "Reviews diffs and pull requests for correctness, safety and maintainability, and gives feedback people can act on, in any language. Use whenever someone asks to look over a PR, a diff, a commit or a branch before merging, or to check their own change, even if they just say \"le das una mirada\". Covers \"revisá este PR\", \"está bien este cambio\", \"qué le dirías a este PR\" and how to respond to review comments. For a deep review of one aspect, combine with secure-coding or testing. Reviews existing work; to review a whole package's structure use the architect agent."
+description: "Reviews diffs, pull requests and commits for correctness, safety and maintainability, with feedback people can act on. Use before merging or to check one's own change (\"revisá este PR\", \"le das una mirada\"). A whole package's structure: architect agent."
 ---
 
 # Reviewing Code

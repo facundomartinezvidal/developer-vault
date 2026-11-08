@@ -1,6 +1,6 @@
 ---
 name: architecture-documentation
-description: Documents software architecture for a specific audience using C4 context/container/component views, flow or deployment diagrams, and focused class diagrams when type relationships explain the design. Use for architecture overviews, onboarding, stakeholder presentations, "diagrama de arquitectura", "documentá cómo está armado" or a requested view of an established domain model. Derive diagrams from evidence and distinguish current design from proposals. Not for inventing business rules, API reference docs or ER diagrams alone.
+description: "Documents an existing architecture for a specific audience with evidence-based C4, flow, deployment or focused class diagrams. Use for overviews, onboarding and stakeholder views (\"diagrama de arquitectura\", \"documentá cómo está armado\"). Not for API reference docs or ER diagrams alone."
 ---
 
 # Architecture Documentation

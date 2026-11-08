@@ -1,6 +1,6 @@
 ---
 name: refactoring
-description: "Improves existing code in any language without changing its behavior, using Fowler's Refactoring (code smells and the catalog of moves) plus Clean Code, The Pragmatic Programmer and A Philosophy of Software Design. Use whenever code resists a change, someone wants to clean up before adding a feature, asks what smells code has or whether a refactor is worth it, or must make a large change in small safe steps, even if they just say \"esto se puede mejorar\". Covers Extract Function, Move Function, Replace Conditional with Polymorphism and \"refactorizá esto\", \"qué code smells tiene\", \"está duplicado\" and \"vale la pena refactorizar\". For restructuring layers or modules use the architect agent. Not for style preferences with no change cost."
+description: "Improves existing code without changing behavior, using code smells and small, safe refactoring moves. Use when code resists a change, before adding a feature, or to judge if a cleanup is worth it (\"refactorizá esto\", \"qué code smells tiene\"). Layers or modules: architect agent."
 ---
 
 # Refactoring

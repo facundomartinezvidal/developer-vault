@@ -1,6 +1,6 @@
 ---
 name: api-design
-description: "Designs, implements and reviews web and library APIs in any language, including REST and HTTP endpoints, RPC, GraphQL, webhooks, events and public functions other code depends on. Use whenever someone adds or changes an endpoint, request or response shape, error format, pagination, versioning or a public library interface, or asks whether a change breaks clients, even if they don't say \"API design\". Covers idempotency and \"cómo diseño este endpoint\", \"qué status devuelvo\", \"esto rompe a los clientes\" and \"cómo versiono esto\". For internal module interfaces and information hiding use the architect's software-design; for choosing an API style across a system use the architect's architecture-decisions."
+description: "Designs and reviews APIs other code depends on: HTTP endpoints, RPC, GraphQL, webhooks, events and public library functions. Use for request and response shapes, status codes, errors, pagination, idempotency, versioning and breaking changes (\"qué status devuelvo\", \"esto rompe a los clientes\")."
 ---
 
 # API Design

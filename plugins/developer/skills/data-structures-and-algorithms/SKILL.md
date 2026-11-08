@@ -1,6 +1,6 @@
 ---
 name: data-structures-and-algorithms
-description: "Chooses data structures and algorithms and reasons about cost and performance in any language. Use whenever someone decides between a list, set, map, heap or tree, code gets slow on large inputs, needs profiling or caching, wants Big-O analysis, or faces a sorting, searching, graph, greedy, recursion or dynamic programming problem, even if they only say \"esto tarda mucho\". Covers \"qué estructura uso\", \"cuál es la complejidad\", \"camino más corto\" and \"es O(n²)\". For schema and query problems use relational-databases. Not needed when the input is small and the plain version is clearly fast enough."
+description: "Chooses data structures and algorithms and reasons about cost, in any language. Use when code is slow on large inputs, for Big-O, caching or profiling, or for sorting, search, graph and dynamic programming problems (\"esto tarda mucho\", \"qué estructura uso\"). Queries: relational-databases."
 ---
 
 # Data Structures and Algorithms

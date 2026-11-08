@@ -1,6 +1,6 @@
 ---
 name: writing-commits
-description: "Creates Git commits and writes commit titles and descriptions that follow each project's own conventions, looking first in conventions/commits.md. Use whenever someone asks to commit, prepare or split a commit, write or improve a commit message, or set up commit conventions, even if they only say \"commiteá\" or \"guardá esto en git\". Covers \"hacé el commit\", \"pasame el mensaje de commit\", \"qué título le pongo\", \"separá esto en commits\" and \"definamos las convenciones de commits\". When a project has no conventions, it says so and offers to create them, with Conventional Commits titles and Git-style bodies as the default. For pull requests and reviews use reviewing-code; for branching, merge conflicts or recovering history use pragmatic-practices."
+description: "Creates Git commits and writes their messages following the project's conventions, looking first in conventions/commits.md. Use to commit, split a change into commits, write a message or set up commit conventions (\"hacé el commit\", \"qué título le pongo\"). Without conventions, offers a default."
 ---
 
 # Writing Commits

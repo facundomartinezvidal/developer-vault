@@ -1,6 +1,6 @@
 ---
 name: implementing-designs
-description: "Turns architecture plans into working code without losing what was decided, including ADRs, C4 views, Clean Architecture layers, DDD models, threat models and proposals from the architect agent. Use whenever someone asks to implement, apply, or follow a design, ADR, architecture decision, plan or threat model, or asks how a design should look in code such as ASP.NET Core or Spring Boot, even if they just say \"implementá lo que dijo el arquitecto\" or \"cómo llevo esto a código\". Covers mapping layers, ports, aggregates, domain events and security mitigations to framework code, and making the design enforceable. If the decision itself is still open or needs changing, use the architect agent."
+description: "Turns an architect's plan, ADR, C4 view, DDD model or threat model into working code without losing what was decided. Use to implement a design or check code against one (\"implementá lo que dijo el arquitecto\", \"cómo llevo esto a código\"). Open decisions: architect agent."
 ---
 
 # Implementing Designs

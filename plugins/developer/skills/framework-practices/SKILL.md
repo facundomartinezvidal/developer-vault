@@ -1,6 +1,6 @@
 ---
 name: framework-practices
-description: "Applies current best practices of web and application frameworks, with deep guidance for ASP.NET Core and Spring Boot, and looks up the official documentation for the version installed. Use whenever code touches controllers, endpoints, dependency injection, configuration, EF Core, JPA or Hibernate, framework security, framework tests or startup, or someone asks how something should be done in a framework, even if they just say \"cómo se hace esto en Spring\" or \"esto está bien en .NET\". Also use for upgrades and for any other framework such as Django, Rails, Laravel, NestJS or Next.js. Covers \"cuál es la forma correcta en ASP.NET\", \"por qué esto rompe en Spring Boot\" and \"cómo configuro esto\". To turn an architect's design into framework code use implementing-designs; for general API contracts use api-design."
+description: "Applies current practices of the framework in use, with deep guidance for ASP.NET Core and Spring Boot, checking official docs for the installed version. Use for controllers, DI, configuration, ORMs, framework security, tests, startup and upgrades (\"cómo se hace esto en Spring\")."
 ---
 
 # Framework Practices

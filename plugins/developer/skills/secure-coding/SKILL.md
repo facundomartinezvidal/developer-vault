@@ -1,6 +1,6 @@
 ---
 name: secure-coding
-description: "Writes and reviews application code so it resists common vulnerabilities, in any language, following the OWASP Top 10:2025 and CWE guidance. Use whenever code handles user input, SQL or shell commands, files, uploads, URLs, HTML, logins, sessions, permissions, tokens, secrets, encryption, payments or personal data, and whenever someone asks if code is safe, even if they never say \"security\". Covers injection, XSS, CSRF, SSRF, broken access control, password storage, dependency risks and \"esto es seguro\", \"revisá la seguridad de este código\", \"cómo guardo contraseñas\", \"cómo manejo este token\". For design-level threat modeling use the architect's threat-modeling. For defensive work on code the user owns or is authorized to test."
+description: "Writes and reviews code to resist vulnerabilities, following OWASP Top 10 and CWE. Use when code handles input, SQL or shell commands, files, auth, sessions, permissions, tokens, secrets or personal data, or someone asks if code is safe (\"esto es seguro\"). Design threats: threat-modeling."
 ---
 
 # Secure Coding

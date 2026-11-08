@@ -1,6 +1,6 @@
 ---
 name: domain-driven-design
-description: Models and reviews complex business domains using ubiquitous language, bounded contexts, context maps, subdomains and aggregates. Use when business terms conflict, teams share a tangled model, a monolith needs business boundaries, legacy integrations distort the model, or business invariants need explicit consistency and transaction decisions. Also applies to requests such as "cómo modelo este dominio", "contextos delimitados", "agregados" and "lenguaje ubicuo". For dependency direction, layers or folder structure alone, use clean-architecture.
+description: "Models complex business domains with ubiquitous language, bounded contexts and aggregates. Use when business terms conflict, a shared model is tangled, or a business invariant needs a consistency boundary (\"cómo modelo este dominio\", \"agregados\"). Layers and folders alone: clean-architecture."
 ---
 
 # Domain-Driven Design
