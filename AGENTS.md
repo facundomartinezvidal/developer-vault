@@ -22,6 +22,7 @@ Marketplace de plugins para desarrolladores (`.claude-plugin/marketplace.json` y
 - El vault de Obsidian vive fuera de este repo. No copiar PDFs de libros ni citas textuales: el repo es público, y `sync_vault.py` las filtra.
 - Commits: sin cambios no relacionados; los scripts no invocan modelos ni cuestan dinero.
 - Antes de commitear, leé `conventions/commits.md`.
+- Antes de abrir un pull request, leé `conventions/pull-requests.md`.
 
 ## Al agregar un plugin
 
